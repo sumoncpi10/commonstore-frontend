@@ -6,7 +6,7 @@ const ProfilePage = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <Head>
-        <title>Next Profile</title>
+        <title>User Profile</title>
       </Head>
       <h1>User Profile</h1>
       <Avatar size={64} icon={<UserOutlined />} />
