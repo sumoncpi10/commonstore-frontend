@@ -78,9 +78,9 @@ const menuProps = {
         selectedKeys={[key]}
       >
         <Col flex="auto">
-          <Link style={{color: "black",textDecoration: 'none' }} href="/profile">
+          <Link style={{color: "black",textDecoration: 'none' }} href="/pcBuilder">
             <Menu.Item>
-              <items>Profile</items>
+              <items>PC Builder</items>
             </Menu.Item>
           </Link>
           <Space wrap>
@@ -127,9 +127,9 @@ const menuProps = {
       >
         <Link
           style={{color: "white", textDecoration: "none" }} 
-          href="/profile"
+          href="/pcBuilder"
         >
-          <items>Profile</items>
+          <items>PC Builder</items>
         </Link>   <Space wrap>
       {session?.user ? (
             <Dropdown.Button menu={menuProps} placement="bottom" icon={<Image src={session?.user?.image} width={25} height={25} />}>
