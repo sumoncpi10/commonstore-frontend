@@ -8,3 +8,68 @@
   font-family: 'Oswald', sans-serif;
  
 }
+
+
+.navbar {
+  width: 100vw;
+  padding: 0 2rem;
+  background-color: #fff;
+  z-index: 3;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgb(230, 228, 228);
+}
+
+.logo {
+  float: left;
+  font-size: 2rem;
+}
+
+.nav-container {
+  width: calc(100% - 6rem);
+  float: left;
+  vertical-align: middle;
+}
+
+.left-nav {
+  float: left;
+}
+
+.right-nav {
+  float: right;
+}
+
+.btn {
+  float: right;
+  height: 3rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  display: none !important;
+  background: none;
+  color: black;
+  border: none;
+  font-size: x-large;
+}
+
+.ant-menu-horizontal,
+.ant-menu-inline {
+  border: none;
+}
+
+@media (max-width: 767px) {
+  .btn {
+    display: inline-block !important;
+  }
+
+  .left-nav,
+  .right-nav {
+    display: none;
+  }
+
+  .nav-container {
+    width: calc(100%-5rem);
+    float: left;
+  }
+}

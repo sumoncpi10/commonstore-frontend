@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 const { Header } = Layout;
 import { Layout, Menu, Button } from "antd";
 import Link from "next/link";
@@ -6,13 +6,20 @@ import { useSession,  signOut } from "next-auth/react";
 import { DownOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import {  UserOutlined } from '@ant-design/icons';
-import {  Dropdown,  Space, Tooltip } from 'antd';
-
+import { Dropdown, Space, Tooltip } from 'antd';
+import { MenuOutlined } from "@ant-design/icons";
+import {  Grid } from "antd";
+const { useBreakpoint } = Grid;
+import Image from 'next/image';
+import { Drawer } from "antd";
+import { Row, Col } from 'antd';
 const Navbar = () => {
+  const { md } = useBreakpoint();
   const router = useRouter();
   const { data: session } = useSession();
   console.log(session);
-  
+    const [visible, setVisibe] = useState(false),
+    [key, setKey] = useState("1");
 const handleButtonClick = (e) => {
   message.info('Click on left button.');
   console.log('click left button', e);
@@ -52,8 +59,50 @@ const menuProps = {
         backgroundColor:"primary",
         justifyContent: "space-between",
       }}
+    > <Button className="btn" onClick={() => setVisibe(true)}>
+          <MenuOutlined />
+      </Button>
+      
+      <Drawer
+        title="PC Builder"
+          placement="right"
+          closable={false}
+          onClose={() => setVisibe(false)}
+          visible={visible}
+    
     >
-      <div className="demo-logo">
+        <Menu
+          
+        mode={md ? 'horizontal' : 'inline'}
+        onClick={(e) => setKey(e.key)}
+        selectedKeys={[key]}
+      >
+        <Col flex="auto">
+          <Link style={{color: "black",textDecoration: 'none' }} href="/profile">
+            <Menu.Item>
+              <items>Profile</items>
+            </Menu.Item>
+          </Link>
+          <Space wrap>
+            {session?.user ? (
+              <Dropdown.Button
+                menu={menuProps}
+                placement="bottom"
+                icon={<Image src={session?.user?.image} width={25} height={25} />}
+              >
+                {session.user.name}
+              </Dropdown.Button>
+            ) : (
+              <Link style={{ color: "black",textDecoration: 'none' }} href="/login">
+                <Menu.Item>Login</Menu.Item>
+              </Link>
+            )}
+          </Space>
+        </Col>
+      </Menu>
+      </Drawer>
+     
+      <div className="demo-logo  ">
         <Link
           href="/"
           style={{
@@ -62,11 +111,12 @@ const menuProps = {
             fontSize: "25px",
           }}
         >
-          PBS Information
+          PC Builder
         </Link>
       </div>
+      
       <Menu
-        theme="dark"
+        theme="primary"
         mode="horizontal"
         style={{
           width: "20%",
@@ -76,59 +126,24 @@ const menuProps = {
         }}
       >
         <Link
-          style={{ textDecoration: "none", color: "white" }}
+          style={{color: "white", textDecoration: "none" }} 
           href="/profile"
         >
           <items>Profile</items>
-        </Link>{session?.user?<Space wrap>
-         <Dropdown.Button menu={menuProps}  placement="bottom" icon={<UserOutlined />}>
-      {session?.user?.name}
-    </Dropdown.Button>
-      </Space>:<Link style={{ textDecoration: "none", color: "white" }} href="/login">
-          <items>Login</items>
-        </Link>  }
-        {/* <items>
-          <Button onClick={()=>signOut()} type="primary" danger>
-            Logout
-          </Button>
-        </items> */}
+        </Link>   <Space wrap>
+      {session?.user ? (
+            <Dropdown.Button menu={menuProps} placement="bottom" icon={<Image src={session?.user?.image} width={25} height={25} />}>
+          {session.user.name}
+        </Dropdown.Button>
+      ) : (
+        <Link style={{ color: "white",textDecoration: "none" }} href="/login">
+          Login
+        </Link>
+      )}
+    </Space>
+       
       </Menu>
-        
-{/* <Space wrap> */}
-    {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick}>
-      Dropdown
-    </Dropdown.Button> */}
-    {/* <Dropdown.Button menu={menuProps} placement="bottom" icon={<UserOutlined />}>
-      Dropdown
-    </Dropdown.Button> */}
-    {/* <Dropdown.Button menu={menuProps} onClick={handleButtonClick} disabled>
-      Dropdown
-    </Dropdown.Button>
-    <Dropdown.Button
-      menu={menuProps}
-      buttonsRender={([leftButton, rightButton]) => [
-        <Tooltip title="tooltip" key="leftButton">
-          {leftButton}
-        </Tooltip>,
-        React.cloneElement(rightButton, {
-          loading: true,
-        }),
-      ]}
-    >
-      With Tooltip
-    </Dropdown.Button>
-    <Dropdown menu={menuProps}>
-      <Button>
-        <Space>
-          Button
-          <DownOutlined />
-        </Space>
-      </Button>
-    </Dropdown>
-    <Dropdown.Button menu={menuProps} onClick={handleButtonClick} danger>
-      Danger
-    </Dropdown.Button> */}
-  {/* </Space> */}
+  
     </Header>
   );
 };

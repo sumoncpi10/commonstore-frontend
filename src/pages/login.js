@@ -20,13 +20,13 @@ const LoginPage = () => {
           })}/>
         </div>
         <hr />
-        <form>
+        {/* <form>
           <label htmlFor="">Your Email</label>
           <input type="email" />
           <label htmlFor="">Your Password</label>
           <input type="password" />
           <Button>Login</Button>
-        </form>
+        </form> */}
       </div>
     </div>
   );
