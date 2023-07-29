@@ -10,12 +10,16 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-import { EditOutlined, EllipsisOutlined, SettingOutlined,FileAddOutlined } from '@ant-design/icons';
+import { EditOutlined, EllipsisOutlined, SettingOutlined,FileAddOutlined,DeleteFilled } from '@ant-design/icons';
 import { Avatar } from 'antd';
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { removeFromCart, removeOne } from "@/redux/features/cart/cartSlice";
 const { Meta } = Card;
 const PCBuilder = ({ allProducts }) => {
   const { Meta } = Card;
-
+  const { products } = useAppSelector((state) => state.cart);
+  console.log(products);
+  const dispatch = useAppDispatch();
   return (
     <>
       <h1
@@ -34,18 +38,24 @@ const PCBuilder = ({ allProducts }) => {
     style={{
       width: 500,
     }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
+              cover={products?.map((p) =>
+  p.category === part?.category ? (
+    <Image
+      key={p.id} // Make sure to add a unique key when using map
+      src={p?.image_url}
+      width={500}
+      height={400}
+      responsive
+      alt="news image"
+    />
+  ) : null
+)}
+
     actions={[
       <Link href={`/products/${part?.category}`} key={part?.id}>
-    <FileAddOutlined key="add" />
+    <FileAddOutlined style={{ fontSize: 30 }} key="add" />
       </Link>,
-      <EditOutlined key="edit" />,
-      // <EllipsisOutlined key="ellipsis" />,
+      <DeleteFilled style={{ fontSize: 30 }} key="delete" onClick={() => dispatch(removeFromCart(part))}/>,
     ]}
   >
     <Meta

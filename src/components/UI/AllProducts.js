@@ -1,7 +1,7 @@
 // AllProducts.js
 
 import React from "react";
-import { Card, Col, Row } from "antd";
+import { Button, Card, Col, Row } from "antd";
 import Image from "next/image";
 import {
   ArrowRightOutlined,
@@ -10,10 +10,17 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
+import { addToCart } from "@/redux/features/cart/cartSlice";
+import { useAppDispatch } from '@/redux/hook';
+import { ToastContainer, toast } from "react-toastify";
 
 const AllProducts = ({ allProducts }) => {
   const { Meta } = Card;
-
+    const dispatch = useAppDispatch();
+  const handleAddProduct = (product) => {
+    dispatch(addToCart(product));
+    toast( 'Product Added' );
+  };
   return (
     <>
       <h1
@@ -98,10 +105,12 @@ const AllProducts = ({ allProducts }) => {
                   Show Detail <ArrowRightOutlined />
                 </p>
               </Link>
+              <Button className='mx-2' onClick={() => handleAddProduct(part)}>Add to cart</Button>
             </Card>
           </Col>
         ))}
       </Row>
+      <ToastContainer></ToastContainer>
     </>
   );
 };

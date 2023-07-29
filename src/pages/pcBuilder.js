@@ -35,7 +35,7 @@ const PcBuilder = () => {
 ];
 
 
-console.log(category);
+// console.log(category);
     return (
         <div>
              <PCBuilder allProducts={category}></PCBuilder>
