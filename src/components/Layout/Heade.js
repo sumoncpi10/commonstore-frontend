@@ -41,9 +41,9 @@ const [theme, setTheme] = useState('light');
                 </Link>
     </Menu.Item>
     <Menu.SubMenu icon={<FileProtectOutlined />} title="Categories" key="3" style={{color: "cyan",textDecoration: 'none' }}>
-      <Menu.Item key="3:7"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/CPU%20%2F%20Processor">
+      <Menu.Item key="3:7"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/CPU-Processor">
         
-                CPU / Processor
+                CPU-Processor
               </Link></Menu.Item>
               <Menu.Item key="3:1"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/Motherboard">
                 Motherboard

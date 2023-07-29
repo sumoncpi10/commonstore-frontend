@@ -4,7 +4,7 @@ import React from 'react';
 const Categories = () => {
     const category=[
     {
-      "category": "CPU / Processor",
+      "category": "CPU-Processor",
       "image_url": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/antec/t120/t120-01-228x228.jpg"
     },
     {

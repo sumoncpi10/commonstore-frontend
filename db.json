@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "product1",
-      "category": "CPU / Processor",
+      "category": "CPU-Processor",
       "product_name": "Intel Core i9-11900K",
       "price": "499.99",
       "status": "In Stock",
@@ -233,7 +233,7 @@
     },
     {
       "id": "product8",
-      "category": "CPU / Processor",
+      "category": "CPU-Processor",
       "product_name": "AMD Ryzen 9 5900X",
       "price": "549.99",
       "status": "In Stock",
@@ -464,7 +464,7 @@
     },
     {
       "id": "product15",
-      "category": "CPU / Processor",
+      "category": "CPU-Processor",
       "product_name": "AMD Ryzen 7 5800X",
       "price": "399.99",
       "status": "In Stock",
@@ -695,7 +695,7 @@
     },
     {
       "id": "product22",
-      "category": "CPU / Processor",
+      "category": "CPU-Processor",
       "product_name": "Intel Core i7-11700K",
       "price": "399.99",
       "status": "In Stock",
