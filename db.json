@@ -601,7 +601,7 @@
       "price": "119.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as6604t/as6604t-01-228x228.webp",
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/hdd/western-digital/wd-blue/wd-blue-6tb-01-228x228.webp",
       "description": "The Western Digital Blue is a reliable SATA SSD that offers good performance and durability.",
       "key_features": [
         "Brand: Western Digital",
@@ -634,7 +634,7 @@
       "price": "129.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/aoc/c24g1/c24g1-01-228x228.jpg",
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/acer/eb192q/eb192q-01-228x228.jpg",
       "description": "The Acer R240HY is an affordable Full HD monitor with an IPS panel for good color reproduction.",
       "key_features": [
         "Brand: Acer",
@@ -667,7 +667,7 @@
       "price": "99.99",
       "status": "In Stock",
       "rating": 4.8,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/mouse/logitech/g203/g203-01-228x228.jpg",
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/desktop-pc/desktop-offer/ryzen-5-5600g-desktop-pc-0002-228x228.png",
       "description": "The Logitech MX Master 3 is a premium wireless mouse with advanced features and ergonomic design.",
       "key_features": [
         "Brand: Logitech",
@@ -700,7 +700,7 @@
       "price": "399.99",
       "status": "In Stock",
       "rating": 4.7,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/amd/ryzen-9-5900x/amd-ryzen-9-5900x-01-228x228.jpg",
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/gigabyte/aorus-b550-pro-ac/aorus-b550-pro-ac-228x228.jpg",
       "description": "The Intel Core i7-11700K is a high-performance CPU with 8 cores and 16 threads, suitable for gaming and multitasking.",
       "key_features": [
         "Brand: Intel",
@@ -733,7 +733,7 @@
       "price": "149.99",
       "status": "In Stock",
       "rating": 4.5,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/asus/rog-strix-z590-e-gaming/rog-strix-z590-e-gaming-01-228x228.jpg",
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/lexar/16gb-ddr4-3200mhz/16gb-ddr4-3200mhz-01-228x228.webp",
       "description": "The ASUS TUF Gaming B560M-Plus is a durable and feature-rich motherboard that supports Intel 11th Gen processors.",
       "key_features": [
         "Brand: ASUS",
@@ -766,7 +766,7 @@
       "price": "89.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-lpx/vengeance-lpx-16gb-01-228x228.webp",
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/corsair/rm750xwhite/corsair-rm-750-x-750-watt-80-plus-gold-certified-power-supply-white01-228x228.jpg",
       "description": "Crucial Ballistix is a high-performance DDR4 RAM kit that offers excellent speed and overclocking potential.",
       "key_features": [
         "Brand: Crucial",
@@ -824,6 +824,40 @@
           "comment": "Stable power delivery, great for gaming PCs."
         }
       ]
+    },
+    {
+  "id": "product26",
+  "category": "Monitor",
+  "product_name": "ASUS TUF Gaming VG27AQL1A",
+  "price": "$399.99",
+  "status": "In Stock",
+  "rating": 4.7,
+  "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/asus/vg279q1a/vg279q1a-1-228x228.jpg",
+  "description": "The ASUS TUF Gaming VG27AQL1A is a high-performance gaming monitor with a QHD resolution and fast refresh rate.",
+  "key_features": [
+    "Brand: ASUS",
+    "Model: TUF Gaming VG27AQL1A",
+    "Specification: 27-inch, QHD, IPS panel, 165Hz refresh rate",
+    "Port: HDMI, DisplayPort",
+    "Type: Gaming Monitor",
+    "Resolution: 2560 x 1440",
+    "Voltage: Not applicable"
+  ],
+  "individual_rating": 4.7,
+  "average_rating": 4.7,
+  "reviews": [
+    {
+      "user": "gamer123",
+      "rating": 4.8,
+      "comment": "Impressive gaming monitor with vibrant colors."
+    },
+    {
+      "user": "techenthusiast",
+      "rating": 4.6,
+      "comment": "Smooth gaming experience with no noticeable lag."
     }
+  ]
+}
+
   ]
 }

@@ -31,7 +31,7 @@ export const getStaticPaths = async (context) => {
     params: { category: part.id },
   }));
 
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 };
 
 export const getStaticProps = async (context) => {

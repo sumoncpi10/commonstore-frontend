@@ -155,7 +155,7 @@ export const getStaticPaths = async() => {
         params: {partsId:part.id}
     }))
 
-    return {paths, fallback:true}
+    return {paths, fallback:false}
 }
 export const getStaticProps = async(context) => {
     const { params } = context;
