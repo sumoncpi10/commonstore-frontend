@@ -36,7 +36,7 @@ const [theme, setTheme] = useState('light');
               </Link>
               </Menu.Item>
               <Menu.Item key="2" icon={<FileProtectOutlined />}>
-                <Link style={{ textDecoration: 'none' }} href="/products">
+                <Link style={{ textDecoration: 'none' }} href="/categories">
                 Featured Categories
                 </Link>
     </Menu.Item>
