@@ -1,0 +1,184 @@
+{
+  "parts": [
+    {
+      "id": "product1",
+      "category": "CPU / Processor",
+      "product_name": "Intel Core i9-11900K",
+      "price": "$499.99",
+      "status": "In Stock",
+      "rating": 4.9,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/antec/t120/t120-01-228x228.jpg"
+    },
+    {
+      "id": "product2",
+      "category": "Motherboard",
+      "product_name": "ASUS ROG Strix Z590-E Gaming",
+      "price": "$279.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/asus/prime-h610m-K-d4/prime-h610m-K-d4-02-228x228.jpg"
+    },
+    {
+      "id": "product3",
+      "category": "RAM",
+      "product_name": "Corsair Vengeance LPX 16GB DDR4",
+      "price": "$99.99",
+      "status": "In Stock",
+      "rating": 4.8,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-8gb-ddr4-3200mhz/vengeance-8gb-ddr4-3200mhz-01-228x228.webp"
+    },
+    {
+      "id": "product4",
+      "category": "Power Supply Unit",
+      "product_name": "EVGA SuperNOVA 750 G3",
+      "price": "$129.99",
+      "status": "In Stock",
+      "rating": 4.5,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/thor-1200p2/thor-1200p2-228x228.webp"
+    },
+    {
+      "id": "product5",
+      "category": "Storage Device",
+      "product_name": "Samsung 970 EVO Plus 1TB NVMe SSD",
+      "price": "$179.99",
+      "status": "In Stock",
+      "rating": 4.9,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as6602t/as6602t-01-228x228.webp"
+    },
+    {
+      "id": "product6",
+      "category": "Monitor",
+      "product_name": "LG 27GL850-B 27-inch QHD Gaming Monitor",
+      "price": "$399.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/lg-monitor/20mk400h/20mk400h-228x228.jpg"
+    },
+    {
+      "id": "product7",
+      "category": "Others",
+      "product_name": "Logitech G Pro X Mechanical Gaming Keyboard",
+      "price": "$149.99",
+      "status": "In Stock",
+      "rating": 4.8,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/Accessories/Logitech/gaming/g213-prodigy-gaming-keyboard-228x228.png"
+    },
+    {
+      "id": "product8",
+      "category": "CPU / Processor",
+      "product_name": "AMD Ryzen 9 5900X",
+      "price": "$549.99",
+      "status": "In Stock",
+      "rating": 4.8,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/AMD/ryzen-3-4100/amd-ryzen-3-4100-01-228x228.jpg"
+    },
+    {
+      "id": "product9",
+      "category": "Motherboard",
+      "product_name": "GIGABYTE X570 AORUS Elite",
+      "price": "$219.99",
+      "status": "In Stock",
+      "rating": 4.6,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/Motherboard/Gigabyte/Gigabyte%20GA-H110M%20S2PH-DDR4-228x228.jpg"
+    },
+    {
+      "id": "product10",
+      "category": "RAM",
+      "product_name": "G.Skill Trident Z RGB 32GB DDR4",
+      "price": "$199.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/gskill/flare-x5/flare-x5-16gb-01-228x228.webp"
+    },
+    {
+      "id": "product11",
+      "category": "Power Supply Unit",
+      "product_name": "Corsair RM750x 750W 80+ Gold",
+      "price": "$139.99",
+      "status": "In Stock",
+      "rating": 4.6,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/revenger/vp-350/vp-350-01-228x228.webp"
+    },
+    {
+      "id": "product12",
+      "category": "Storage Device",
+      "product_name": "Crucial MX500 2TB SATA SSD",
+      "price": "$249.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as7112rdx-lockerstor-12r-pro/as7112rdx-lockerstor-12r-pro-228x228.jpg"
+    },
+    {
+      "id": "product13",
+      "category": "Monitor",
+      "product_name": "Dell S2719DGF 27-inch QHD Gaming Monitor",
+      "price": "$349.99",
+      "status": "In Stock",
+      "rating": 4.5,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/dell/se2222h/se2222h-01-228x228.jpg"
+    },
+    {
+      "id": "product14",
+      "category": "Others",
+      "product_name": "Razer DeathAdder V2 Gaming Mouse",
+      "price": "$59.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/mouse/razer/deathadder-v2/deathadder-v2-228x228.jpg"
+    },
+    {
+      "id": "product15",
+      "category": "CPU / Processor",
+      "product_name": "AMD Ryzen 7 5800X",
+      "price": "$399.99",
+      "status": "In Stock",
+      "rating": 4.6,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/amd/amd-ryzen-5-5500/amd-ryzen-5-5500-01-228x228.jpg"
+    },
+    {
+      "id": "product16",
+      "category": "Motherboard",
+      "product_name": "MSI MAG B550 TOMAHAWK",
+      "price": "$179.99",
+      "status": "In Stock",
+      "rating": 4.5,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/msi/h510m-a-pro/h510m-a-pro-01-228x228.jpg"
+    },
+    {
+      "id": "product17",
+      "category": "RAM",
+      "product_name": "HyperX Fury 16GB DDR4",
+      "price": "$89.99",
+      "status": "In Stock",
+      "rating": 4.5,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/team/vulcan-z/vulcan-z-228x228.jpg"
+    },
+    {
+      "id": "product18",
+      "category": "Power Supply Unit",
+      "product_name": "Seasonic Focus GX-650 650W 80+ Gold",
+      "price": "$119.99",
+      "status": "In Stock",
+      "rating": 4.8,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/rog-thor-850p/rog-thor-850p-box-228x228.jpg"
+    },
+    {
+      "id": "product19",
+      "category": "Storage Device",
+      "product_name": "Western Digital Black SN750 500GB NVMe SSD",
+      "price": "$99.99",
+      "status": "In Stock",
+      "rating": 4.6,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/hdd/western-digital/wd-blue/wd-blue-6tb-01-228x228.webp"
+    },
+    {
+    "id": "product20",
+      "category": "Monitor",
+      "product_name": "Acer Predator XB271HU 27-inch WQHD IPS Monitor",
+      "price": "$599.99",
+      "status": "In Stock",
+      "rating": 4.9,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/acer/eb192q/eb192q-01-228x228.jpg"
+    }
+  ]
+}

@@ -41,7 +41,7 @@ const [theme, setTheme] = useState('light');
                 </Link>
     </Menu.Item>
     <Menu.SubMenu icon={<FileProtectOutlined />} title="Categories" key="3" style={{color: "cyan",textDecoration: 'none' }}>
-              <Menu.Item key="3:1"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/cpu">
+              <Menu.Item key="3:7"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/cpu">
                 CPU / Processor
               </Link></Menu.Item>
               <Menu.Item key="3:1"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/motherboard">
@@ -90,7 +90,7 @@ const [theme, setTheme] = useState('light');
           </Col>
           <Col xs={25} sm={0} md={6}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-            <Menu.Item key="8" icon={<FileProtectOutlined />}>
+            <Menu.Item key="9" icon={<FileProtectOutlined />}>
                 <Link style={{ textDecoration: 'none' }} href="/pcBuilder">
                 PC Builder
                 </Link>
