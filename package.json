@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "antd": "^5.7.0",
+    "antd": "^5.7.3",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "json-server": "^0.17.3",

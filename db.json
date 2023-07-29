@@ -4,181 +4,826 @@
       "id": "product1",
       "category": "CPU / Processor",
       "product_name": "Intel Core i9-11900K",
-      "price": "$499.99",
+      "price": "499.99",
       "status": "In Stock",
       "rating": 4.9,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/antec/t120/t120-01-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/antec/t120/t120-01-228x228.jpg",
+      "description": "The Intel Core i9-11900K is a high-performance CPU designed for gaming and heavy workloads.",
+      "key_features": [
+        "Brand: Intel",
+        "Model: Core i9-11900K",
+        "Specification: 11th Gen, 8 cores, 16 threads",
+        "Port: LGA1200",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.9,
+      "average_rating": 4.9,
+      "reviews": [
+        {
+          "user": "gamer123",
+          "rating": 5,
+          "comment": "Amazing performance for gaming!"
+        },
+        {
+          "user": "techguru",
+          "rating": 4.8,
+          "comment": "Great CPU for multi-threaded tasks."
+        }
+      ]
     },
     {
       "id": "product2",
       "category": "Motherboard",
       "product_name": "ASUS ROG Strix Z590-E Gaming",
-      "price": "$279.99",
+      "price": "279.99",
       "status": "In Stock",
       "rating": 4.7,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/asus/prime-h610m-K-d4/prime-h610m-K-d4-02-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/asus/prime-h610m-K-d4/prime-h610m-K-d4-02-228x228.jpg",
+      "description": "The ASUS ROG Strix Z590-E Gaming motherboard is built for gaming enthusiasts and supports the latest Intel processors.",
+      "key_features": [
+        "Brand: ASUS",
+        "Model: ROG Strix Z590-E Gaming",
+        "Specification: Intel Z590 chipset, ATX form factor",
+        "Port: LGA1200",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "gamingpro",
+          "rating": 4.5,
+          "comment": "Solid motherboard with great features."
+        },
+        {
+          "user": "pcbuilder101",
+          "rating": 4.8,
+          "comment": "Easy to overclock and stable performance."
+        }
+      ]
     },
     {
       "id": "product3",
       "category": "RAM",
       "product_name": "Corsair Vengeance LPX 16GB DDR4",
-      "price": "$99.99",
+      "price": "99.99",
       "status": "In Stock",
       "rating": 4.8,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-8gb-ddr4-3200mhz/vengeance-8gb-ddr4-3200mhz-01-228x228.webp"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-8gb-ddr4-3200mhz/vengeance-8gb-ddr4-3200mhz-01-228x228.webp",
+      "description": "Corsair Vengeance LPX is a reliable and high-performance DDR4 RAM designed for gaming and content creation.",
+      "key_features": [
+        "Brand: Corsair",
+        "Model: Vengeance LPX",
+        "Specification: 16GB (2x8GB), DDR4-3200MHz, CL16",
+        "Port: DIMM",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 1.35V"
+      ],
+      "individual_rating": 4.8,
+      "average_rating": 4.8,
+      "reviews": [
+        {
+          "user": "gamerx",
+          "rating": 5,
+          "comment": "Fast and stable RAM, perfect for my gaming rig!"
+        },
+        {
+          "user": "contentcreator",
+          "rating": 4.6,
+          "comment": "Great performance in video editing applications."
+        }
+      ]
     },
     {
       "id": "product4",
       "category": "Power Supply Unit",
       "product_name": "EVGA SuperNOVA 750 G3",
-      "price": "$129.99",
+      "price": "129.99",
       "status": "In Stock",
       "rating": 4.5,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/thor-1200p2/thor-1200p2-228x228.webp"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/thor-1200p2/thor-1200p2-228x228.webp",
+      "description": "The EVGA SuperNOVA 750 G3 is a high-efficiency power supply unit that provides reliable and clean power for your system.",
+      "key_features": [
+        "Brand: EVGA",
+        "Model: SuperNOVA 750 G3",
+        "Specification: 750W, 80+ Gold certified",
+        "Port: ATX",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 100-240V"
+      ],
+      "individual_rating": 4.5,
+      "average_rating": 4.5,
+      "reviews": [
+        {
+          "user": "pcbuilder456",
+          "rating": 4.7,
+          "comment": "Efficient and quiet PSU, very satisfied."
+        },
+        {
+          "user": "gamer990",
+          "rating": 4.3,
+          "comment": "Works well, but a bit pricey."
+        }
+      ]
     },
     {
       "id": "product5",
       "category": "Storage Device",
       "product_name": "Samsung 970 EVO Plus 1TB NVMe SSD",
-      "price": "$179.99",
+      "price": "179.99",
       "status": "In Stock",
       "rating": 4.9,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as6602t/as6602t-01-228x228.webp"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as6602t/as6602t-01-228x228.webp",
+      "description": "The Samsung 970 EVO Plus is a high-speed NVMe SSD that delivers exceptional performance for gaming and data-intensive tasks.",
+      "key_features": [
+        "Brand: Samsung",
+        "Model: 970 EVO Plus",
+        "Specification: 1TB, NVMe M.2",
+        "Port: M.2",
+        "Type: SSD",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.9,
+      "average_rating": 4.9,
+      "reviews": [
+        {
+          "user": "gamer567",
+          "rating": 5,
+          "comment": "Blazing fast storage, a game-changer for load times."
+        },
+        {
+          "user": "videographer",
+          "rating": 4.8,
+          "comment": "Fast and reliable SSD, perfect for video editing projects."
+        }
+      ]
     },
     {
       "id": "product6",
       "category": "Monitor",
       "product_name": "LG 27GL850-B 27-inch QHD Gaming Monitor",
-      "price": "$399.99",
+      "price": "399.99",
       "status": "In Stock",
       "rating": 4.7,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/lg-monitor/20mk400h/20mk400h-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/lg-monitor/20mk400h/20mk400h-228x228.jpg",
+      "description": "The LG 27GL850-B is a QHD gaming monitor with a high refresh rate and excellent color accuracy.",
+      "key_features": [
+        "Brand: LG",
+        "Model: 27GL850-B",
+        "Specification: 27-inch, QHD, IPS panel",
+        "Port: DisplayPort, HDMI",
+        "Type: Gaming Monitor",
+        "Resolution: 2560 x 1440",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "gamer234",
+          "rating": 4.8,
+          "comment": "Beautiful display, great for gaming and content creation."
+        },
+        {
+          "user": "esportspro",
+          "rating": 4.6,
+          "comment": "Fast response times and no motion blur."
+        }
+      ]
     },
     {
       "id": "product7",
       "category": "Others",
       "product_name": "Logitech G Pro X Mechanical Gaming Keyboard",
-      "price": "$149.99",
+      "price": "149.99",
       "status": "In Stock",
       "rating": 4.8,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/Accessories/Logitech/gaming/g213-prodigy-gaming-keyboard-228x228.png"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/Accessories/Logitech/gaming/g213-prodigy-gaming-keyboard-228x228.png",
+      "description": "The Logitech G Pro X is a high-performance mechanical gaming keyboard with customizable switches.",
+      "key_features": [
+        "Brand: Logitech",
+        "Model: G Pro X",
+        "Specification: Mechanical switches, RGB lighting",
+        "Port: USB",
+        "Type: Gaming Keyboard",
+        "Resolution: Not applicable",
+        "Voltage: 5V"
+      ],
+      "individual_rating": 4.8,
+      "average_rating": 4.8,
+      "reviews": [
+        {
+          "user": "gamer456",
+          "rating": 4.9,
+          "comment": "Responsive and durable, love the customizable switches."
+        },
+        {
+          "user": "esportsguru",
+          "rating": 4.7,
+          "comment": "Great keyboard for competitive gaming."
+        }
+      ]
     },
     {
       "id": "product8",
       "category": "CPU / Processor",
       "product_name": "AMD Ryzen 9 5900X",
-      "price": "$549.99",
+      "price": "549.99",
       "status": "In Stock",
       "rating": 4.8,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/AMD/ryzen-3-4100/amd-ryzen-3-4100-01-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/AMD/ryzen-3-4100/amd-ryzen-3-4100-01-228x228.jpg",
+      "description": "The AMD Ryzen 9 5900X is a powerful CPU with 12 cores and 24 threads, perfect for demanding workloads and gaming.",
+      "key_features": [
+        "Brand: AMD",
+        "Model: Ryzen 9 5900X",
+        "Specification: 12 cores, 24 threads",
+        "Port: AM4",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.8,
+      "average_rating": 4.8,
+      "reviews": [
+        {
+          "user": "techenthusiast",
+          "rating": 4.9,
+          "comment": "Incredible performance, great value for the price."
+        },
+        {
+          "user": "contentcreator123",
+          "rating": 4.7,
+          "comment": "Handles video editing like a breeze."
+        }
+      ]
     },
     {
       "id": "product9",
       "category": "Motherboard",
       "product_name": "GIGABYTE X570 AORUS Elite",
-      "price": "$219.99",
+      "price": "219.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/Motherboard/Gigabyte/Gigabyte%20GA-H110M%20S2PH-DDR4-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/Motherboard/Gigabyte/Gigabyte%20GA-H110M%20S2PH-DDR4-228x228.jpg",
+      "description": "The GIGABYTE X570 AORUS Elite is a feature-rich motherboard that supports AMD Ryzen processors and PCIe 4.0.",
+      "key_features": [
+        "Brand: GIGABYTE",
+        "Model: X570 AORUS Elite",
+        "Specification: AMD X570 chipset, ATX form factor",
+        "Port: AM4",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.6,
+      "average_rating": 4.6,
+      "reviews": [
+        {
+          "user": "pcbuilder789",
+          "rating": 4.5,
+          "comment": "Solid motherboard with excellent build quality."
+        },
+        {
+          "user": "gamer001",
+          "rating": 4.7,
+          "comment": "Great BIOS and overclocking options."
+        }
+      ]
     },
     {
       "id": "product10",
       "category": "RAM",
       "product_name": "G.Skill Trident Z RGB 32GB DDR4",
-      "price": "$199.99",
+      "price": "199.99",
       "status": "In Stock",
       "rating": 4.7,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/gskill/flare-x5/flare-x5-16gb-01-228x228.webp"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/gskill/flare-x5/flare-x5-16gb-01-228x228.webp",
+      "description": "G.Skill Trident Z RGB is a stylish and high-performance DDR4 RAM kit suitable for gaming and overclocking.",
+      "key_features": [
+        "Brand: G.Skill",
+        "Model: Trident Z RGB",
+        "Specification: 32GB (2x16GB), DDR4-3200MHz, CL16",
+        "Port: DIMM",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 1.35V"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "gamerXtreme",
+          "rating": 4.8,
+          "comment": "Great RAM with customizable RGB lighting."
+        },
+        {
+          "user": "overclocker",
+          "rating": 4.6,
+          "comment": "Stable performance even with aggressive overclocking."
+        }
+      ]
     },
     {
       "id": "product11",
       "category": "Power Supply Unit",
       "product_name": "Corsair RM750x 750W 80+ Gold",
-      "price": "$139.99",
+      "price": "139.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/revenger/vp-350/vp-350-01-228x228.webp"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/revenger/vp-350/vp-350-01-228x228.webp",
+      "description": "The Corsair RM750x is a reliable and efficient PSU with 80+ Gold certification and modular cables.",
+      "key_features": [
+        "Brand: Corsair",
+        "Model: RM750x",
+        "Specification: 750W, 80+ Gold certified",
+        "Port: ATX",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 100-240V"
+      ],
+      "individual_rating": 4.6,
+      "average_rating": 4.6,
+      "reviews": [
+        {
+          "user": "pcbuilder789",
+          "rating": 4.7,
+          "comment": "Quiet and efficient power supply."
+        },
+        {
+          "user": "gamer001",
+          "rating": 4.5,
+          "comment": "Stable voltage and great cable management."
+        }
+      ]
     },
     {
       "id": "product12",
       "category": "Storage Device",
       "product_name": "Crucial MX500 2TB SATA SSD",
-      "price": "$249.99",
+      "price": "249.99",
       "status": "In Stock",
       "rating": 4.7,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as7112rdx-lockerstor-12r-pro/as7112rdx-lockerstor-12r-pro-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as7112rdx-lockerstor-12r-pro/as7112rdx-lockerstor-12r-pro-228x228.jpg",
+      "description": "The Crucial MX500 is a high-capacity SATA SSD that offers fast read/write speeds for everyday use.",
+      "key_features": [
+        "Brand: Crucial",
+        "Model: MX500",
+        "Specification: 2TB, SATA III",
+        "Port: SATA III",
+        "Type: SSD",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "everydayuser",
+          "rating": 4.8,
+          "comment": "Massive storage space, great for my media library."
+        },
+        {
+          "user": "techfanatic",
+          "rating": 4.6,
+          "comment": "Reliable and affordable SSD."
+        }
+      ]
     },
     {
       "id": "product13",
       "category": "Monitor",
       "product_name": "Dell S2719DGF 27-inch QHD Gaming Monitor",
-      "price": "$349.99",
+      "price": "349.99",
       "status": "In Stock",
       "rating": 4.5,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/dell/se2222h/se2222h-01-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/dell/se2222h/se2222h-01-228x228.jpg",
+      "description": "The Dell S2719DGF is a 27-inch QHD gaming monitor with a high refresh rate and AMD FreeSync support.",
+      "key_features": [
+        "Brand: Dell",
+        "Model: S2719DGF",
+        "Specification: 27-inch, QHD, TN panel",
+        "Port: DisplayPort, HDMI",
+        "Type: Gaming Monitor",
+        "Resolution: 2560 x 1440",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.5,
+      "average_rating": 4.5,
+      "reviews": [
+        {
+          "user": "gamerABC",
+          "rating": 4.7,
+          "comment": "Great gaming monitor with smooth visuals."
+        },
+        {
+          "user": "techgeek",
+          "rating": 4.3,
+          "comment": "Decent colors, but viewing angles could be better."
+        }
+      ]
     },
     {
       "id": "product14",
       "category": "Others",
       "product_name": "Razer DeathAdder V2 Gaming Mouse",
-      "price": "$59.99",
+      "price": "59.99",
       "status": "In Stock",
       "rating": 4.7,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/mouse/razer/deathadder-v2/deathadder-v2-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/mouse/razer/deathadder-v2/deathadder-v2-228x228.jpg",
+      "description": "The Razer DeathAdder V2 is an ergonomic gaming mouse with high precision and customizable RGB lighting.",
+      "key_features": [
+        "Brand: Razer",
+        "Model: DeathAdder V2",
+        "Specification: Optical sensor, 16000 DPI, 8 programmable buttons",
+        "Port: USB",
+        "Type: Gaming Mouse",
+        "Resolution: 16000 DPI",
+        "Voltage: 5V"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "gamingfan",
+          "rating": 4.8,
+          "comment": "Comfortable grip and precise tracking."
+        },
+        {
+          "user": "competitivegamer",
+          "rating": 4.6,
+          "comment": "Responsive and great for FPS games."
+        }
+      ]
     },
     {
       "id": "product15",
       "category": "CPU / Processor",
       "product_name": "AMD Ryzen 7 5800X",
-      "price": "$399.99",
+      "price": "399.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/amd/amd-ryzen-5-5500/amd-ryzen-5-5500-01-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/amd/amd-ryzen-5-5500/amd-ryzen-5-5500-01-228x228.jpg",
+      "description": "The AMD Ryzen 7 5800X is a high-performance CPU with 8 cores and 16 threads, ideal for gaming and content creation.",
+      "key_features": [
+        "Brand: AMD",
+        "Model: Ryzen 7 5800X",
+        "Specification: 8 cores, 16 threads",
+        "Port: AM4",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.6,
+      "average_rating": 4.6,
+      "reviews": [
+        {
+          "user": "pcenthusiast",
+          "rating": 4.7,
+          "comment": "Fast and efficient CPU, handles everything I throw at it."
+        },
+        {
+          "user": "contentcreator789",
+          "rating": 4.5,
+          "comment": "Smooth performance in video editing software."
+        }
+      ]
     },
     {
       "id": "product16",
       "category": "Motherboard",
       "product_name": "MSI MAG B550 TOMAHAWK",
-      "price": "$179.99",
+      "price": "179.99",
       "status": "In Stock",
       "rating": 4.5,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/msi/h510m-a-pro/h510m-a-pro-01-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/msi/h510m-a-pro/h510m-a-pro-01-228x228.jpg",
+      "description": "The MSI MAG B550 TOMAHAWK is a reliable and feature-packed motherboard that supports AMD Ryzen processors.",
+      "key_features": [
+        "Brand: MSI",
+        "Model: MAG B550 TOMAHAWK",
+        "Specification: AMD B550 chipset, ATX form factor",
+        "Port: AM4",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.5,
+      "average_rating": 4.5,
+      "reviews": [
+        {
+          "user": "pcbuilder876",
+          "rating": 4.6,
+          "comment": "Solid build quality and easy BIOS navigation."
+        },
+        {
+          "user": "gamer007",
+          "rating": 4.4,
+          "comment": "Great value for a B550 motherboard."
+        }
+      ]
     },
     {
       "id": "product17",
       "category": "RAM",
       "product_name": "HyperX Fury 16GB DDR4",
-      "price": "$89.99",
+      "price": "89.99",
       "status": "In Stock",
       "rating": 4.5,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/team/vulcan-z/vulcan-z-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/team/vulcan-z/vulcan-z-228x228.jpg",
+      "description": "The HyperX Fury is a cost-effective and reliable DDR4 RAM kit that delivers decent performance for gaming.",
+      "key_features": [
+        "Brand: HyperX",
+        "Model: Fury",
+        "Specification: 16GB (2x8GB), DDR4-2666MHz, CL16",
+        "Port: DIMM",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 1.2V"
+      ],
+      "individual_rating": 4.5,
+      "average_rating": 4.5,
+      "reviews": [
+        {
+          "user": "gamerXYZ",
+          "rating": 4.7,
+          "comment": "Reliable and affordable RAM kit for gaming."
+        },
+        {
+          "user": "techfan",
+          "rating": 4.3,
+          "comment": "Decent performance for the price."
+        }
+      ]
     },
     {
       "id": "product18",
       "category": "Power Supply Unit",
       "product_name": "Seasonic Focus GX-650 650W 80+ Gold",
-      "price": "$119.99",
+      "price": "119.99",
       "status": "In Stock",
       "rating": 4.8,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/rog-thor-850p/rog-thor-850p-box-228x228.jpg"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/rog-thor-850p/rog-thor-850p-box-228x228.jpg",
+      "description": "The Seasonic Focus GX-650 is a high-quality PSU with 80+ Gold certification and fully modular design.",
+      "key_features": [
+        "Brand: Seasonic",
+        "Model: Focus GX-650",
+        "Specification: 650W, 80+ Gold certified",
+        "Port: ATX",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 100-240V"
+      ],
+      "individual_rating": 4.8,
+      "average_rating": 4.8,
+      "reviews": [
+        {
+          "user": "pcbuilder987",
+          "rating": 4.9,
+          "comment": "Excellent PSU, stable power delivery."
+        },
+        {
+          "user": "gamer990",
+          "rating": 4.7,
+          "comment": "Quiet operation and efficient performance."
+        }
+      ]
     },
     {
       "id": "product19",
       "category": "Storage Device",
-      "product_name": "Western Digital Black SN750 500GB NVMe SSD",
-      "price": "$99.99",
+      "product_name": "Western Digital Blue 1TB SATA SSD",
+      "price": "119.99",
       "status": "In Stock",
       "rating": 4.6,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/hdd/western-digital/wd-blue/wd-blue-6tb-01-228x228.webp"
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/storage/asustor/as6604t/as6604t-01-228x228.webp",
+      "description": "The Western Digital Blue is a reliable SATA SSD that offers good performance and durability.",
+      "key_features": [
+        "Brand: Western Digital",
+        "Model: Blue",
+        "Specification: 1TB, SATA III",
+        "Port: SATA III",
+        "Type: SSD",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.6,
+      "average_rating": 4.6,
+      "reviews": [
+        {
+          "user": "everydayuser",
+          "rating": 4.8,
+          "comment": "Fast boot times and reliable storage."
+        },
+        {
+          "user": "techgeek",
+          "rating": 4.4,
+          "comment": "Good value for a 1TB SSD."
+        }
+      ]
     },
     {
-    "id": "product20",
+      "id": "product20",
       "category": "Monitor",
-      "product_name": "Acer Predator XB271HU 27-inch WQHD IPS Monitor",
-      "price": "$599.99",
+      "product_name": "Acer R240HY 23.8-inch Full HD Monitor",
+      "price": "129.99",
       "status": "In Stock",
-      "rating": 4.9,
-      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/acer/eb192q/eb192q-01-228x228.jpg"
+      "rating": 4.6,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/monitor/aoc/c24g1/c24g1-01-228x228.jpg",
+      "description": "The Acer R240HY is an affordable Full HD monitor with an IPS panel for good color reproduction.",
+      "key_features": [
+        "Brand: Acer",
+        "Model: R240HY",
+        "Specification: 23.8-inch, Full HD, IPS panel",
+        "Port: HDMI, VGA",
+        "Type: Monitor",
+        "Resolution: 1920 x 1080",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.6,
+      "average_rating": 4.6,
+      "reviews": [
+        {
+          "user": "casualuser",
+          "rating": 4.7,
+          "comment": "Great budget monitor for everyday tasks."
+        },
+        {
+          "user": "designer101",
+          "rating": 4.5,
+          "comment": "Decent colors and viewing angles for design work."
+        }
+      ]
+    },
+    {
+      "id": "product21",
+      "category": "Others",
+      "product_name": "Logitech MX Master 3 Wireless Mouse",
+      "price": "99.99",
+      "status": "In Stock",
+      "rating": 4.8,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/mouse/logitech/g203/g203-01-228x228.jpg",
+      "description": "The Logitech MX Master 3 is a premium wireless mouse with advanced features and ergonomic design.",
+      "key_features": [
+        "Brand: Logitech",
+        "Model: MX Master 3",
+        "Specification: Darkfield high precision sensor, customizable buttons",
+        "Port: USB",
+        "Type: Wireless Mouse",
+        "Resolution: 4000 DPI",
+        "Voltage: 3.7V"
+      ],
+      "individual_rating": 4.8,
+      "average_rating": 4.8,
+      "reviews": [
+        {
+          "user": "officeworker",
+          "rating": 4.9,
+          "comment": "Comfortable and smooth mouse for long hours of use."
+        },
+        {
+          "user": "graphicdesigner",
+          "rating": 4.7,
+          "comment": "Highly responsive and customizable for design work."
+        }
+      ]
+    },
+    {
+      "id": "product22",
+      "category": "CPU / Processor",
+      "product_name": "Intel Core i7-11700K",
+      "price": "399.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/processor/amd/ryzen-9-5900x/amd-ryzen-9-5900x-01-228x228.jpg",
+      "description": "The Intel Core i7-11700K is a high-performance CPU with 8 cores and 16 threads, suitable for gaming and multitasking.",
+      "key_features": [
+        "Brand: Intel",
+        "Model: Core i7-11700K",
+        "Specification: 8 cores, 16 threads",
+        "Port: LGA1200",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "pcenthusiast",
+          "rating": 4.8,
+          "comment": "Fast and reliable processor for my gaming rig."
+        },
+        {
+          "user": "multitasker",
+          "rating": 4.6,
+          "comment": "Handles heavy multitasking without breaking a sweat."
+        }
+      ]
+    },
+    {
+      "id": "product23",
+      "category": "Motherboard",
+      "product_name": "ASUS TUF Gaming B560M-Plus",
+      "price": "149.99",
+      "status": "In Stock",
+      "rating": 4.5,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/motherboard/asus/rog-strix-z590-e-gaming/rog-strix-z590-e-gaming-01-228x228.jpg",
+      "description": "The ASUS TUF Gaming B560M-Plus is a durable and feature-rich motherboard that supports Intel 11th Gen processors.",
+      "key_features": [
+        "Brand: ASUS",
+        "Model: TUF Gaming B560M-Plus",
+        "Specification: Intel B560 chipset, micro-ATX form factor",
+        "Port: LGA1200",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: Not applicable"
+      ],
+      "individual_rating": 4.5,
+      "average_rating": 4.5,
+      "reviews": [
+        {
+          "user": "pcbuilder876",
+          "rating": 4.6,
+          "comment": "Solid board with good connectivity options."
+        },
+        {
+          "user": "gamer007",
+          "rating": 4.4,
+          "comment": "Reliable performance for gaming and daily use."
+        }
+      ]
+    },
+    {
+      "id": "product24",
+      "category": "RAM",
+      "product_name": "Crucial Ballistix 16GB DDR4",
+      "price": "89.99",
+      "status": "In Stock",
+      "rating": 4.6,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-lpx/vengeance-lpx-16gb-01-228x228.webp",
+      "description": "Crucial Ballistix is a high-performance DDR4 RAM kit that offers excellent speed and overclocking potential.",
+      "key_features": [
+        "Brand: Crucial",
+        "Model: Ballistix",
+        "Specification: 16GB (2x8GB), DDR4-3200MHz, CL16",
+        "Port: DIMM",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 1.35V"
+      ],
+      "individual_rating": 4.6,
+      "average_rating": 4.6,
+      "reviews": [
+        {
+          "user": "gamerXYZ",
+          "rating": 4.7,
+          "comment": "Fast and stable RAM kit for gaming."
+        },
+        {
+          "user": "techfan",
+          "rating": 4.5,
+          "comment": "Great value for high-speed RAM."
+        }
+      ]
+    },
+    {
+      "id": "product25",
+      "category": "Power Supply Unit",
+      "product_name": "Cooler Master MWE Gold 750 V2",
+      "price": "119.99",
+      "status": "In Stock",
+      "rating": 4.7,
+      "image_url": "https://www.startech.com.bd/image/cache/catalog/power-supply/asus/rog-thor-850p/rog-thor-850p-box-228x228.jpg",
+      "description": "The Cooler Master MWE Gold 750 V2 is a reliable PSU with 80+ Gold certification and quiet operation.",
+      "key_features": [
+        "Brand: Cooler Master",
+        "Model: MWE Gold 750 V2",
+        "Specification: 750W, 80+ Gold certified",
+        "Port: ATX",
+        "Type: Desktop",
+        "Resolution: Not applicable",
+        "Voltage: 100-240V"
+      ],
+      "individual_rating": 4.7,
+      "average_rating": 4.7,
+      "reviews": [
+        {
+          "user": "pcbuilder987",
+          "rating": 4.8,
+          "comment": "Quiet and efficient power supply unit."
+        },
+        {
+          "user": "gamer990",
+          "rating": 4.6,
+          "comment": "Stable power delivery, great for gaming PCs."
+        }
+      ]
     }
   ]
 }

@@ -61,22 +61,26 @@ const AllProducts = ({ allProducts }) => {
                   fontSize: "12px",
                 }}
               >
+                
                 <span>
-                  <CalendarOutlined /> {part?.release_date}
+                  <CalendarOutlined /> {part?.price}
                 </span>
                 <span>
-                  <CommentOutlined /> {part?.comment_count} COMMENTS
+                  <CalendarOutlined /> {part?.status}
+                </span>
+                <span>
+                  <CommentOutlined /> {part?.rating } Ratings
                 </span>
                 <span>
                   <ProfileOutlined /> {part?.category}
                 </span>
               </p>
 
-              <p style={{ fontSize: "15px" }}>
+              {/* <p style={{ fontSize: "15px" }}>
                 {part?.product_name.length > 100
                   ? part?.product_name.slice(0, 70) + "..."
                   : part?.product_name}
-              </p>
+              </p> */}
               <Link href={`/parts/${part?.id}`}>
                 <p
                   style={{
