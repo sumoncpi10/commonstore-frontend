@@ -37,29 +37,30 @@ const [theme, setTheme] = useState('light');
               </Menu.Item>
               <Menu.Item key="2" icon={<FileProtectOutlined />}>
                 <Link style={{ textDecoration: 'none' }} href="/products">
-                Products
+                Featured Categories
                 </Link>
     </Menu.Item>
     <Menu.SubMenu icon={<FileProtectOutlined />} title="Categories" key="3" style={{color: "cyan",textDecoration: 'none' }}>
-              <Menu.Item key="3:7"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/cpu">
+      <Menu.Item key="3:7"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/CPU%20%2F%20Processor">
+        
                 CPU / Processor
               </Link></Menu.Item>
-              <Menu.Item key="3:1"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/motherboard">
+              <Menu.Item key="3:1"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/Motherboard">
                 Motherboard
               </Link></Menu.Item>
-              <Menu.Item key="3:2"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/ram">
+              <Menu.Item key="3:2"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/RAM">
                 RAM
               </Link></Menu.Item>
-              <Menu.Item key="3:3"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/psu">
+              <Menu.Item key="3:3"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/Power Supply Unit">
                 Power Supply Unit
               </Link></Menu.Item>
-              <Menu.Item key="3:4"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/storageDevice">
+              <Menu.Item key="3:4"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/Storage Device">
                 Storage Device
               </Link></Menu.Item>
-              <Menu.Item key="3:5"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/monitor">
+              <Menu.Item key="3:5"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/Monitor">
                 Monitor
               </Link></Menu.Item>
-              <Menu.Item key="3:6"><Link style={{ color: "green",textDecoration: 'none' }} href="/categories/others">
+              <Menu.Item key="3:6"><Link style={{ color: "green",textDecoration: 'none' }} href="/products/Others">
                 Others
               </Link></Menu.Item>
               

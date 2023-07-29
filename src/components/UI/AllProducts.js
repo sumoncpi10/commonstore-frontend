@@ -77,7 +77,7 @@ const AllProducts = ({ allProducts }) => {
                   ? part?.product_name.slice(0, 70) + "..."
                   : part?.product_name}
               </p>
-              <Link href={`/news/${part?.id}`}>
+              <Link href={`/parts/${part?.id}`}>
                 <p
                   style={{
                     fontSize: "15px",
@@ -91,7 +91,7 @@ const AllProducts = ({ allProducts }) => {
                     textAlign: "center",
                   }}
                 >
-                  Keep Reading <ArrowRightOutlined />
+                  Show Detail <ArrowRightOutlined />
                 </p>
               </Link>
             </Card>
