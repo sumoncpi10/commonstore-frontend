@@ -1,27 +1,32 @@
 // AllProducts.js
 
 import React from "react";
-import { Card, Col, Row } from "antd";
+import { Button, Card, Col, Row, notification } from "antd";
 import Image from "next/image";
+
 import {
-  ArrowRightOutlined,
-  CalendarOutlined,
-  CommentOutlined,
-  ProfileOutlined,
+  ShoppingCartOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
-import { EditOutlined, EllipsisOutlined, SettingOutlined,FileAddOutlined,DeleteFilled } from '@ant-design/icons';
+import { FileAddOutlined,DeleteFilled } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { removeFromCart, removeOne } from "@/redux/features/cart/cartSlice";
-const { Meta } = Card;
 const PCBuilder = ({ allProducts }) => {
   const { Meta } = Card;
   const { products } = useAppSelector((state) => state.cart);
   console.log(products);
   const dispatch = useAppDispatch();
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotificationWithIcon = (type) => {
+    api[type]({
+      message:products?.length<6?"Opps! Not Successful, Add 6 Parts Please": 'Build PC Successful',
+      description: products.map((p,index) => `Choose Product: ${index+1}. ${  p.category},  `),
+    });
+  };
   return (
-    <>
+    <>{contextHolder}
       <h1
         style={{
           textAlign: "center",
@@ -66,7 +71,18 @@ const PCBuilder = ({ allProducts }) => {
   </Card>
           </Col>
         ))}
+        <Button icon={<ShoppingCartOutlined />} style={{
+                    fontSize: "15px",
+                    marginTop: "20px",
+                    color: "white",
+                    width: "100%",
+                    padding: "2px 5px ",
+                    fontWeight: "300",
+                    letterSpacing: "3px",
+                    textAlign: "center",
+                  }} type="primary" className='mx-2' onClick={()=>openNotificationWithIcon('success')}>Complete Build</Button>
       </Row>
+      
     </>
   );
 };
