@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
+  status:null
   // total: 0,
 };
 
@@ -10,11 +11,13 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      // console.log(action.payload.category);
       const existing = state.products.find(
         (product) => product.category === action.payload.category
       );
       if (existing) {
-        existing.quantity = existing.quantity + 1;
+        // existing.quantity = existing.quantity + 1;
+        state.status = `Already Added ${action.payload.category} Category Product`;
       } else {
         state.products.push({ ...action.payload, quantity: 1 });
       }
@@ -38,11 +41,11 @@ const cartSlice = createSlice({
       // state.total -= action.payload.price;
     },
     removeFromCart: (state, action) => {
-      const ActionID = String(action.payload.id);
-      const removeId = "product" + ActionID;
-      console.log(removeId);
+      // const ActionID = String(action.payload.id);
+      // const removeId = "product" + ActionID;
+      // console.log(action.payload.category);
       state.products = state.products.filter(
-        (product) => product.id !== removeId
+        (product) => product.category !== action.payload.category
       );
     },
   },

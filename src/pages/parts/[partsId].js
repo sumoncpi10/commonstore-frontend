@@ -33,7 +33,7 @@ const columns = [
   },
 ];
 
-    console.log(part);
+    // console.log(part);
   return (
         <>
         <Row style={{ marginTop: "80px", alignItems: "center" }}>
@@ -147,21 +147,24 @@ export default PartsDetails;
 
 export const getStaticPaths = async() => {
 
-    const res = await fetch(`http://localhost:5000/products`)
+    const res = await fetch(`http://localhost:3000/api/products`)
     const allProducts = await res.json();
-    // console.log(allProducts);
+    console.log(allProducts.data);
 
-    const paths = allProducts.map(part => ({
+    const paths = allProducts?.data?.map(part => ({
         params: {partsId:part.id}
     }))
 
     return {paths, fallback:false}
 }
 export const getStaticProps = async(context) => {
-    const { params } = context;
-    const res = await fetch(`http://localhost:5000/products/${params.partsId}`)
+  const { params } = context;
+  // console.log(params.id);
+  const url = `http://localhost:3000/api/parts/${params?.partsId}`;
+  // console.log(url);
+    const res = await fetch(url)
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
 
     return {
         props: {

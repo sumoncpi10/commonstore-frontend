@@ -1,28 +1,51 @@
 // AllProducts.js
 
 import React from "react";
-import { Button, Card, Col, Row } from "antd";
+import { Button, Card, Col, Row, Space,notification } from "antd";
 import Image from "next/image";
 import {
   ArrowRightOutlined,
   CalendarOutlined,
   CommentOutlined,
-  ProfileOutlined,
+  ProfileOutlined,ShoppingCartOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import { addToCart } from "@/redux/features/cart/cartSlice";
-import { useAppDispatch } from '@/redux/hook';
-import { ToastContainer, toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+
 
 const AllProducts = ({ allProducts }) => {
   const { Meta } = Card;
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const { status } = useAppSelector((state) => state.cart);
+  console.log(status);
   const handleAddProduct = (product) => {
-    dispatch(addToCart(product));
-    toast( 'Product Added' );
+     dispatch(addToCart(product));
+    
+    // console.log(r);
+    // toast('Product Added');
+    if (!status) {
+      openNotificationWithIcon('success')
+    }
+    else if (status) {
+      openNotificationWithIcon('info')
+    }
+    
+  };
+ const [api, contextHolder] = notification.useNotification();
+  const openNotificationWithIcon = (type) => {
+    api[type]({
+      message: 'Product Added',
+      description:
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+    });
   };
   return (
     <>
+       <>
+      {contextHolder}
+      
+    </>
       <h1
         style={{
           textAlign: "center",
@@ -88,6 +111,16 @@ const AllProducts = ({ allProducts }) => {
                   ? part?.product_name.slice(0, 70) + "..."
                   : part?.product_name}
               </p> */}
+              <Button icon={<ShoppingCartOutlined />} style={{
+                    fontSize: "15px",
+                    marginTop: "20px",
+                    color: "white",
+                    width: "100%",
+                    padding: "2px 5px ",
+                    fontWeight: "300",
+                    letterSpacing: "3px",
+                    textAlign: "center",
+                  }} type="primary" className='mx-2' onClick={() => handleAddProduct(part)}>Add to cart</Button>
               <Link href={`/parts/${part?.id}`}>
                 <p
                   style={{
@@ -105,12 +138,13 @@ const AllProducts = ({ allProducts }) => {
                   Show Detail <ArrowRightOutlined />
                 </p>
               </Link>
-              <Button className='mx-2' onClick={() => handleAddProduct(part)}>Add to cart</Button>
+              
+              {/* <Button type="primary">Primary Button</Button> */}
             </Card>
           </Col>
         ))}
       </Row>
-      <ToastContainer></ToastContainer>
+      
     </>
   );
 };

@@ -21,13 +21,13 @@ export default PartsDetails;
 
 export const getStaticPaths = async (context) => {
   const { params } = context;
-  console.log(params);
+  // console.log(params);
 
-  const res = await fetch(`http://localhost:5000/products?category=${params?.category}`);
+  const res = await fetch(`http://localhost:3000/api/products?category=${params?.category}`);
   const allProducts = await res.json();
   // console.log(allProducts);
 
-  const paths = allProducts.map((part) => ({
+  const paths = allProducts.data.map((part) => ({
     params: { category: part.id },
   }));
 
@@ -36,15 +36,15 @@ export const getStaticPaths = async (context) => {
 
 export const getStaticProps = async (context) => {
   const { params } = context;
-  console.log(params);
+  // console.log(params);
 
-  const res = await fetch(`http://localhost:5000/products?category=${params?.category}`);
+  const res = await fetch(`http://localhost:3000/api/products?category=${params?.category}`);
   const data = await res.json();
   // console.log(data);
 
   return {
     props: {
-      allProducts: data,
+      allProducts: data.data,
     },
     revalidate: 30,
   };

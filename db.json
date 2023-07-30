@@ -1,5 +1,4 @@
-{
-  "products": [
+[
     {
       "id": "product1",
       "category": "CPU-Processor",
@@ -857,7 +856,5 @@
       "comment": "Smooth gaming experience with no noticeable lag."
     }
   ]
-}
+}]
 
-  ]
-}
