@@ -77,7 +77,7 @@ const [theme, setTheme] = useState('light');
               className="logo"
               style={{ color: "white", paddingLeft: "50px" }}
             >
-              PC Builder
+              PBS Activities
             </div>
           </Col>
           <Col xs={0} sm={0} md={10}>
@@ -91,11 +91,11 @@ const [theme, setTheme] = useState('light');
           </Col>
           <Col xs={25} sm={0} md={6}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-            <Menu.Item key="9" icon={<FileProtectOutlined />}>
+            {/* <Menu.Item key="9" icon={<FileProtectOutlined />}>
                 <Link style={{ textDecoration: 'none' }} href="/pcBuilder">
                 PC Builder
                 </Link>
-            </Menu.Item>
+            </Menu.Item> */}
             { 
       !session?.user ? <Menu.Item key="6">
                 <Button type="primary" >
@@ -137,11 +137,11 @@ const [theme, setTheme] = useState('light');
       <br />
             { menu}
      
-               <Menu.Item key="8" icon={<FileProtectOutlined />}>
+               {/* <Menu.Item key="8" icon={<FileProtectOutlined />}>
                 <Link style={{ textDecoration: 'none' }} href="/pcBuilder">
                 PC Builder
                 </Link>
-            </Menu.Item>
+            </Menu.Item> */}
                 {
       !session?.user ? <Menu.Item key="6">
                 <Button type="primary" >
