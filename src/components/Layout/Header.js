@@ -12,7 +12,7 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import Link from "next/link";
 const { Header } = Layout;
 import Image from 'next/image';
-const ResponsiveNav = () => {
+const ResponsiveNav = ({children}) => {
   
   const router = useRouter();
   const { data: session } = useSession();
@@ -159,8 +159,9 @@ const [theme, setTheme] = useState('light');
     }
           </Menu>
           
-        </Drawer>
+        </Drawer>{children}
       </Header>
+      
     </Layout>
   );
 };

@@ -15,9 +15,9 @@ const LoginPage = () => {
           <GoogleOutlined onClick={()=>signIn("google",{
             callbackUrl:"http://localhost:3000/"
           })}/>
-          <GithubOutlined onClick={()=>signIn("github",{
+          {/* <GithubOutlined onClick={()=>signIn("github",{
             callbackUrl:"http://localhost:3000/"
-          })}/>
+          })}/> */}
         </div>
         <hr />
         {/* <form>

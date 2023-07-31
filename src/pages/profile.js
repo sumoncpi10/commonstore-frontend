@@ -2,6 +2,9 @@ import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
 import Head from "next/head";
+
+import Header from "@/components/Layout/Header";
+import Sidebar from "@/components/Layout/Sidebar";
 const ProfilePage = () => {
   return (
     <div style={{ textAlign: "center" }}>
@@ -15,3 +18,13 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
+ProfilePage.getLayout = function getLayout(page) {
+  return (
+    <Header>
+    <Sidebar>
+      {page}
+    </Sidebar>
+  </Header >
+  )
+}
