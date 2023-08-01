@@ -5,16 +5,16 @@ import {
   UserOutlined,
   SettingOutlined,
   MenuOutlined,
-  FileProtectOutlined
+  FileProtectOutlined,
+  UsergroupAddOutlined
 } from "@ant-design/icons";
 import { useRouter } from 'next/router';
-import { useSession, signOut, signIn } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 const { Header } = Layout;
 import Image from 'next/image';
 const ResponsiveNav = ({children}) => {
-  
-  const router = useRouter();
+
   const { data: session } = useSession();
   console.log(session);
   const [visible, setVisible] = useState(false);
@@ -65,7 +65,13 @@ const [theme, setTheme] = useState('light');
               </Link></Menu.Item>
               
             </Menu.SubMenu>
-             
+    {
+      session?.role?.role=='admin'?
+        <Menu.Item key="6" icon={<UsergroupAddOutlined />}>
+          <Link style={{ textDecoration: 'none' }} href="/">
+            Admin
+          </Link>
+        </Menu.Item> : ""}
  
             </>
   return (
@@ -97,19 +103,20 @@ const [theme, setTheme] = useState('light');
                 </Link>
             </Menu.Item> */}
             { 
-      !session?.user ? <Menu.Item key="6">
+      !session?.session?.user ? <Menu.Item key="6">
                 <Button type="primary" >
                   <Link style={{ color: "black",textDecoration: 'none' }} href="/login">
                 Login
               </Link>
                 </Button>
-              </Menu.Item>: <Menu.SubMenu icon={<Image alt="User Name" src={session?.user?.image} width={25} height={25} />} title={session?.user?.name} key="7" style={{color: "cyan",textDecoration: 'none' }}>
+                </Menu.Item> : <>
+                  <Menu.SubMenu icon={<Image alt="User Name" src={session?.session?.user?.image} width={25} height={25} />} title={session?.session?.user?.name} key="7" style={{ color: "cyan", textDecoration: 'none' }}>
               <Menu.Item key="7:1"><Link style={{ color: "green",textDecoration: 'none' }} href="/profile">
                 Profile
               </Link></Menu.Item>
               
               <Menu.Item key="7:2" onClick={()=>signOut()}>Logout</Menu.Item>
-    </Menu.SubMenu>
+    </Menu.SubMenu></>
     }</Menu>
           </Col>
               
