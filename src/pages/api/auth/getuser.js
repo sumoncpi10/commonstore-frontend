@@ -23,10 +23,10 @@ async function yourDatabaseQueryToFetchUserData(iemail) {
     }
 
     // Extract the necessary user data, including roles, from the 'user' object
-    const { name, email, role} = user;
+    const { name, email, role,zonal_code,pbs_code} = user;
 
     // Return the user data as an object
-    return { name, email, role };
+    return { name, email, role,zonal_code,pbs_code };
   } catch (error) {
     // Handle any errors that might occur during the database query
     console.error("Error fetching user data:", error);

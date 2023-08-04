@@ -5,7 +5,9 @@ import Head from "next/head";
 
 import Header from "@/components/Layout/Header";
 import Sidebar from "@/components/Layout/Sidebar";
+
 const ProfilePage = () => {
+  // console.log("role from profile",role);
   return (
     <div style={{ textAlign: "center" }}>
       <Head>

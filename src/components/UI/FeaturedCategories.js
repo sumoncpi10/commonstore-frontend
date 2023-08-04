@@ -23,22 +23,22 @@ const FeaturedCategories = ({ allProducts }) => {
           margin: "30px 0px",
         }}
       >
-        #Featured Categories
+        #Info Categories
       </h1>
       <Row gutter={[16, 16]}>
         {allProducts?.map((part) => (
           <Col key={part.id} xs={24} sm={12} md={8} lg={8}>
             <Card
               hoverable
-              cover={
-                <Image
-                  src={part?.image_url}
-                  width={500}
-                  height={450}
-                  responsive
-                  alt="news image"
-                />
-              }
+              // cover={
+              //   <Image
+              //     src={part?.image_url}
+              //     width={500}
+              //     height={450}
+              //     responsive
+              //     alt="news image"
+              //   />
+              // }
             >
               <Meta title={part?.category} />
               <div
@@ -77,7 +77,7 @@ const FeaturedCategories = ({ allProducts }) => {
                   ? part?.product_name.slice(0, 70) + "..."
                   : part?.product_name}
               </p> */}
-              <Link href={`/products/${part?.category}`}>
+              <Link href={`/info/${part?.category}`}>
                 <p
                   style={{
                     fontSize: "15px",
