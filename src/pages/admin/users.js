@@ -21,7 +21,8 @@ export async function getServerSideProps(context) {
   };
 }
 
-const users = () => {
+const users = ({ role }) => {
+  console.log(role);
     return (
         <div>
             

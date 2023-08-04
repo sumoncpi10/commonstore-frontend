@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Layout, Menu,Switch , Button, Drawer, Row, Col } from "antd";
 import {
   HomeOutlined,
-  UserOutlined,
-  SettingOutlined,
   MenuOutlined,
   FileProtectOutlined,
   UsergroupAddOutlined
@@ -90,17 +88,12 @@ const [theme, setTheme] = useState('light');
          
               { menu}
 
-              {/* <Menu.Item key="4">Item 4</Menu.Item> */}
            
             </Menu>
           </Col>
           <Col xs={25} sm={0} md={6}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-            {/* <Menu.Item key="9" icon={<FileProtectOutlined />}>
-                <Link style={{ textDecoration: 'none' }} href="/pcBuilder">
-                PC Builder
-                </Link>
-            </Menu.Item> */}
+          
             { 
       !session?.session?.user ? <Menu.Item key="6">
                 <Button type="primary" >
@@ -143,11 +136,7 @@ const [theme, setTheme] = useState('light');
       <br />
             { menu}
      
-               {/* <Menu.Item key="8" icon={<FileProtectOutlined />}>
-                <Link style={{ textDecoration: 'none' }} href="/pcBuilder">
-                PC Builder
-                </Link>
-            </Menu.Item> */}
+            
                 {
       !session?.user ? <Menu.Item key="6">
                 <Button type="primary" >

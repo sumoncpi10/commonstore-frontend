@@ -39,12 +39,3 @@ console.log(category);
 
 export default Categories;
 
-// Categories.getLayout = function getLayout(page) {
-//   return (
-//     <Header>
-//     <InfoEntrySidebar>
-//       {page}
-//     </InfoEntrySidebar>
-//   </Header >
-//   )
-// }
