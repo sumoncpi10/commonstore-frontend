@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch(`http://localhost:5000/zonals/${session?.pbs_code?.pbs_code}`);
+  const res = await fetch(`https://pbsactivities-server.vercel.app/zonals/${session?.pbs_code?.pbs_code}`);
   const data = await res.json();
   // console.log(data);
   return {
@@ -31,7 +31,7 @@ const AdminPage = ({ zonals,context }) => {
   const [zonalCode, setZonalCode] = useState(session?.zonal_code?.zonal_code||null);
   const [ccs, setCCS] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/ccs/${zonalCode}`)
+        fetch(`https://pbsactivities-server.vercel.app/ccs/${zonalCode}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

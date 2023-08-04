@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch(`http://localhost:5000/zonals/29`);
+  const res = await fetch(`https://pbsactivities-server.vercel.app/zonals/29`);
   const data = await res.json();
   // console.log(data);
   return {
