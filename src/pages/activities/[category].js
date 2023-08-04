@@ -1,13 +1,5 @@
 import React from 'react';
-import { Col, Row } from "antd";
-import {
-  UserOutlined,
-  CalendarOutlined,
-  CommentOutlined,
-  ProfileOutlined,
-} from "@ant-design/icons";
-import Image from "next/image";
-import AllProducts from '@/components/UI/AllProducts';
+
 const PartsDetails = () => {
     return (
  <h1>This is Activities</h1>

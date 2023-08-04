@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Layout/Sidebar";
 import Header from "@/components/Layout/Header";
 import { getSession } from "next-auth/react";
 import AdminSidebar from "@/components/Layout/AdminSidebar";
@@ -38,7 +37,7 @@ const Activities = ({zonals}) => {
 };
 export default Activities;
 
-Admin.getLayout = function getLayout(page) {
+Activities.getLayout = function getLayout(page) {
   return (
     <Header>
     <AdminSidebar>
