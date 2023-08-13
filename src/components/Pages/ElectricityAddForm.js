@@ -17,7 +17,7 @@ const ElectricityAddForm = () => {
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
-    const handleSubmit = (values) => {
+    const onFinish = (values) => {
         console.log('Form values:', values);
 
 
@@ -57,7 +57,7 @@ const ElectricityAddForm = () => {
                 style={{
                     maxWidth: 600,
                 }}
-                onSubmit={handleSubmit}
+                onFinish={onFinish}
             >
                 <Form.Item label="View" name="size">
                     <Radio.Group>
@@ -66,34 +66,34 @@ const ElectricityAddForm = () => {
                         <Radio.Button value="large">Large</Radio.Button>
                     </Radio.Group>
                 </Form.Item>
-                <Form.Item label="DatePicker">
+                <Form.Item label="DatePicker" name="infoDatePicker">
                     <DatePicker />
                 </Form.Item>
-                <Form.Item label="Number Of 33KV Feder(OFF)">
-                    <InputNumber />
+                <Form.Item label="Number Of 33KV Feder(OFF)" name="num33KVFederOff">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number Of 11KV Feder(OFF)">
-                    <InputNumber />
+                <Form.Item label="Number Of 11KV Feder(OFF)" name="num11KVFederOff">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number Of Not Solved Complain">
-                    <InputNumber />
+                <Form.Item label="Number Of Not Solved Complain" name="numOffNotSolvedComplain">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number Of Consumer Without Electricity">
-                    <InputNumber />
+                <Form.Item label="Number Of Consumer Without Electricity" name="numOffConsumerWithoutElectricity">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number of Transformers Destroyed">
-                    <InputNumber />
+                <Form.Item label="Number of Transformers Destroyed" name="numOffTransformersDestroyed">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number of Pending CMO">
-                    <InputNumber />
+                <Form.Item label="Number of Pending CMO" name="numOffPendingCmo">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number of Transformer Grounding">
-                    <InputNumber />
+                <Form.Item label="Number of Transformer Grounding" name="numOffTransformerGrounding">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Number of Transformer Fuse Change">
-                    <InputNumber />
+                <Form.Item label="Number of Transformer Fuse Change" name="numOffTransformerFuseChange">
+                    <InputNumber required />
                 </Form.Item>
-                <Form.Item label="Pre-planned Shutdown">
+                <Form.Item label="Pre-planned Shutdown" name="prePlannedShutdown">
                     <Select>
                         <Select.Option value="yes">Yes</Select.Option>
                         <Select.Option value="no">No</Select.Option>
@@ -108,3 +108,5 @@ const ElectricityAddForm = () => {
     );
 };
 export default ElectricityAddForm;
+
+
