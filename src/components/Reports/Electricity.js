@@ -77,47 +77,114 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const ElectricityReport = () => {
-  const [dataSource, setDataSource] = useState([
-    {
-      key: '0',
-      name: 'Edward King 0',
-      age: '32',
-      address: 'London, Park Lane no. 0',
-    },
-    {
-      key: '1',
-      name: 'Edward King 1',
-      age: '32',
-      address: 'London, Park Lane no. 1',
-    },
-  ]);
-  const [count, setCount] = useState(2);
-  const handleDelete = (key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
+const ElectricityReport = ({ electricity }) => {
+  // const [dataSource, setDataSource] = useState([
+  //   {
+  //     key: '0',
+  //     name: 'Edward King 0',
+  //     age: '32',
+  //     address: 'London, Park Lane no. 0',
+  //   },
+  //   {
+  //     key: '1',
+  //     name: 'Edward King 1',
+  //     age: '32',
+  //     address: 'London, Park Lane no. 1',
+  //   },
+  // ]);
+  const formattedData = electricity.map((elec, i) => {
+    const infoDate = new Date(elec.infoDatePicker);
+
+    return {
+      key: `${i}`,
+      _id: `${elec._id}`,
+      infoDatePicker: `${infoDate.getDate()}-${infoDate.getMonth() + 1}-${infoDate.getFullYear()}`,
+      num33KVFederOff: elec.num33KVFederOff,
+      num11KVFederOff: elec.num11KVFederOff,
+      numOffNotSolvedComplain: elec.numOffNotSolvedComplain,
+      numOffConsumerWithoutElectricity: elec.numOffConsumerWithoutElectricity,
+      numOffTransformersDestroyed: elec.numOffTransformersDestroyed,
+      numOffPendingCmo: elec.numOffPendingCmo,
+      numOffTransformerGrounding: elec.numOffTransformerGrounding,
+      numOffTransformerFuseChange: elec.numOffTransformerFuseChange,
+      prePlannedShutdown: elec.prePlannedShutdown,
+    };
+  });
+
+  const [dataSource, setDataSource] = useState(formattedData);
+
+
+
+  console.log(dataSource)
+  const [count, setCount] = useState(dataSource?.length);
+  const handleDelete = (_id) => {
+    console.log(_id)
+    const newData = dataSource.filter((item) => item._id !== _id);
     setDataSource(newData);
+    fetch(`https://pbsactivities.onrender.com/electricity/${_id}`, {
+      method: 'DELETE'
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to delete item');
+        }
+        console.log('Item deleted successfully');
+      })
+      .catch((error) => {
+        console.error('Error deleting item:', error);
+        // Since the deletion on the backend failed, revert the data source update
+        setDataSource(dataSource);
+      });
   };
   const defaultColumns = [
     {
-      title: 'name',
-      dataIndex: 'name',
-      width: '30%',
-      editable: true,
+      title: 'Date',
+      dataIndex: 'infoDatePicker',
+      // width: '2%',
+      // editable: true,
     },
     {
-      title: 'age',
-      dataIndex: 'age',
+      title: 'Number Of 33KV Feder(OFF)',
+      dataIndex: 'num33KVFederOff',
     },
     {
-      title: 'address',
-      dataIndex: 'address',
+      title: 'Number Of 11KV Feder(OFF)',
+      dataIndex: 'num11KVFederOff',
+    },
+    {
+      title: 'Number Of Not Solved Complain',
+      dataIndex: 'numOffNotSolvedComplain',
+    },
+    {
+      title: 'Number Of Consumer Without Electricity',
+      dataIndex: 'numOffConsumerWithoutElectricity',
+    },
+    {
+      title: 'Number of Transformers Destroyed',
+      dataIndex: 'numOffTransformersDestroyed',
+    },
+    {
+      title: 'Number of Pending CMO',
+      dataIndex: 'numOffPendingCmo',
+    },
+    {
+      title: 'Number of Transformer Grounding',
+      dataIndex: 'numOffTransformerGrounding',
+    },
+    {
+      title: 'Number of Transformer Fuse Change',
+      dataIndex: 'numOffTransformerFuseChange',
+    },
+    {
+      title: 'Pre-planned Shutdown',
+      dataIndex: 'prePlannedShutdown',
     },
     {
       title: 'operation',
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record._id)}>
             <a>Delete</a>
           </Popconfirm>
         ) : null,
@@ -166,7 +233,7 @@ const ElectricityReport = () => {
   });
   return (
     <div>
-      <Button
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -174,7 +241,7 @@ const ElectricityReport = () => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

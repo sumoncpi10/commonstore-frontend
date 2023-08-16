@@ -6,19 +6,20 @@ import TransformerAddForm from '@/components/Pages/TransformerAddForm';
 import FeaturedCategories from '@/components/UI/FeaturedCategories';
 import React, { useState } from 'react';
 import { message, notification } from "antd";
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import ElectricityReport from '@/components/Reports/Electricity';
 
-const Categories = () => {
+const Categories = ({ electricity }) => {
+  console.log(electricity)
   const [api, contextHolder] = notification.useNotification();
- const { data: session } = useSession();
-  
+  const { data: session } = useSession();
+
   console.log(session?.zonal_code);
   const onFinish = (values) => {
-      console.log('Form values:', values);
-      const zonal_code = session?.zonal_code?.zonal_code;
-       const withvalues = { ...values, zonal_code };
-       fetch("http://localhost:5000/api/electricityAdd", {
+    console.log('Form values:', values);
+    const zonal_code = session?.zonal_code?.zonal_code;
+    const withvalues = { ...values, zonal_code };
+    fetch("https://pbsactivities.onrender.com/api/electricityAdd", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,28 +30,28 @@ const Categories = () => {
       .then((data) => {
         if (data?.data?.insertedId) {
           const openNotificationWithIcon = (type) => {
-              api[type]({
-                message: data?.message,
-                description:"Inserted ID: "+       data?.data?.insertedId,
-              });
-            };
+            api[type]({
+              message: data?.message,
+              description: "Inserted ID: " + data?.data?.insertedId,
+            });
+          };
           openNotificationWithIcon('success')
         } else {
           const openNotificationWithIcon = (type) => {
-              api[type]({
-                message: data.message,
-                description:"Inserted ID: ",
-              });
-            };
+            api[type]({
+              message: data.message,
+              description: "Inserted ID: ",
+            });
+          };
           openNotificationWithIcon('info')
         }
       });
   };
 
-  
+
   const [formId, setFormId] = useState("");
   const category = [
-   {
+    {
       "id": "1",
       "category": "Electricity",
       "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-8gb-ddr4-3200mhz/vengeance-8gb-ddr4-3200mhz-01-228x228.webp"
@@ -70,7 +71,7 @@ const Categories = () => {
       "category": "SAIDI & SAIFI",
       "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-8gb-ddr4-3200mhz/vengeance-8gb-ddr4-3200mhz-01-228x228.webp"
     }
-    
+
 
 
   ]
@@ -83,7 +84,7 @@ const Categories = () => {
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
           {formId == 11 && <ElectricityAddForm onFinish={onFinish}></ElectricityAddForm>}
-          {formId == 12 && <ElectricityReport></ElectricityReport>}
+          {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
           {formId == 21 && <ComplainAddForm ></ComplainAddForm>}
           {formId == 31 && <TransformerAddForm ></TransformerAddForm>}
         </InfoEntrySidebar>
@@ -94,4 +95,23 @@ const Categories = () => {
 };
 
 export default Categories;
-
+export async function getServerSideProps(context) {
+  console.log(context)
+  const session = await getSession(context);
+  try {
+    const res = await fetch(`https://pbsactivities.onrender.com/electricity/${session?.zonal_code?.zonal_code}`);
+    const data = await res.json();
+    return {
+      props: {
+        electricity: data.data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching electricity data:', error);
+    return {
+      props: {
+        electricity: [],
+      },
+    };
+  }
+}
