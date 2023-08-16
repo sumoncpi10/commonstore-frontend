@@ -10,7 +10,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
-const InfoEntrySidebar = ({ children ,category,setFormId}) => {
+const InfoEntrySidebar = ({ children, category, setFormId }) => {
   const { props } = children;
   // console.log('Category from Adminside', category);
   const [collapsed, setCollapsed] = useState(false);
@@ -18,34 +18,35 @@ const InfoEntrySidebar = ({ children ,category,setFormId}) => {
     token: { colorBgContainer },
   } = theme.useToken();
   function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem('All', '99', <DesktopOutlined />),
-  ...((category?.map((element,i) => {
-    return getItem(element.category, element.id, <AppstoreAddOutlined />, [
-      getItem('Add', element.id+1),
-      getItem('Current Month', element.id+2),
-    ]);
-  })) || []),
-  // getItem('User', 'sub1', <UserOutlined />, [
-  //   getItem('Tom', '3'),
-  //   getItem('Bill', '4'),
-  //   getItem('Alex', '5'),
-  // ]),
-  // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  // getItem('Files', '9', <FileOutlined />)
-];
+    return {
+      key,
+      icon,
+      children,
+      label,
+    };
+  }
+  const items = [
+    getItem('All', '99', <DesktopOutlined />),
+    ...((category?.map((element, i) => {
+      return getItem(element.category, element.id, <AppstoreAddOutlined />, [
+        getItem('Add', element.id + 1),
+        getItem('Current Month', element.id + 2),
+        getItem('All', element.id + 3),
+      ]);
+    })) || []),
+    // getItem('User', 'sub1', <UserOutlined />, [
+    //   getItem('Tom', '3'),
+    //   getItem('Bill', '4'),
+    //   getItem('Alex', '5'),
+    // ]),
+    // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    // getItem('Files', '9', <FileOutlined />)
+  ];
 
- const handleAdminSidebarClick = (reportKey) => {
+  const handleAdminSidebarClick = (reportKey) => {
     // Here you can define the action you want to perform when a report item is clicked.
-   console.log('Report with key', reportKey, 'is clicked!');
-   setFormId(reportKey)
+    console.log('Report with key', reportKey, 'is clicked!');
+    setFormId(reportKey)
   };
   return (
     <Layout
@@ -57,7 +58,7 @@ const items = [
         <div className="demo-logo-vertical" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider> */}
-       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           {items.map((item) => {
@@ -117,7 +118,7 @@ const items = [
           }}
         >
           Developed By: Md. Daduggaman Sumon, JE(IT), Chittagong PBS-2.
-          Copyright Reserved ©2023 
+          Copyright Reserved ©2023
         </Footer>
       </Layout>
     </Layout>

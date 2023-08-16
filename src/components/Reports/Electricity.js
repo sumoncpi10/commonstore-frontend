@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { notification } from "antd";
 const EditableContext = React.createContext(null);
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
@@ -78,6 +79,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ElectricityReport = ({ electricity }) => {
+  const [api, contextHolder] = notification.useNotification();
   // const [dataSource, setDataSource] = useState([
   //   {
   //     key: '0',
@@ -120,13 +122,23 @@ const ElectricityReport = ({ electricity }) => {
   const handleDelete = (_id) => {
     console.log(_id)
     const newData = dataSource.filter((item) => item._id !== _id);
-    setDataSource(newData);
+
     fetch(`https://pbsactivities.onrender.com/electricity/${_id}`, {
       method: 'DELETE'
     })
       .then((response) => {
+        // console.log(response)
         if (!response.ok) {
-          throw new Error('Failed to delete item');
+          const openNotificationWithIcon = (type) => {
+            api[type]({
+              message: "You Are Not Authorized to delete Previous Month item",
+              description: "Unauthorized Access",
+            });
+          };
+          openNotificationWithIcon('info')
+
+        } else {
+          setDataSource(newData);
         }
         console.log('Item deleted successfully');
       })
@@ -233,6 +245,7 @@ const ElectricityReport = ({ electricity }) => {
   });
   return (
     <div>
+      {contextHolder}
       {/* <Button
         onClick={handleAdd}
         type="primary"

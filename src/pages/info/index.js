@@ -9,7 +9,7 @@ import { message, notification } from "antd";
 import { getSession, useSession } from 'next-auth/react';
 import ElectricityReport from '@/components/Reports/Electricity';
 
-const Categories = ({ electricity }) => {
+const Categories = ({ electricity, electricity1 }) => {
   console.log(electricity)
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
@@ -85,6 +85,7 @@ const Categories = ({ electricity }) => {
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
           {formId == 11 && <ElectricityAddForm onFinish={onFinish}></ElectricityAddForm>}
           {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
+          {formId == 13 && <ElectricityReport electricity={electricity1}></ElectricityReport>}
           {formId == 21 && <ComplainAddForm ></ComplainAddForm>}
           {formId == 31 && <TransformerAddForm ></TransformerAddForm>}
         </InfoEntrySidebar>
@@ -101,9 +102,12 @@ export async function getServerSideProps(context) {
   try {
     const res = await fetch(`https://pbsactivities.onrender.com/electricity/${session?.zonal_code?.zonal_code}`);
     const data = await res.json();
+    const res1 = await fetch(`https://pbsactivities.onrender.com/electricityAll/${session?.zonal_code?.zonal_code}`);
+    const data1 = await res1.json();
     return {
       props: {
         electricity: data.data,
+        electricity1: data1.data,
       },
     };
   } catch (error) {
@@ -111,7 +115,9 @@ export async function getServerSideProps(context) {
     return {
       props: {
         electricity: [],
+        electricity1: [],
       },
     };
   }
 }
+
