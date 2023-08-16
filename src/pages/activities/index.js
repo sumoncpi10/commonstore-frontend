@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch(`https://pbsactivities-server.vercel.app/zonals/29`);
+  const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
   const data = await res.json();
   // console.log(data);
   return {

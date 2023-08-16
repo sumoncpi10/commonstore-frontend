@@ -14,7 +14,7 @@ const HomePage = ({allProduct}) => {
       
       <Image src={allProduct.photoURL} alt="" width={100} height={120}></Image>
       <div>Role: {allProduct.displayName}</div>
-      <div>Role: {allProduct.designation}</div>
+      <div>Designation: {allProduct.designation}</div>
       <div>Role: {allProduct.role}</div>
       {/* <h1 style={{ textAlign: "center", marginTop: "10%" }}>Welcome To PC Builder Home Page</h1> */}
        {/* <Row>
@@ -30,12 +30,12 @@ const HomePage = ({allProduct}) => {
 
 export default HomePage;
 export async function getServerSideProps() {
-  const res = await fetch(`https://pbsofficeinfomongodb.onrender.com/user/sumoncpi10@gmail.com`);
+  const res = await fetch(`https://pbsactivities.onrender.com/user/sumoncpi10@gmail.com`);
   const data = await res.json();
   // console.log(data);
   return {
     props: {
-      allProduct: data,
+      allProduct: data.data,
     },
   };
 }

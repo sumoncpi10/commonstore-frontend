@@ -15,7 +15,7 @@ async function yourDatabaseQueryToFetchUserData(iemail) {
     try {
       await client.connect();
     // Assuming you have a MongoDB collection named 'users'
-   const userCollection = client.db('pbs-office-information').collection('users');
+   const userCollection = client.db('pbs-office-information').collection('activitiesusers');
     const user = await userCollection.findOne({ email:iemail });
     if (!user) {
       // User not found

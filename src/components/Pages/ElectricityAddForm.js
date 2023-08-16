@@ -12,31 +12,13 @@ import {
 } from 'antd';
 import { Typography } from 'antd';
 const { Title } = Typography;
-const ElectricityAddForm = () => {
+const ElectricityAddForm = ({ onFinish }) => {
+    
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
-    const onFinish = (values) => {
-        console.log('Form values:', values);
-
-
-        // fetch('your-api-endpoint', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(values),
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log('API response:', data);
-        //         // You can perform further actions based on the API response if needed
-        //     })
-        //     .catch(error => {
-        //         console.error('API error:', error);
-        //     });
-    };
+    
 
     return (
         <>

@@ -12,7 +12,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const InfoEntrySidebar = ({ children ,category,setFormId}) => {
   const { props } = children;
-  console.log('Category from Adminside', category);
+  // console.log('Category from Adminside', category);
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -26,7 +26,7 @@ const InfoEntrySidebar = ({ children ,category,setFormId}) => {
   };
 }
 const items = [
-  getItem('All', '2', <DesktopOutlined />),
+  getItem('All', '99', <DesktopOutlined />),
   ...((category?.map((element,i) => {
     return getItem(element.category, element.id, <AppstoreAddOutlined />, [
       getItem('Add', element.id+1),
