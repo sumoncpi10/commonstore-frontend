@@ -96,19 +96,24 @@ const Categories = ({ electricity, electricity1 }) => {
 };
 
 export default Categories;
+
 export async function getServerSideProps(context) {
-  console.log(context)
+  console.log(context);
   const session = await getSession(context);
+
   try {
-    const res = await fetch(`https://pbsactivities.onrender.com/electricity/${session?.zonal_code?.zonal_code}`);
+    const zonalCode = session?.zonal_code?.zonal_code || ''; // Handle null or undefined session
+    const res = await fetch(`https://pbsactivities.onrender.com/electricity/${zonalCode}`);
     const data = await res.json();
-    const res1 = await fetch(`https://pbsactivities.onrender.com/electricityAll/${session?.zonal_code?.zonal_code}`);
+    const res1 = await fetch(`https://pbsactivities.onrender.com/electricityAll/${zonalCode}`);
     const data1 = await res1.json();
+
     return {
       props: {
         electricity: data.data,
         electricity1: data1.data,
       },
+      // revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching electricity data:', error);
@@ -117,7 +122,9 @@ export async function getServerSideProps(context) {
         electricity: [],
         electricity1: [],
       },
+      // revalidate: 10,
     };
   }
 }
+
 
