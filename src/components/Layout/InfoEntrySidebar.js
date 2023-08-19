@@ -26,21 +26,17 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
     };
   }
   const items = [
-    getItem('All', '99', <DesktopOutlined />),
-    ...((category?.map((element, i) => {
-      return getItem(element.category, element.id, <AppstoreAddOutlined />, [
-        getItem('Add', element.id + 1),
-        getItem('Current Month', element.id + 2),
-        getItem('All', element.id + 3),
-      ]);
-    })) || []),
-    // getItem('User', 'sub1', <UserOutlined />, [
-    //   getItem('Tom', '3'),
-    //   getItem('Bill', '4'),
-    //   getItem('Alex', '5'),
-    // ]),
-    // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+
+    getItem('Revinue Item', 'sub1', <UserOutlined />, [
+      getItem('Add', '1'),
+      getItem('Manage', '2'),
+    ]),
+    getItem('Capital Item', 'sub2', <UserOutlined />, [
+      getItem('Add', '3'),
+      getItem('Manage', '4'),
+    ]),
     // getItem('Files', '9', <FileOutlined />)
+    // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   ];
 
   const handleAdminSidebarClick = (reportKey) => {

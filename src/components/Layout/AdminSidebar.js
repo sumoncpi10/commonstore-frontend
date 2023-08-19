@@ -9,7 +9,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
-const AdminSidebar = ({ children,setZonalCode }) => {
+const AdminSidebar = ({ children, setZonalCode }) => {
   const { props } = children;
   console.log('Childer from Adminside', children);
   const [collapsed, setCollapsed] = useState(false);
@@ -19,44 +19,54 @@ const AdminSidebar = ({ children,setZonalCode }) => {
     token: { colorBgContainer },
   } = theme.useToken();
   function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem('Reports', '1', <PieChartOutlined />, props.zonals.map(element => {
-    return getItem(element.zonal_name, element.zonal_code);
-  })),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />)
-];
-const handleAdminSidebarClick = (label, key) => {
-  // Here you can define the action you want to perform when a menu item is clicked.
-  console.log('Item with key', key, 'is clicked!');
+    return {
+      key,
+      icon,
+      children,
+      label,
+    };
+  }
+  const items = [
 
-  // Create a new breadcrumb item
-  const newItem = {
-    label,
-    key,
-  };
-  setZonalCode(key);
-  // Update breadcrumbItems state with the new item
-  setBreadcrumbItems(prevBreadcrumb => [ newItem]);
-};
+    getItem('Sub Category', 'sub1', <UserOutlined />, [
+      getItem('Add Sub Category', '1'),
+      getItem('Manage Sub Category', '2'),
+    ]),
+    getItem('Category', 'sub2', <UserOutlined />, [
+      getItem('Add Category', '3'),
+      getItem('Manage Category', '4'),
+    ]),
 
-//  const handleAdminSidebarClick = (reportKey) => {
-//     // Here you can define the action you want to perform when a report item is clicked.
-//     console.log('Report with key', reportKey, 'is clicked!');
-//   };
+    getItem('User', 'sub3', <UserOutlined />, [
+      getItem('Add User', '5'),
+      getItem('Manage Users', '6'),
+    ]),
+    getItem('Office', 'sub4', <UserOutlined />, [
+      // getItem('PBS', '3'),
+      getItem('HQ/Zonal/SubZonal', '7'),
+      getItem('CCS', '8'),
+    ]),
+    // getItem('Team', 'sub5', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    // getItem('Files', '9', <FileOutlined />)
+  ];
+  const handleAdminSidebarClick = (label, key) => {
+    // Here you can define the action you want to perform when a menu item is clicked.
+    console.log('Item with key', key, 'is clicked!');
+
+    // Create a new breadcrumb item
+    const newItem = {
+      label,
+      key,
+    };
+    setZonalCode(key);
+    // Update breadcrumbItems state with the new item
+    setBreadcrumbItems(prevBreadcrumb => [newItem]);
+  };
+
+  //  const handleAdminSidebarClick = (reportKey) => {
+  //     // Here you can define the action you want to perform when a report item is clicked.
+  //     console.log('Report with key', reportKey, 'is clicked!');
+  //   };
   return (
     <Layout
       style={{
@@ -67,7 +77,7 @@ const handleAdminSidebarClick = (label, key) => {
         <div className="demo-logo-vertical" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider> */}
-       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
         {/* <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           {items.map((item) => {
@@ -132,9 +142,9 @@ const handleAdminSidebarClick = (label, key) => {
           >
             <Breadcrumb.Item>Admin</Breadcrumb.Item>
             <Breadcrumb.Item>Reports</Breadcrumb.Item>
-           {breadcrumbItems.map(item => (
-                <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
-              ))}
+            {breadcrumbItems.map(item => (
+              <Breadcrumb.Item key={item.key}>{item.label}</Breadcrumb.Item>
+            ))}
 
           </Breadcrumb>
           <div
@@ -153,7 +163,7 @@ const handleAdminSidebarClick = (label, key) => {
           }}
         >
           Developed By: Md. Daduggaman Sumon, JE(IT), Chittagong PBS-2.
-          Copyright Reserved ©2023 
+          Copyright Reserved ©2023
         </Footer>
       </Layout>
     </Layout>

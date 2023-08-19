@@ -35,10 +35,15 @@ const ResponsiveNav = ({ children }) => {
   </Menu.Item>
     <Menu.Item key="2" icon={<FileProtectOutlined />}>
       <Link style={{ textDecoration: 'none' }} href="/info">
-        Info Entry
+        Product Entry
       </Link>
     </Menu.Item>
-    <Menu.SubMenu icon={<FileProtectOutlined />} title="Categories" key="3" style={{ color: "cyan", textDecoration: 'none' }}>
+    <Menu.Item key="3" icon={<FileProtectOutlined />}>
+      <Link style={{ textDecoration: 'none' }} href="/dashboard">
+        My Products
+      </Link>
+    </Menu.Item>
+    {/* <Menu.SubMenu icon={<FileProtectOutlined />} title="Categories" key="3" style={{ color: "cyan", textDecoration: 'none' }}>
       <Menu.Item key="3:7"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/CPU-Processor">
         CPU-Processor
       </Link></Menu.Item>
@@ -61,7 +66,7 @@ const ResponsiveNav = ({ children }) => {
         Others
       </Link></Menu.Item>
 
-    </Menu.SubMenu>
+    </Menu.SubMenu> */}
     {
       session?.role?.role == 'admin' ?
         <Menu.Item key="6" icon={<UsergroupAddOutlined />}>

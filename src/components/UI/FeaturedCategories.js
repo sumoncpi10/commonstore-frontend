@@ -30,25 +30,25 @@ const FeaturedCategories = ({ allProducts }) => {
           <Col key={part.id} xs={24} sm={12} md={8} lg={8}>
             <Card
               hoverable
-              // cover={
-              //   <Image
-              //     src={part?.image_url}
-              //     width={500}
-              //     height={450}
-              //     responsive
-              //     alt="news image"
-              //   />
-              // }
+            // cover={
+            //   <Image
+            //     src={part?.image_url}
+            //     width={500}
+            //     height={450}
+            //     responsive
+            //     alt="news image"
+            //   />
+            // }
             >
               <Meta title={part?.category} />
               <div
                 className="line"
-                // style={{
-                //   height: "5px",
-                //   margin: "20px 0",
-                //   background: "#000",
-                //   width: "100%",
-                // }}
+              // style={{
+              //   height: "5px",
+              //   margin: "20px 0",
+              //   background: "#000",
+              //   width: "100%",
+              // }}
               ></div>
 
               {/* <p
