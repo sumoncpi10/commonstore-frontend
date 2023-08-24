@@ -196,7 +196,7 @@ const ElectricityReport = ({ electricity }) => {
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record._id)}>
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?._id)}>
             <a>Delete</a>
           </Popconfirm>
         ) : null,

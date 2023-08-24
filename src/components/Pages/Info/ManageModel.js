@@ -81,8 +81,8 @@ const ManageModel = ({ models }) => {
     console.log(models);
   const [dataSource, setDataSource] = useState(models);
   const [count, setCount] = useState(2);
-  const handleDelete = (key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
+    const handleDelete = (key) => {
+    const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };
   const defaultColumns = [
@@ -107,7 +107,7 @@ const ManageModel = ({ models }) => {
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?.id)}>
             <a>Delete</a>
           </Popconfirm>
         ) : null,

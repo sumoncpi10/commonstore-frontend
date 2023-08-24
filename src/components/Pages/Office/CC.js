@@ -80,8 +80,8 @@ const EditableCell = ({
 const CC = ({ccs}) => {
   const [dataSource, setDataSource] = useState(ccs);
   const [count, setCount] = useState(2);
-  const handleDelete = (key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
+    const handleDelete = (key) => {
+    const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };
   const defaultColumns = [
@@ -108,7 +108,7 @@ const CC = ({ccs}) => {
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?.id)}>
             <a>Delete</a>
           </Popconfirm>
         ) : null,
