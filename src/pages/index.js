@@ -11,7 +11,7 @@ const HomePage = ({allProduct}) => {
       <Head>
         <title>PBS Activities</title>
       </Head>
-      
+  
       <Image src={allProduct.photoURL} alt="" width={100} height={120}></Image>
       <div>Role: {allProduct.displayName}</div>
       <div>Designation: {allProduct.designation}</div>

@@ -9,7 +9,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
-const AdminSidebar = ({ children, setZonalCode }) => {
+const AdminSidebar = ({ children, setZonalCode,setformId }) => {
   const { props } = children;
   console.log('Childer from Adminside', children);
   const [collapsed, setCollapsed] = useState(false);
@@ -59,6 +59,7 @@ const AdminSidebar = ({ children, setZonalCode }) => {
       key,
     };
     setZonalCode(key);
+    setformId(key);
     // Update breadcrumbItems state with the new item
     setBreadcrumbItems(prevBreadcrumb => [newItem]);
   };

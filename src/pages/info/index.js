@@ -8,9 +8,40 @@ import React, { useState } from 'react';
 import { message, notification } from "antd";
 import { getSession, useSession } from 'next-auth/react';
 import ElectricityReport from '@/components/Reports/Electricity';
+import ManageRevinueItem from '@/components/Pages/Info/ManageRevinueItem';
+import ManageBrand from '@/components/Pages/Info/ManageBrand';
+import ManageModel from '@/components/Pages/Info/ManageModel';
 
-const Categories = ({ electricity, electricity1 }) => {
-  console.log(electricity)
+export async function getServerSideProps(context) {
+    const session = await getSession(context);
+    console.log(session);
+  if (!session || session.role.role !== "admin") {
+    // Redirect to a page with an appropriate message or display an error message
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  const resBrand = await fetch(`http://localhost:5000/api/v1/brand`);
+  // const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
+  const dataBrand = await resBrand.json();
+  const resModel = await fetch(`http://localhost:5000/api/v1/model`);
+  // const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
+  const dataModel = await resModel.json();
+  // console.log(data);
+  return {
+    props: {
+      brands: dataBrand.data,
+      models: dataModel.data,
+
+    },
+  };
+}
+const Categories = ({ brands,models }) => {
+  // console.log(electricity)
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
 
@@ -49,7 +80,7 @@ const Categories = ({ electricity, electricity1 }) => {
   };
 
 
-  const [formId, setFormId] = useState("");
+  const [formId, setFormId] = useState(2);
   const category = [
     {
       "id": "1",
@@ -83,11 +114,13 @@ const Categories = ({ electricity, electricity1 }) => {
       <Header>
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
-          {formId == 11 && <ElectricityAddForm onFinish={onFinish}></ElectricityAddForm>}
-          {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
+          {formId == 2 && <ManageRevinueItem onFinish={onFinish}></ManageRevinueItem>}
+          {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
+          {formId == 10 && <ManageModel models={models}></ManageModel>}
+          {/* {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
           {formId == 13 && <ElectricityReport electricity={electricity1}></ElectricityReport>}
           {formId == 21 && <ComplainAddForm ></ComplainAddForm>}
-          {formId == 31 && <TransformerAddForm ></TransformerAddForm>}
+          {formId == 31 && <TransformerAddForm ></TransformerAddForm>} */}
         </InfoEntrySidebar>
       </Header >
 
@@ -97,34 +130,34 @@ const Categories = ({ electricity, electricity1 }) => {
 
 export default Categories;
 
-export async function getServerSideProps(context) {
-  console.log(context);
-  const session = await getSession(context);
+// export async function getServerSideProps(context) {
+//   console.log(context);
+//   const session = await getSession(context);
 
-  try {
-    const zonalCode = session?.zonal_code?.zonal_code || ''; // Handle null or undefined session
-    const res = await fetch(`https://pbsactivities.onrender.com/electricity/${zonalCode}`);
-    const data = await res.json();
-    const res1 = await fetch(`https://pbsactivities.onrender.com/electricityAll/${zonalCode}`);
-    const data1 = await res1.json();
+//   try {
+//     const zonalCode = session?.zonal_code?.zonal_code || ''; // Handle null or undefined session
+//     const res = await fetch(`https://pbsactivities.onrender.com/electricity/${zonalCode}`);
+//     const data = await res.json();
+//     const res1 = await fetch(`https://pbsactivities.onrender.com/electricityAll/${zonalCode}`);
+//     const data1 = await res1.json();
 
-    return {
-      props: {
-        electricity: data.data,
-        electricity1: data1.data,
-      },
-      // revalidate: 10,
-    };
-  } catch (error) {
-    console.error('Error fetching electricity data:', error);
-    return {
-      props: {
-        electricity: [],
-        electricity1: [],
-      },
-      // revalidate: 10,
-    };
-  }
-}
+//     return {
+//       props: {
+//         electricity: data.data,
+//         electricity1: data1.data,
+//       },
+//       // revalidate: 10,
+//     };
+//   } catch (error) {
+//     console.error('Error fetching electricity data:', error);
+//     return {
+//       props: {
+//         electricity: [],
+//         electricity1: [],
+//       },
+//       // revalidate: 10,
+//     };
+//   }
+// }
 
 

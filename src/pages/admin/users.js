@@ -25,7 +25,7 @@ const users = ({ role }) => {
   console.log(role);
     return (
         <div>
-            
+            {role}
         </div>
     );
 };

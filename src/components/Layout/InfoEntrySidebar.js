@@ -39,6 +39,18 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
       getItem('Capital Item', '5'),
       getItem('Revinue Item', '6'),
     ]),
+    getItem('Brand', 'sub4', <UserOutlined />, [
+      getItem('Add Brand', '7'),
+      getItem('Manage Brand', '8'),
+    ]),
+    getItem('Model', 'sub5', <UserOutlined />, [
+      getItem('Add Model', '9'),
+      getItem('Manage Model', '10'),
+    ]),
+    getItem('Supplier', 'sub6', <UserOutlined />, [
+      getItem('Add Supplier', '11'),
+      getItem('Manage Supplier', '12'),
+    ]),
     // getItem('Files', '9', <FileOutlined />)
     // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   ];
