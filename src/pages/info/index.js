@@ -11,6 +11,7 @@ import ElectricityReport from '@/components/Reports/Electricity';
 import ManageRevinueItem from '@/components/Pages/Info/ManageRevinueItem';
 import ManageBrand from '@/components/Pages/Info/ManageBrand';
 import ManageModel from '@/components/Pages/Info/ManageModel';
+import ManageSupplier from '@/components/Pages/Info/ManageSupplier';
 
 export async function getServerSideProps(context) {
     const session = await getSession(context);
@@ -26,21 +27,22 @@ export async function getServerSideProps(context) {
   }
 
   const resBrand = await fetch(`http://localhost:5000/api/v1/brand`);
-  // const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
   const dataBrand = await resBrand.json();
   const resModel = await fetch(`http://localhost:5000/api/v1/model`);
-  // const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
   const dataModel = await resModel.json();
+  const resSupplier = await fetch(`http://localhost:5000/api/v1/supplier`);
+  const dataSupplier = await resSupplier.json();
   // console.log(data);
   return {
     props: {
       brands: dataBrand.data,
       models: dataModel.data,
+      suppliers: dataSupplier.data,
 
     },
   };
 }
-const Categories = ({ brands,models }) => {
+const Categories = ({ brands,models,suppliers }) => {
   // console.log(electricity)
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
@@ -117,6 +119,7 @@ const Categories = ({ brands,models }) => {
           {formId == 2 && <ManageRevinueItem onFinish={onFinish}></ManageRevinueItem>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
           {formId == 10 && <ManageModel models={models}></ManageModel>}
+          {formId == 12 && <ManageSupplier suppliers={suppliers}></ManageSupplier>}
           {/* {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
           {formId == 13 && <ElectricityReport electricity={electricity1}></ElectricityReport>}
           {formId == 21 && <ComplainAddForm ></ComplainAddForm>}
