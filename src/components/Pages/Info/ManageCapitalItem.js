@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
@@ -77,29 +78,83 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const Zonal = ({ zonals }) => {
-  console.log(zonals);
-  console.log(zonals[0].pbs.pbsName);
-  const [dataSource, setDataSource] = useState(zonals);
+const ManageCapitalItem = ({ capitalItem }) => {
+    console.log(capitalItem);
+    
+    const [distinctSubCategories, setDistinctSubCategories] = useState([]);
+    const [distinctCategories, setDistinctCategories] = useState([]);
+    const [distinctZonals, setdistinctZonals] = useState([]);
+
+  useEffect(() => {
+    const subCategoryNames = Array.from(new Set(capitalItem.map(item => item.subCategory.subCategoryName)));
+    setDistinctSubCategories(subCategoryNames);
+    const CategoryNames = Array.from(new Set(capitalItem.map(item => item.category.categoryName)));
+    setDistinctCategories(CategoryNames);
+    const zonalNames = Array.from(new Set(capitalItem.map(item => item.zonals.zonalName)));
+    setdistinctZonals(zonalNames);
+  }, [capitalItem]);
+//   console.log(distinctCategories);
+  const [dataSource, setDataSource] = useState(capitalItem);
   const [count, setCount] = useState(2);
-    const handleDelete = (key) => {
+  const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };
   const defaultColumns = [
-     {
-      title: 'Zonal Code',
-      dataIndex: 'zonalCode',
-    },
     {
-      title: 'Zonal Name',
-      dataIndex: 'zonalName',
-      width: '30%',
+      title: 'Name',
+      dataIndex: 'name',
+      width: '20%',
       editable: true,
     },
     {
-      title: 'PBS Name',
-      dataIndex: ['pbs', 'pbsName'],
+      title: 'Serial',
+      dataIndex: 'serialNo',
+    },
+    {
+      title: 'Brand',
+      dataIndex: ['brand','brandName'],
+    },
+    
+    {
+      title: 'Model',
+      dataIndex: ['model','modelName'],
+    },
+    {
+      title: 'Warranty',
+      dataIndex: 'warranty',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+    },
+   
+    {
+      title: 'Category',
+      dataIndex: ['category', 'categoryName'],
+      filters: distinctCategories.map(sc => ({
+        text: sc,
+        value: sc,
+      })),
+       onFilter: (value, record) => record.category.categoryName.indexOf(value) === 0,
+    },
+    {
+      title: 'Sub Category',
+      dataIndex: ['subCategory', 'subCategoryName'],
+      filters: distinctSubCategories.map(sc => ({
+        text: sc,
+        value: sc,
+      })),
+       onFilter: (value, record) => record.subCategory.subCategoryName.indexOf(value) === 0,
+    },
+    {
+      title: 'Zonal',
+        dataIndex: ['zonals', 'zonalName'],
+      filters: distinctZonals.map(sc => ({
+        text: sc,
+        value: sc,
+      })),
+      onFilter: (value, record) => record.zonals.zonalName.indexOf(value) === 0,
     },
     {
       title: 'operation',
@@ -111,7 +166,10 @@ const Zonal = ({ zonals }) => {
           </Popconfirm>
         ) : null,
     },
-  ];
+    ];
+    const onChange = (pagination, filters, sorter, extra) => {
+        console.log('params', pagination, filters, sorter, extra);
+    };
   const handleAdd = () => {
     const newData = {
       key: count,
@@ -170,8 +228,9 @@ const Zonal = ({ zonals }) => {
         bordered
         dataSource={dataSource}
         columns={columns}
+        onChange={onChange}
       />
     </div>
   );
 };
-export default Zonal;
+export default ManageCapitalItem;

@@ -94,9 +94,7 @@ const ManageCategory = ({ categroys }) => {
     },
     {
       title: 'Item Type',
-      dataIndex: 'itemTypeId',
-      width: '30%',
-      editable: true,
+      dataIndex: ['itemType','itemType'],
     },
     {
       title: 'Created At',

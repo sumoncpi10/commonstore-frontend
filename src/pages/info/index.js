@@ -12,6 +12,7 @@ import ManageRevinueItem from '@/components/Pages/Info/ManageRevinueItem';
 import ManageBrand from '@/components/Pages/Info/ManageBrand';
 import ManageModel from '@/components/Pages/Info/ManageModel';
 import ManageSupplier from '@/components/Pages/Info/ManageSupplier';
+import ManageCapitalItem from '@/components/Pages/Info/ManageCapitalItem';
 
 export async function getServerSideProps(context) {
     const session = await getSession(context);
@@ -26,6 +27,8 @@ export async function getServerSideProps(context) {
     };
   }
 
+  const resCapitalItem = await fetch(`http://localhost:5000/api/v1/capital-item/`);
+  const dataCapitalItem = await resCapitalItem.json();
   const resBrand = await fetch(`http://localhost:5000/api/v1/brand`);
   const dataBrand = await resBrand.json();
   const resModel = await fetch(`http://localhost:5000/api/v1/model`);
@@ -35,6 +38,7 @@ export async function getServerSideProps(context) {
   // console.log(data);
   return {
     props: {
+      capitalItem: dataCapitalItem.data,
       brands: dataBrand.data,
       models: dataModel.data,
       suppliers: dataSupplier.data,
@@ -42,7 +46,7 @@ export async function getServerSideProps(context) {
     },
   };
 }
-const Categories = ({ brands,models,suppliers }) => {
+const Categories = ({ capitalItem,brands,models,suppliers }) => {
   // console.log(electricity)
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
@@ -117,6 +121,7 @@ const Categories = ({ brands,models,suppliers }) => {
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
           {formId == 2 && <ManageRevinueItem onFinish={onFinish}></ManageRevinueItem>}
+          {formId == 4 && <ManageCapitalItem capitalItem={capitalItem}></ManageCapitalItem>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
           {formId == 10 && <ManageModel models={models}></ManageModel>}
           {formId == 12 && <ManageSupplier suppliers={suppliers}></ManageSupplier>}
