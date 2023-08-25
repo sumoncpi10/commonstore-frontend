@@ -5,6 +5,7 @@ import {
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
+  BuildOutlined
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
@@ -36,15 +37,24 @@ const AdminSidebar = ({ children, setZonalCode,setformId }) => {
       getItem('Add Category', '3'),
       getItem('Manage Category', '4'),
     ]),
-
-    getItem('User', 'sub3', <UserOutlined />, [
-      getItem('Add User', '5'),
-      getItem('Manage Users', '6'),
+    
+    getItem('Designation', 'sub3', <UserOutlined />, [
+      getItem('Add Designation', '5'),
+      getItem('Manage Designation', '6'),
     ]),
-    getItem('Office', 'sub4', <UserOutlined />, [
-      // getItem('PBS', '3'),
-      getItem('HQ/Zonal/SubZonal', '7'),
-      getItem('CCS', '8'),
+    getItem('Department', 'sub4', <TeamOutlined />, [
+      getItem('Add Department', '7'),
+      getItem('Manage Department', '8'),
+    ]),
+    getItem('User', 'sub5', <UserOutlined />, [
+      getItem('Add User', '9'),
+      getItem('Manage Users', '10'),
+    ]),
+    getItem('Office', 'sub6', <BuildOutlined />, [
+      getItem('Add HQ/Zonal/SubZonal', '11'),
+      getItem('Add CCS', '12'),
+      getItem('HQ/Zonal/SubZonal', '13'),
+      getItem('CCS', '14'),
     ]),
     // getItem('Team', 'sub5', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
     // getItem('Files', '9', <FileOutlined />)
@@ -163,7 +173,7 @@ const AdminSidebar = ({ children, setZonalCode,setformId }) => {
             textAlign: 'center',
           }}
         >
-          Developed By: Md. Daduggaman Sumon, JE(IT), Chittagong PBS-2.
+          Developed By: Md. Daduggaman Sumon, JE(IT) & N M Shohel, JE(IT) 
           Copyright Reserved ©2023
         </Footer>
       </Layout>

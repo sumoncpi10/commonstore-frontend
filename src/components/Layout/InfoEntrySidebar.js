@@ -129,7 +129,7 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
             textAlign: 'center',
           }}
         >
-          Developed By: Md. Daduggaman Sumon, JE(IT), Chittagong PBS-2.
+          Developed By: Md. Daduggaman Sumon, JE(IT) & N M Shohel, JE(IT) 
           Copyright Reserved ©2023
         </Footer>
       </Layout>

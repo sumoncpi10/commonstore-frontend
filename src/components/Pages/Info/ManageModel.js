@@ -94,7 +94,7 @@ const ManageModel = ({ models }) => {
     },
     {
       title: 'Brand Name',
-      dataIndex: 'brandId',
+      dataIndex: ['brand','brandName'],
       width: '30%',
       editable: true,
     },

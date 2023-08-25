@@ -1,3 +1,5 @@
+
+
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
@@ -77,30 +79,36 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const Zonal = ({ zonals }) => {
-  console.log(zonals);
-  // console.log(zonals[0].pbs.pbsName);
-  const [dataSource, setDataSource] = useState(zonals);
+const ManageDesignation = ({ designations }) => {
+    console.log(designations);
+  const [dataSource, setDataSource] = useState(designations);
   const [count, setCount] = useState(2);
-    const handleDelete = (key) => {
+  const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };
   const defaultColumns = [
-     {
-      title: 'Zonal Code',
-      dataIndex: 'zonalCode',
-    },
     {
-      title: 'Zonal Name',
-      dataIndex: 'zonalName',
-      width: '30%',
+      title: 'Designation Name',
+      dataIndex: 'designationName',
+      width: '20%',
       editable: true,
     },
     {
-      title: 'PBS Name',
-      dataIndex: ['pbs', 'pbsName'],
+      title: 'Department Name',
+      dataIndex: ['department','departmentName'],
+      width: '20%',
+      editable: true,
     },
+   {
+      title: 'Created At',
+      dataIndex: 'createdAt',
+    },
+    {
+      title: 'Updated At',
+      dataIndex: 'updatedAt',
+    },
+   
     {
       title: 'operation',
       dataIndex: 'operation',
@@ -174,4 +182,4 @@ const Zonal = ({ zonals }) => {
     </div>
   );
 };
-export default Zonal;
+export default ManageDesignation;

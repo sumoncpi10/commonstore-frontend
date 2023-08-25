@@ -13,6 +13,9 @@ import ManageBrand from '@/components/Pages/Info/ManageBrand';
 import ManageModel from '@/components/Pages/Info/ManageModel';
 import ManageSupplier from '@/components/Pages/Info/ManageSupplier';
 import ManageCapitalItem from '@/components/Pages/Info/ManageCapitalItem';
+import AddSupplier from '@/components/Pages/Info/AddSupplier';
+import AddBrand from '@/components/Pages/Info/AddBrand';
+import AddModel from '@/components/Pages/Info/AddModel';
 
 export async function getServerSideProps(context) {
     const session = await getSession(context);
@@ -26,14 +29,13 @@ export async function getServerSideProps(context) {
       },
     };
   }
-
-  const resCapitalItem = await fetch(`http://localhost:5000/api/v1/capital-item/`);
+  const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/`);
   const dataCapitalItem = await resCapitalItem.json();
-  const resBrand = await fetch(`http://localhost:5000/api/v1/brand`);
+  const resBrand = await fetch(`${process.env.BACKEND_URL}/api/v1/brand`);
   const dataBrand = await resBrand.json();
-  const resModel = await fetch(`http://localhost:5000/api/v1/model`);
+  const resModel = await fetch(`${process.env.BACKEND_URL}/api/v1/model`);
   const dataModel = await resModel.json();
-  const resSupplier = await fetch(`http://localhost:5000/api/v1/supplier`);
+  const resSupplier = await fetch(`${process.env.BACKEND_URL}/api/v1/supplier`);
   const dataSupplier = await resSupplier.json();
   // console.log(data);
   return {
@@ -42,15 +44,12 @@ export async function getServerSideProps(context) {
       brands: dataBrand.data,
       models: dataModel.data,
       suppliers: dataSupplier.data,
-
     },
   };
 }
 const Categories = ({ capitalItem,brands,models,suppliers }) => {
-  // console.log(electricity)
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
-
   console.log(session?.zonal_code);
   const onFinish = (values) => {
     console.log('Form values:', values);
@@ -84,8 +83,6 @@ const Categories = ({ capitalItem,brands,models,suppliers }) => {
         }
       });
   };
-
-
   const [formId, setFormId] = useState(2);
   const category = [
     {
@@ -112,7 +109,7 @@ const Categories = ({ capitalItem,brands,models,suppliers }) => {
 
 
   ]
-
+  
   console.log(category);
   return (
     <div>
@@ -122,13 +119,13 @@ const Categories = ({ capitalItem,brands,models,suppliers }) => {
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
           {formId == 2 && <ManageRevinueItem onFinish={onFinish}></ManageRevinueItem>}
           {formId == 4 && <ManageCapitalItem capitalItem={capitalItem}></ManageCapitalItem>}
+          {formId == 7 && <AddBrand ></AddBrand>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
+          {formId == 9 && <AddModel brands={brands}></AddModel>}
           {formId == 10 && <ManageModel models={models}></ManageModel>}
+          {formId == 11 && <AddSupplier ></AddSupplier>}
           {formId == 12 && <ManageSupplier suppliers={suppliers}></ManageSupplier>}
-          {/* {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
-          {formId == 13 && <ElectricityReport electricity={electricity1}></ElectricityReport>}
-          {formId == 21 && <ComplainAddForm ></ComplainAddForm>}
-          {formId == 31 && <TransformerAddForm ></TransformerAddForm>} */}
+        
         </InfoEntrySidebar>
       </Header >
 
@@ -137,35 +134,4 @@ const Categories = ({ capitalItem,brands,models,suppliers }) => {
 };
 
 export default Categories;
-
-// export async function getServerSideProps(context) {
-//   console.log(context);
-//   const session = await getSession(context);
-
-//   try {
-//     const zonalCode = session?.zonal_code?.zonal_code || ''; // Handle null or undefined session
-//     const res = await fetch(`https://pbsactivities.onrender.com/electricity/${zonalCode}`);
-//     const data = await res.json();
-//     const res1 = await fetch(`https://pbsactivities.onrender.com/electricityAll/${zonalCode}`);
-//     const data1 = await res1.json();
-
-//     return {
-//       props: {
-//         electricity: data.data,
-//         electricity1: data1.data,
-//       },
-//       // revalidate: 10,
-//     };
-//   } catch (error) {
-//     console.error('Error fetching electricity data:', error);
-//     return {
-//       props: {
-//         electricity: [],
-//         electricity1: [],
-//       },
-//       // revalidate: 10,
-//     };
-//   }
-// }
-
 

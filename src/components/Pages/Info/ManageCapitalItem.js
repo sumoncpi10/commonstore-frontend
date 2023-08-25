@@ -104,7 +104,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
     {
       title: 'Name',
       dataIndex: 'name',
-      width: '20%',
+      // width: '20%',
       editable: true,
     },
     {
