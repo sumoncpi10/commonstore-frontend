@@ -17,6 +17,7 @@ import AddCategory from "@/components/Pages/Category/AddCategory";
 import AddSubCategory from "@/components/Pages/Category/AddSubCategory";
 import AddDepartment from "@/components/Pages/Department/AddDepartment";
 import AddDesignation from "@/components/Pages/Department/AddDesignation";
+import AddUser from "@/components/Pages/Users/AddUser";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -46,7 +47,7 @@ export async function getServerSideProps(context) {
   const dataDepartment = await resDepartment.json();
   const resDesignation = await fetch(`${process.env.BACKEND_URL}/api/v1/designation`);
   const dataDesignation = await resDesignation.json();
-  const resUsers = await fetch(`${process.env.BACKEND_URL}/api/v1/user/`);
+  const resUsers = await fetch(`${process.env.BACKEND_URL}/api/v1/user/${session?.pbs_code?.pbs_code}`);
   const dataUsers = await resUsers.json();
 
   // console.log(data);
@@ -81,6 +82,7 @@ const AdminPage = ({ itemType, categroys, subcategroys, designations, department
           {formId == 6 && <ManageDesignation designations={designations}></ManageDesignation>}
           {formId == 7 && <AddDepartment></AddDepartment>}
           {formId == 8 && <ManageDepartment departments={departments}></ManageDepartment>}
+          {formId == 9 && <AddUser></AddUser>}
           {formId == 10 && <ManageUsers users={users}></ManageUsers>}
           {formId == 11 && <AddZonal ></AddZonal>}
           {formId == 12 && <AddCC zonals={zonals} ></AddCC>}

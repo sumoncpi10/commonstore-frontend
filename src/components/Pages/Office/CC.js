@@ -77,10 +77,10 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const CC = ({ccs}) => {
+const CC = ({ ccs }) => {
   const [dataSource, setDataSource] = useState(ccs);
   const [count, setCount] = useState(2);
-    const handleDelete = (key) => {
+  const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };

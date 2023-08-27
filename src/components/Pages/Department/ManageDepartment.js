@@ -80,7 +80,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageDepartment = ({ departments }) => {
-    console.log(departments);
+  console.log(departments);
   const [dataSource, setDataSource] = useState(departments);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -94,7 +94,7 @@ const ManageDepartment = ({ departments }) => {
       width: '20%',
       editable: true,
     },
-   {
+    {
       title: 'Created At',
       dataIndex: 'createdAt',
     },
@@ -102,7 +102,7 @@ const ManageDepartment = ({ departments }) => {
       title: 'Updated At',
       dataIndex: 'updatedAt',
     },
-   
+
     {
       title: 'operation',
       dataIndex: 'operation',

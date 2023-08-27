@@ -79,7 +79,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageUsers = ({ users }) => {
-    console.log(users);
+  console.log(users);
   const [dataSource, setDataSource] = useState(users);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -89,32 +89,32 @@ const ManageUsers = ({ users }) => {
   const defaultColumns = [
     {
       title: 'Name',
-      dataIndex: ['employee','name'],
+      dataIndex: ['employee', 'name'],
       width: '20%',
       editable: true,
     },
     {
       title: 'Designation',
-      dataIndex: ['employee','designation'],
+      dataIndex: ['employee', 'designation'],
     },
     {
       title: 'Mobile',
       dataIndex: 'mobileNo',
-      },
+    },
     {
       title: 'PBS',
-      dataIndex: ['pbs','pbsName'],
+      dataIndex: ['pbs', 'pbsName'],
     },
     {
       title: 'Zonal',
-      dataIndex: ['zonals','zonalName'],
+      dataIndex: ['zonals', 'zonalName'],
     },
     {
       title: 'Complain',
-      dataIndex: ['complainCenter','complainName'],
+      dataIndex: ['complainCenter', 'complainName'],
     },
 
-   
+
     {
       title: 'operation',
       dataIndex: 'operation',

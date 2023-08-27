@@ -78,7 +78,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageBrand = ({ brands }) => {
-    console.log(brands);
+  console.log(brands);
   const [dataSource, setDataSource] = useState(brands);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {

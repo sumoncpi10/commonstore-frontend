@@ -246,7 +246,7 @@ const ElectricityReport = ({ electricity }) => {
   return (
     <div>
       {contextHolder}
-      {/* <Button
+      {/*   <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -254,7 +254,7 @@ const ElectricityReport = ({ electricity }) => {
         }}
       >
         Add a row
-      </Button> */}
+      </Button>  */}
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

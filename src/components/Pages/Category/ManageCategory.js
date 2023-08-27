@@ -78,7 +78,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageCategory = ({ categroys }) => {
-    console.log(categroys);
+  console.log(categroys);
   const [dataSource, setDataSource] = useState(categroys);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -94,7 +94,7 @@ const ManageCategory = ({ categroys }) => {
     },
     {
       title: 'Item Type',
-      dataIndex: ['itemType','itemType'],
+      dataIndex: ['itemType', 'itemType'],
     },
     {
       title: 'Created At',

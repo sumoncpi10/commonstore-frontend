@@ -78,10 +78,10 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageModel = ({ models }) => {
-    console.log(models);
+  console.log(models);
   const [dataSource, setDataSource] = useState(models);
   const [count, setCount] = useState(2);
-    const handleDelete = (key) => {
+  const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };
@@ -94,7 +94,7 @@ const ManageModel = ({ models }) => {
     },
     {
       title: 'Brand Name',
-      dataIndex: ['brand','brandName'],
+      dataIndex: ['brand', 'brandName'],
       width: '30%',
       editable: true,
     },

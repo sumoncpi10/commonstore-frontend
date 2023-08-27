@@ -82,12 +82,12 @@ const Zonal = ({ zonals }) => {
   // console.log(zonals[0].pbs.pbsName);
   const [dataSource, setDataSource] = useState(zonals);
   const [count, setCount] = useState(2);
-    const handleDelete = (key) => {
+  const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
   };
   const defaultColumns = [
-     {
+    {
       title: 'Zonal Code',
       dataIndex: 'zonalCode',
     },

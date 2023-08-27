@@ -79,11 +79,11 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageCapitalItem = ({ capitalItem }) => {
-    console.log(capitalItem);
-    
-    const [distinctSubCategories, setDistinctSubCategories] = useState([]);
-    const [distinctCategories, setDistinctCategories] = useState([]);
-    const [distinctZonals, setdistinctZonals] = useState([]);
+  console.log(capitalItem);
+
+  const [distinctSubCategories, setDistinctSubCategories] = useState([]);
+  const [distinctCategories, setDistinctCategories] = useState([]);
+  const [distinctZonals, setdistinctZonals] = useState([]);
 
   useEffect(() => {
     const subCategoryNames = Array.from(new Set(capitalItem.map(item => item.subCategory.subCategoryName)));
@@ -93,7 +93,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
     const zonalNames = Array.from(new Set(capitalItem.map(item => item.zonals.zonalName)));
     setdistinctZonals(zonalNames);
   }, [capitalItem]);
-//   console.log(distinctCategories);
+  //   console.log(distinctCategories);
   const [dataSource, setDataSource] = useState(capitalItem);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -113,12 +113,12 @@ const ManageCapitalItem = ({ capitalItem }) => {
     },
     {
       title: 'Brand',
-      dataIndex: ['brand','brandName'],
+      dataIndex: ['brand', 'brandName'],
     },
-    
+
     {
       title: 'Model',
-      dataIndex: ['model','modelName'],
+      dataIndex: ['model', 'modelName'],
     },
     {
       title: 'Warranty',
@@ -128,7 +128,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
       title: 'Price',
       dataIndex: 'price',
     },
-   
+
     {
       title: 'Category',
       dataIndex: ['category', 'categoryName'],
@@ -136,7 +136,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
         text: sc,
         value: sc,
       })),
-       onFilter: (value, record) => record.category.categoryName.indexOf(value) === 0,
+      onFilter: (value, record) => record.category.categoryName.indexOf(value) === 0,
     },
     {
       title: 'Sub Category',
@@ -145,11 +145,11 @@ const ManageCapitalItem = ({ capitalItem }) => {
         text: sc,
         value: sc,
       })),
-       onFilter: (value, record) => record.subCategory.subCategoryName.indexOf(value) === 0,
+      onFilter: (value, record) => record.subCategory.subCategoryName.indexOf(value) === 0,
     },
     {
       title: 'Zonal',
-        dataIndex: ['zonals', 'zonalName'],
+      dataIndex: ['zonals', 'zonalName'],
       filters: distinctZonals.map(sc => ({
         text: sc,
         value: sc,
@@ -166,10 +166,10 @@ const ManageCapitalItem = ({ capitalItem }) => {
           </Popconfirm>
         ) : null,
     },
-    ];
-    const onChange = (pagination, filters, sorter, extra) => {
-        console.log('params', pagination, filters, sorter, extra);
-    };
+  ];
+  const onChange = (pagination, filters, sorter, extra) => {
+    console.log('params', pagination, filters, sorter, extra);
+  };
   const handleAdd = () => {
     const newData = {
       key: count,
