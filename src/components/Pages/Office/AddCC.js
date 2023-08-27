@@ -12,7 +12,7 @@ import {
   TimePicker,
   TreeSelect,
 } from 'antd';
-import {  notification } from "antd";
+import { notification } from "antd";
 import { useSession } from 'next-auth/react';
 const { Option } = Select;
 const formItemLayout = {
@@ -34,14 +34,14 @@ const formItemLayout = {
   },
 };
 
-const AddCC = ({zonals}) => {
+const AddCC = ({ zonals }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   const onFinish = (values) => {
     console.log('Received values:', values);
     const pbsCode = session?.pbs_code?.pbs_code;
     const withvalues = { ...values, pbsCode };
-    fetch("https://computer-management-system.onrender.com/api/v1/complain/create-complain", {
+    fetch(`http://localhost:5000/api/v1/complain/create-complain`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -50,26 +50,26 @@ const AddCC = ({zonals}) => {
     })
       .then((res) => res.json())
       .then((data) => {
-    
-          const openNotificationWithIcon = (type) => {
-            api[type]({
-              message: data?.message,
-            });
-          };
-          openNotificationWithIcon('success')
-        
+
+        const openNotificationWithIcon = (type) => {
+          api[type]({
+            message: data?.message,
+          });
+        };
+        openNotificationWithIcon('success')
+
       });
   };
 
   return (
     <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish}>
-          {contextHolder}
+      {contextHolder}
       <Form.Item label="Zonal" name="zonalCode" hasFeedback rules={[
-          {
-            required: true,
-            message: 'Please provide a Zonal name',
-          },
-        ]}>
+        {
+          required: true,
+          message: 'Please provide a Zonal name',
+        },
+      ]}>
         <Select placeholder="Select a Zonal" allowClear>
           {zonals.map((zonal) => (
             <Option value={zonal.zonalCode} key={zonal.zonalCode}>
@@ -106,7 +106,7 @@ const AddCC = ({zonals}) => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
-        <Button type="primary" htmlType="submit" block> 
+        <Button type="primary" htmlType="submit" block>
           Submit
         </Button>
       </Form.Item>

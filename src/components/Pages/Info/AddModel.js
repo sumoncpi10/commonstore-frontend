@@ -12,7 +12,7 @@ import {
   TimePicker,
   TreeSelect,
 } from 'antd';
-import {  notification } from "antd";
+import { notification } from "antd";
 import { useSession } from 'next-auth/react';
 const { Option } = Select;
 const formItemLayout = {
@@ -34,13 +34,13 @@ const formItemLayout = {
   },
 };
 
-const AddModel = ({brands}) => {
+const AddModel = ({ brands }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   const onFinish = (values) => {
     console.log('Received values:', values);
-  
-    fetch("https://computer-management-system.onrender.com/api/v1/model/create-model", {
+
+    fetch(`http://localhost:5000/api/v1/model/create-model`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -49,26 +49,26 @@ const AddModel = ({brands}) => {
     })
       .then((res) => res.json())
       .then((data) => {
-    
-          const openNotificationWithIcon = (type) => {
-            api[type]({
-              message: data?.message,
-            });
-          };
-          openNotificationWithIcon('success')
-        
+
+        const openNotificationWithIcon = (type) => {
+          api[type]({
+            message: data?.message,
+          });
+        };
+        openNotificationWithIcon('success')
+
       });
   };
 
   return (
     <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish}>
-          {contextHolder}
+      {contextHolder}
       <Form.Item label="Brand" name="brandId" hasFeedback rules={[
-          {
-            required: true,
-            message: 'Please provide a Brand name',
-          },
-        ]}>
+        {
+          required: true,
+          message: 'Please provide a Brand name',
+        },
+      ]}>
         <Select placeholder="Select a Brand" allowClear>
           {brands.map((brand) => (
             <Option value={brand.id} key={brand.id}>
@@ -92,7 +92,7 @@ const AddModel = ({brands}) => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
-        <Button type="primary" htmlType="submit" block> 
+        <Button type="primary" htmlType="submit" block>
           Submit
         </Button>
       </Form.Item>

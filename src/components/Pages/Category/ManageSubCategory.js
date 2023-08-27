@@ -79,7 +79,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageSubCategory = ({ subcategroys }) => {
-    console.log(subcategroys);
+  console.log(subcategroys);
   const [dataSource, setDataSource] = useState(subcategroys);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -95,11 +95,11 @@ const ManageSubCategory = ({ subcategroys }) => {
     },
     {
       title: 'Category Name',
-      dataIndex: 'categoryId',
+      dataIndex: ['category', 'categoryName'],
       width: '30%',
       editable: true,
     },
-   
+
     {
       title: 'Created At',
       dataIndex: 'createdAt',

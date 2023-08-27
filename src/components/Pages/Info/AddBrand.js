@@ -12,7 +12,7 @@ import {
   TimePicker,
   TreeSelect,
 } from 'antd';
-import {  notification } from "antd";
+import { notification } from "antd";
 import { useSession } from 'next-auth/react';
 const { Option } = Select;
 const formItemLayout = {
@@ -39,8 +39,8 @@ const AddBrand = () => {
   const { data: session } = useSession();
   const onFinish = (values) => {
     console.log('Received values:', values);
-  
-    fetch("https://computer-management-system.onrender.com/api/v1/brand/create-brand", {
+
+    fetch(`http://localhost:5000/api/v1/brand/create-brand`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -49,14 +49,14 @@ const AddBrand = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-    
-          const openNotificationWithIcon = (type) => {
-            api[type]({
-              message: data?.message,
-            });
-          };
-          openNotificationWithIcon('success')
-        
+
+        const openNotificationWithIcon = (type) => {
+          api[type]({
+            message: data?.message,
+          });
+        };
+        openNotificationWithIcon('success')
+
       });
   };
 
@@ -78,7 +78,7 @@ const AddBrand = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
-        <Button type="primary" htmlType="submit" block> 
+        <Button type="primary" htmlType="submit" block>
           Submit
         </Button>
       </Form.Item>

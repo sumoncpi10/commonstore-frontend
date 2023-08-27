@@ -18,8 +18,8 @@ import AddBrand from '@/components/Pages/Info/AddBrand';
 import AddModel from '@/components/Pages/Info/AddModel';
 
 export async function getServerSideProps(context) {
-    const session = await getSession(context);
-    console.log(session);
+  const session = await getSession(context);
+  console.log(session);
   if (!session || session.role.role !== "admin") {
     // Redirect to a page with an appropriate message or display an error message
     return {
@@ -40,14 +40,14 @@ export async function getServerSideProps(context) {
   // console.log(data);
   return {
     props: {
-      capitalItem: dataCapitalItem.data|| [],
-      brands: dataBrand.data|| [],
-      models: dataModel.data|| [],
-      suppliers: dataSupplier.data|| [],
+      capitalItem: dataCapitalItem.data || [],
+      brands: dataBrand.data || [],
+      models: dataModel.data || [],
+      suppliers: dataSupplier.data || [],
     },
   };
 }
-const Categories = ({ capitalItem,brands,models,suppliers }) => {
+const Categories = ({ capitalItem, brands, models, suppliers }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   console.log(session?.zonal_code);
@@ -109,7 +109,7 @@ const Categories = ({ capitalItem,brands,models,suppliers }) => {
 
 
   ]
-  
+
   console.log(category);
   return (
     <div>
@@ -125,7 +125,7 @@ const Categories = ({ capitalItem,brands,models,suppliers }) => {
           {formId == 10 && <ManageModel models={models}></ManageModel>}
           {formId == 11 && <AddSupplier ></AddSupplier>}
           {formId == 12 && <ManageSupplier suppliers={suppliers}></ManageSupplier>}
-        
+
         </InfoEntrySidebar>
       </Header >
 

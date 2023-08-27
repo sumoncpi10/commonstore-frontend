@@ -12,7 +12,7 @@ import {
   TimePicker,
   TreeSelect,
 } from 'antd';
-import {  notification } from "antd";
+import { notification } from "antd";
 import { useSession } from 'next-auth/react';
 const { Option } = Select;
 const formItemLayout = {
@@ -42,7 +42,7 @@ const AddSupplier = () => {
     const pbsCode = session?.pbs_code?.pbs_code;
     const withvalues = { ...values, pbsCode };
     console.log(withvalues);
-    fetch("https://computer-management-system.onrender.com/api/v1/supplier/create-supplier", {
+    fetch(`http://localhost:5000/api/v1/supplier/create-supplier`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -51,15 +51,15 @@ const AddSupplier = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-    
-          const openNotificationWithIcon = (type) => {
-            api[type]({
-              message: data?.message,
-              
-            });
-          };
-          openNotificationWithIcon('success')
-        
+
+        const openNotificationWithIcon = (type) => {
+          api[type]({
+            message: data?.message,
+
+          });
+        };
+        openNotificationWithIcon('success')
+
       });
   };
 
@@ -93,7 +93,7 @@ const AddSupplier = () => {
         <Input placeholder="Phone Number" />
       </Form.Item>
 
-   
+
 
       <Form.Item
         label="Address"
@@ -110,7 +110,7 @@ const AddSupplier = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
-        <Button type="primary" htmlType="submit" block> 
+        <Button type="primary" htmlType="submit" block>
           Submit
         </Button>
       </Form.Item>
