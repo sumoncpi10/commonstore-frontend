@@ -40,10 +40,10 @@ export async function getServerSideProps(context) {
   // console.log(data);
   return {
     props: {
-      capitalItem: dataCapitalItem.data,
-      brands: dataBrand.data,
-      models: dataModel.data,
-      suppliers: dataSupplier.data,
+      capitalItem: dataCapitalItem.data|| [],
+      brands: dataBrand.data|| [],
+      models: dataModel.data|| [],
+      suppliers: dataSupplier.data|| [],
     },
   };
 }

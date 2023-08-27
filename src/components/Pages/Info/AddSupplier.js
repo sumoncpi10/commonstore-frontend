@@ -41,6 +41,7 @@ const AddSupplier = () => {
     console.log('Received values:', values);
     const pbsCode = session?.pbs_code?.pbs_code;
     const withvalues = { ...values, pbsCode };
+    console.log(withvalues);
     fetch("https://computer-management-system.onrender.com/api/v1/supplier/create-supplier", {
       method: "POST",
       headers: {

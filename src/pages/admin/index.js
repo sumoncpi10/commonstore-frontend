@@ -45,13 +45,13 @@ export async function getServerSideProps(context) {
   // console.log(data);
   return {
     props: {
-      zonals: dataZonal.data,
-      ccs: dataCC.data,
-      designations: dataDesignation.data,
-      departments: dataDepartment.data,
-      users: dataUsers.data,
-      categroys: dataCategory.data,
-      subcategroys: dataSubCategory.data
+      zonals: dataZonal.data|| [],
+      ccs: dataCC.data|| [],
+      designations: dataDesignation.data|| [],
+      departments: dataDepartment.data|| [],
+      users: dataUsers.data|| [],
+      categroys: dataCategory.data|| [],
+      subcategroys: dataSubCategory.data|| []
     },
   };
 }
