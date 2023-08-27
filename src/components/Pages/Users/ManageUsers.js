@@ -88,6 +88,10 @@ const ManageUsers = ({ users }) => {
   };
   const defaultColumns = [
     {
+      title: 'User ID',
+      dataIndex: 'mobileNo',
+    },
+    {
       title: 'Name',
       dataIndex: ['employee', 'name'],
       width: '20%',
@@ -96,10 +100,6 @@ const ManageUsers = ({ users }) => {
     {
       title: 'Designation',
       dataIndex: ['employee', 'designation'],
-    },
-    {
-      title: 'Mobile',
-      dataIndex: 'mobileNo',
     },
     {
       title: 'PBS',

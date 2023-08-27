@@ -41,7 +41,7 @@ export async function getServerSideProps(context) {
   const resZonal = await fetch(`${process.env.BACKEND_URL}/api/v1/zonal/${session?.pbs_code?.pbs_code}`);
   const dataZonal = await resZonal.json();
   // const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
-  const resCC = await fetch(`${process.env.BACKEND_URL}/api/v1/complain`);
+  const resCC = await fetch(`${process.env.BACKEND_URL}/api/v1/complain/${session?.pbs_code?.pbs_code}`);
   const dataCC = await resCC.json();
   const resDepartment = await fetch(`${process.env.BACKEND_URL}/api/v1/department`);
   const dataDepartment = await resDepartment.json();

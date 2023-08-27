@@ -86,22 +86,22 @@ const CC = ({ ccs }) => {
   };
   const defaultColumns = [
     {
-      title: 'Complain Center Name',
-      dataIndex: 'complainName',
-      width: '30%',
-      editable: true,
-    },
-    {
       title: 'Complain Center Code',
       dataIndex: 'complainCode',
     },
     {
-      title: 'Zonal Code',
-      dataIndex: 'zonalCode',
+      title: 'Complain Center Name',
+      dataIndex: 'complainName',
+      // width: '30%',
+      // editable: true,
     },
     {
-      title: 'PBS Code',
-      dataIndex: 'pbsCode',
+      title: 'Zonal Name',
+      dataIndex: ['zonals', 'zonalName'],
+    },
+    {
+      title: 'PBS Name',
+      dataIndex: ['pbs', 'pbsName'],
     },
     {
       title: 'operation',
