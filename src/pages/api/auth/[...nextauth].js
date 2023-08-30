@@ -1,39 +1,58 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import yourDatabaseQueryToFetchUserData from "./getuser";
+import yourDatabaseQueryToFetchUserDataDetail from "./getuserdetail";
+
 
 const authOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
-        mobileNo: { label: "Phone", type: "text", placeholder: "01866115239" },
-        password: { label: "Password", type: "password" }
+        mobileNo: { label: "Mobile Number", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        // Implement your own logic to validate credentials and fetch user data
-        const user = await yourDatabaseQueryToFetchUserData(credentials.mobileNo);
-        if (user && user.password === credentials.password) {
-          return user;
+        const { mobileNo, password } = credentials;
+        const userdata = await yourDatabaseQueryToFetchUserData(mobileNo, password);
+
+        if (userdata) {
+
+
+          return Promise.resolve({ id: 1, name: userdata.mobileNo, email: userdata.accessToken });
+        } else {
+          return Promise.resolve(null);
         }
-        return null;
-      }
-    })
+      },
+    }),
   ],
-  // callbacks: {
-  //   async session(session, user) {
-  //     if (user) {
-  //       const userData = await yourDatabaseQueryToFetchUserData(user.phone);
-  //       session.role = userData.role || [];
-  //       session.zonal_code = userData.zonal_code || [];
-  //       session.pbs_code = userData.pbs_code || [];
-  //     }
-  //     return session;
-  //   },
-  // },
+  callbacks: {
+    async session(session, user) {
+
+      if (session.token.name) {
+        const userData = await yourDatabaseQueryToFetchUserDataDetail(session.token.name);
+        const mobileNo = userData.mobileNo || [];
+        const role = userData.role || [];
+        const pbs_code = userData.pbs_code || [];
+        const zonal_code = userData.zonal_code || [];
+        const accessToken = session.token.email || [];
+
+        // Add roles to the session object
+        session.mobileNo = { ...session.user, mobileNo };
+        session.role = { ...session.user, role };
+        session.pbs_code = { ...session.user, pbs_code };
+        session.zonal_code = { ...session.user, zonal_code };
+        session.accessToken = { ...session.user, accessToken };
+        return session;
+      } else {
+        return session;
+      }
+    },
+
+  },
   pages: {
-    signIn: "/login"
-  }
+    signIn: "/login",
+  },
 };
 
 export default NextAuth(authOptions);

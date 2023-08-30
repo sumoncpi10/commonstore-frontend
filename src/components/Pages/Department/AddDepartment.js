@@ -39,11 +39,12 @@ const AddDepartment = () => {
     const { data: session } = useSession();
     const onFinish = (values) => {
         console.log('Received values:', values);
-
+        const accessToken = session?.accessToken?.accessToken;
         fetch(`http://localhost:5000/api/v1/department/create-department`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
+                Authorization: accessToken,
             },
             body: JSON.stringify(values),
         })

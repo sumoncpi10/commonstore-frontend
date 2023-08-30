@@ -40,11 +40,13 @@ const AddCC = ({ zonals }) => {
   const onFinish = (values) => {
     console.log('Received values:', values);
     const pbsCode = session?.pbs_code?.pbs_code;
+    const accessToken = session?.accessToken?.accessToken;
     const withvalues = { ...values, pbsCode };
     fetch(`http://localhost:5000/api/v1/complain/create-complain`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        Authorization: accessToken,
       },
       body: JSON.stringify(withvalues),
     })

@@ -42,10 +42,12 @@ const AddSupplier = () => {
     const pbsCode = session?.pbs_code?.pbs_code;
     const withvalues = { ...values, pbsCode };
     console.log(withvalues);
+    const accessToken = session?.accessToken?.accessToken;
     fetch(`http://localhost:5000/api/v1/supplier/create-supplier`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        Authorization: accessToken,
       },
       body: JSON.stringify(withvalues),
     })

@@ -29,13 +29,21 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/`);
+  const accessToken = session?.accessToken?.accessToken;
+  const getMethod = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: accessToken,
+    },
+  }
+  const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item`, getMethod);
   const dataCapitalItem = await resCapitalItem.json();
-  const resBrand = await fetch(`${process.env.BACKEND_URL}/api/v1/brand`);
+  const resBrand = await fetch(`${process.env.BACKEND_URL}/api/v1/brand`, getMethod);
   const dataBrand = await resBrand.json();
-  const resModel = await fetch(`${process.env.BACKEND_URL}/api/v1/model`);
+  const resModel = await fetch(`${process.env.BACKEND_URL}/api/v1/model`, getMethod);
   const dataModel = await resModel.json();
-  const resSupplier = await fetch(`${process.env.BACKEND_URL}/api/v1/supplier`);
+  const resSupplier = await fetch(`${process.env.BACKEND_URL}/api/v1/supplier/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataSupplier = await resSupplier.json();
   // console.log(data);
   return {
@@ -51,38 +59,7 @@ const Categories = ({ capitalItem, brands, models, suppliers }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   console.log(session?.zonal_code);
-  const onFinish = (values) => {
-    console.log('Form values:', values);
-    const zonal_code = session?.zonal_code?.zonal_code;
-    const withvalues = { ...values, zonal_code };
-    fetch("https://pbsactivities.onrender.com/api/electricityAdd", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(withvalues),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.data?.insertedId) {
-          const openNotificationWithIcon = (type) => {
-            api[type]({
-              message: data?.message,
-              description: "Inserted ID: " + data?.data?.insertedId,
-            });
-          };
-          openNotificationWithIcon('success')
-        } else {
-          const openNotificationWithIcon = (type) => {
-            api[type]({
-              message: data.message,
-              description: "Inserted ID: ",
-            });
-          };
-          openNotificationWithIcon('info')
-        }
-      });
-  };
+
   const [formId, setFormId] = useState(2);
   const category = [
     {
@@ -117,7 +94,7 @@ const Categories = ({ capitalItem, brands, models, suppliers }) => {
       <Header>
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
-          {formId == 2 && <ManageRevinueItem onFinish={onFinish}></ManageRevinueItem>}
+          {formId == 2 && <ManageRevinueItem ></ManageRevinueItem>}
           {formId == 4 && <ManageCapitalItem capitalItem={capitalItem}></ManageCapitalItem>}
           {formId == 7 && <AddBrand ></AddBrand>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {
     Button,
-
     DatePicker,
     Form,
-
     InputNumber,
     Radio,
     Select,
@@ -13,12 +11,12 @@ import {
 import { Typography } from 'antd';
 const { Title } = Typography;
 const ElectricityAddForm = ({ onFinish }) => {
-    
+
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
-    
+
 
     return (
         <>

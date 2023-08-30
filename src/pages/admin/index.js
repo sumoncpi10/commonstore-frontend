@@ -18,6 +18,7 @@ import AddSubCategory from "@/components/Pages/Category/AddSubCategory";
 import AddDepartment from "@/components/Pages/Department/AddDepartment";
 import AddDesignation from "@/components/Pages/Department/AddDesignation";
 import AddUser from "@/components/Pages/Users/AddUser";
+import { headers } from "next/dist/client/components/headers";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -32,22 +33,29 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const resItemType = await fetch(`${process.env.BACKEND_URL}/api/v1/item-type`);
+  const accessToken = session?.accessToken?.accessToken;
+  const getMethod = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: accessToken,
+    },
+  }
+  const resItemType = await fetch(`${process.env.BACKEND_URL}/api/v1/item-type`, getMethod);
   const dataItemType = await resItemType.json();
-  const resCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/category`);
+  const resCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/category`, getMethod);
   const dataCategory = await resCategory.json();
-  const resSubCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/sub-category`);
+  const resSubCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/sub-category`, getMethod);
   const dataSubCategory = await resSubCategory.json();
-  const resZonal = await fetch(`${process.env.BACKEND_URL}/api/v1/zonal/${session?.pbs_code?.pbs_code}`);
+  const resZonal = await fetch(`${process.env.BACKEND_URL}/api/v1/zonal/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataZonal = await resZonal.json();
-  // const res = await fetch(`https://pbsactivities.onrender.com/zonals/${session?.pbs_code?.pbs_code}`);
-  const resCC = await fetch(`${process.env.BACKEND_URL}/api/v1/complain/${session?.pbs_code?.pbs_code}`);
+  const resCC = await fetch(`${process.env.BACKEND_URL}/api/v1/complain/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataCC = await resCC.json();
-  const resDepartment = await fetch(`${process.env.BACKEND_URL}/api/v1/department`);
+  const resDepartment = await fetch(`${process.env.BACKEND_URL}/api/v1/department`, getMethod);
   const dataDepartment = await resDepartment.json();
-  const resDesignation = await fetch(`${process.env.BACKEND_URL}/api/v1/designation`);
+  const resDesignation = await fetch(`${process.env.BACKEND_URL}/api/v1/designation`, getMethod);
   const dataDesignation = await resDesignation.json();
-  const resUsers = await fetch(`${process.env.BACKEND_URL}/api/v1/user/${session?.pbs_code?.pbs_code}`);
+  const resUsers = await fetch(`${process.env.BACKEND_URL}/api/v1/user/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataUsers = await resUsers.json();
 
   // console.log(data);
