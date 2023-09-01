@@ -5,7 +5,7 @@ import Head from "next/head";
 
 import Header from "@/components/Layout/Header";
 import Sidebar from "@/components/Layout/Sidebar";
-import AuthorizedRoute from "@/components/AuthorizedRoute";
+
 
 const ProfilePage = () => {
   // //console.log("role from profile",role);
