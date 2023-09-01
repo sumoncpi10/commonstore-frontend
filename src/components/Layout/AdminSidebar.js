@@ -10,9 +10,9 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
-const AdminSidebar = ({ children, setZonalCode,setformId }) => {
+const AdminSidebar = ({ children, setZonalCode, setformId }) => {
   const { props } = children;
-  console.log('Childer from Adminside', children);
+  //console.log('Childer from Adminside', children);
   const [collapsed, setCollapsed] = useState(false);
   const [breadcrumbItems, setBreadcrumbItems] = useState([]);
 
@@ -37,7 +37,7 @@ const AdminSidebar = ({ children, setZonalCode,setformId }) => {
       getItem('Add Category', '3'),
       getItem('Manage Category', '4'),
     ]),
-    
+
     getItem('Designation', 'sub3', <UserOutlined />, [
       getItem('Add Designation', '5'),
       getItem('Manage Designation', '6'),
@@ -61,7 +61,7 @@ const AdminSidebar = ({ children, setZonalCode,setformId }) => {
   ];
   const handleAdminSidebarClick = (label, key) => {
     // Here you can define the action you want to perform when a menu item is clicked.
-    console.log('Item with key', key, 'is clicked!');
+    //console.log('Item with key', key, 'is clicked!');
 
     // Create a new breadcrumb item
     const newItem = {
@@ -76,7 +76,7 @@ const AdminSidebar = ({ children, setZonalCode,setformId }) => {
 
   //  const handleAdminSidebarClick = (reportKey) => {
   //     // Here you can define the action you want to perform when a report item is clicked.
-  //     console.log('Report with key', reportKey, 'is clicked!');
+  //     //console.log('Report with key', reportKey, 'is clicked!');
   //   };
   return (
     <Layout
@@ -173,7 +173,7 @@ const AdminSidebar = ({ children, setZonalCode,setformId }) => {
             textAlign: 'center',
           }}
         >
-          Developed By: Md. Daduggaman Sumon, JE(IT) & N M Shohel, JE(IT) 
+          Developed By: Md. Daduggaman Sumon, JE(IT) & N M Shohel, JE(IT)
           Copyright Reserved ©2023
         </Footer>
       </Layout>

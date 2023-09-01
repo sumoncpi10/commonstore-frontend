@@ -16,7 +16,7 @@ import { useSession } from 'next-auth/react';
 const { Title } = Typography;
 const TransformerAddForm = () => {
     const { data: session } = useSession();
-    console.log(session);
+    //console.log(session);
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);

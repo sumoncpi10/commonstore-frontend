@@ -8,16 +8,16 @@ import Sidebar from "@/components/Layout/Sidebar";
 import AuthorizedRoute from "@/components/AuthorizedRoute";
 
 const ProfilePage = () => {
-  // console.log("role from profile",role);
+  // //console.log("role from profile",role);
   return (
     <div style={{ textAlign: "center" }}>
       <Head>
         <title>User Profile</title>
       </Head>
-           <AuthorizedRoute roles={['admin', 'user']}>
-      <h1>User Profile</h1>
+      <AuthorizedRoute roles={['admin', 'user']}>
+        <h1>User Profile</h1>
         <Avatar size={64} icon={<UserOutlined />} />
-        </AuthorizedRoute>
+      </AuthorizedRoute>
     </div>
   );
 };
@@ -27,9 +27,9 @@ export default ProfilePage;
 ProfilePage.getLayout = function getLayout(page) {
   return (
     <Header>
-    <Sidebar>
-      {page}
-    </Sidebar>
-  </Header >
+      <Sidebar>
+        {page}
+      </Sidebar>
+    </Header >
   )
 }

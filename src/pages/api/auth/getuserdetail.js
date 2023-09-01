@@ -5,7 +5,7 @@ async function yourDatabaseQueryToFetchUserDataDetail(mobileNo) {
         const options = { mobileNo }
         const resUser = await fetch(`http://localhost:5000/api/v1/user/user/${mobileNo}`)
         const dataUser = await resUser.json();
-        // console.log(dataUser)
+        // //console.log(dataUser)
         if (resUser.ok) {
             const { mobileNo, role, pbsCode, zonalCode } = dataUser.data;
             const user = {

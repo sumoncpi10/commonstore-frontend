@@ -10,13 +10,13 @@ import { getSession, useSession } from 'next-auth/react';
 import ElectricityReport from '@/components/Reports/Electricity';
 
 const Categories = ({ electricity, electricity1 }) => {
-    console.log(electricity)
+    //console.log(electricity)
     const [api, contextHolder] = notification.useNotification();
     const { data: session } = useSession();
 
-    console.log(session?.zonal_code);
+    //console.log(session?.zonal_code);
     const onFinish = (values) => {
-        console.log('Form values:', values);
+        //console.log('Form values:', values);
         const zonal_code = session?.zonal_code?.zonal_code;
         const withvalues = { ...values, zonal_code };
         fetch("https://pbsactivities.onrender.com/api/electricityAdd", {
@@ -91,7 +91,7 @@ const Categories = ({ electricity, electricity1 }) => {
 
     ]
 
-    console.log(category);
+    //console.log(category);
     return (
         <div>
             {contextHolder}
@@ -113,7 +113,7 @@ const Categories = ({ electricity, electricity1 }) => {
 export default Categories;
 
 export async function getServerSideProps(context) {
-    console.log(context);
+    //console.log(context);
     const session = await getSession(context);
 
     try {

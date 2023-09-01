@@ -22,7 +22,7 @@ import { headers } from "next/dist/client/components/headers";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  console.log(session);
+  //console.log(session);
   if (!session || session.role.role !== "admin") {
     // Redirect to a page with an appropriate message or display an error message
     return {
@@ -58,7 +58,7 @@ export async function getServerSideProps(context) {
   const resUsers = await fetch(`${process.env.BACKEND_URL}/api/v1/user/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataUsers = await resUsers.json();
 
-  // console.log(data);
+  // //console.log(data);
   return {
     props: {
       itemType: dataItemType.data || [],

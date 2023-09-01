@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
-  status:null
+  status: null
   // total: 0,
 };
 
@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      // console.log(action.payload.category);
+      // //console.log(action.payload.category);
       const existing = state.products.find(
         (product) => product.category === action.payload.category
       );
@@ -25,7 +25,7 @@ const cartSlice = createSlice({
       // state.total = 1;
     },
     removeOne: (state, action) => {
-     
+
       const existing = state.products.find(
         (product) => product.id === action.payload.id
       );
@@ -43,7 +43,7 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       // const ActionID = String(action.payload.id);
       // const removeId = "product" + ActionID;
-      // console.log(action.payload.category);
+      // //console.log(action.payload.category);
       state.products = state.products.filter(
         (product) => product.category !== action.payload.category
       );

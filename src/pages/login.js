@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [password, setpassword] = useState("");
   const handleLogin = async (e) => {
     e.preventDefault();
-    // console.log(mobileNo, password)
+    // //console.log(mobileNo, password)
     const result = await signIn("credentials", {
       mobileNo,
       password,

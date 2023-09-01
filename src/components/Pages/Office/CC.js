@@ -43,7 +43,7 @@ const EditableCell = ({
         ...values,
       });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      //console.log('Save failed:', errInfo);
     }
   };
   let childNode = children;

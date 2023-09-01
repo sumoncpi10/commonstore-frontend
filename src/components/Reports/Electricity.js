@@ -44,7 +44,7 @@ const EditableCell = ({
         ...values,
       });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      //console.log('Save failed:', errInfo);
     }
   };
   let childNode = children;
@@ -117,17 +117,17 @@ const ElectricityReport = ({ electricity }) => {
 
 
 
-  console.log(dataSource)
+  //console.log(dataSource)
   const [count, setCount] = useState(dataSource?.length);
   const handleDelete = (_id) => {
-    console.log(_id)
+    //console.log(_id)
     const newData = dataSource.filter((item) => item._id !== _id);
 
     fetch(`https://pbsactivities.onrender.com/electricity/${_id}`, {
       method: 'DELETE'
     })
       .then((response) => {
-        // console.log(response)
+        // //console.log(response)
         if (!response.ok) {
           const openNotificationWithIcon = (type) => {
             api[type]({
@@ -140,7 +140,7 @@ const ElectricityReport = ({ electricity }) => {
         } else {
           setDataSource(newData);
         }
-        console.log('Item deleted successfully');
+        //console.log('Item deleted successfully');
       })
       .catch((error) => {
         console.error('Error deleting item:', error);

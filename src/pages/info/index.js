@@ -16,10 +16,11 @@ import ManageCapitalItem from '@/components/Pages/Info/ManageCapitalItem';
 import AddSupplier from '@/components/Pages/Info/AddSupplier';
 import AddBrand from '@/components/Pages/Info/AddBrand';
 import AddModel from '@/components/Pages/Info/AddModel';
+import AddCapitalItem from '@/components/Pages/Info/AddCapitalItem';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  console.log(session);
+  // //console.log(session);
   if (!session || session.role.role !== "admin") {
     // Redirect to a page with an appropriate message or display an error message
     return {
@@ -45,20 +46,29 @@ export async function getServerSideProps(context) {
   const dataModel = await resModel.json();
   const resSupplier = await fetch(`${process.env.BACKEND_URL}/api/v1/supplier/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataSupplier = await resSupplier.json();
-  // console.log(data);
+  const resItemType = await fetch(`${process.env.BACKEND_URL}/api/v1/item-type`, getMethod);
+  const dataItemType = await resItemType.json();
+  const resCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/category`, getMethod);
+  const dataCategory = await resCategory.json();
+  const resSubCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/sub-category`, getMethod);
+  const dataSubCategory = await resSubCategory.json();
+  // //console.log(data);
   return {
     props: {
       capitalItem: dataCapitalItem.data || [],
       brands: dataBrand.data || [],
       models: dataModel.data || [],
       suppliers: dataSupplier.data || [],
+      itemType: dataItemType.data || [],
+      categroys: dataCategory.data || [],
+      subcategroys: dataSubCategory.data || [],
     },
   };
 }
-const Categories = ({ capitalItem, brands, models, suppliers }) => {
+const Categories = ({ capitalItem, brands, models, suppliers, dataItemType, categroys, subcategroys }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
-  console.log(session?.zonal_code);
+  // //console.log(session?.zonal_code);
 
   const [formId, setFormId] = useState(2);
   const category = [
@@ -82,12 +92,9 @@ const Categories = ({ capitalItem, brands, models, suppliers }) => {
       "category": "SAIDI & SAIFI",
       "image_url": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-8gb-ddr4-3200mhz/vengeance-8gb-ddr4-3200mhz-01-228x228.webp"
     }
-
-
-
   ]
 
-  console.log(category);
+  // //console.log(category);
   return (
     <div>
       {contextHolder}
@@ -95,8 +102,9 @@ const Categories = ({ capitalItem, brands, models, suppliers }) => {
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
           {formId == 2 && <ManageRevinueItem ></ManageRevinueItem>}
+          {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} dataItemType={dataItemType} categroys={categroys} subcategroys={subcategroys}></AddCapitalItem>}
           {formId == 4 && <ManageCapitalItem capitalItem={capitalItem}></ManageCapitalItem>}
-          {formId == 7 && <AddBrand ></AddBrand>}
+          {formId == 7 && <AddBrand></AddBrand>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
           {formId == 9 && <AddModel brands={brands}></AddModel>}
           {formId == 10 && <ManageModel models={models}></ManageModel>}

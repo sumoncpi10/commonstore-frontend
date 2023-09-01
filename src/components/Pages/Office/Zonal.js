@@ -43,7 +43,7 @@ const EditableCell = ({
         ...values,
       });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      //console.log('Save failed:', errInfo);
     }
   };
   let childNode = children;
@@ -78,8 +78,8 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const Zonal = ({ zonals }) => {
-  console.log(zonals);
-  // console.log(zonals[0].pbs.pbsName);
+  //console.log(zonals);
+  // //console.log(zonals[0].pbs.pbsName);
   const [dataSource, setDataSource] = useState(zonals);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {

@@ -38,7 +38,7 @@ const AddDesignation = ({ departments }) => {
     const [api, contextHolder] = notification.useNotification();
     const { data: session } = useSession();
     const onFinish = (values) => {
-        console.log('Received values:', values);
+        //console.log('Received values:', values);
         const accessToken = session?.accessToken?.accessToken;
         fetch(`http://localhost:5000/api/v1/designation/create-designation`, {
             method: "POST",

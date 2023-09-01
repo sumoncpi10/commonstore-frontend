@@ -44,7 +44,7 @@ const EditableCell = ({
         ...values,
       });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      //console.log('Save failed:', errInfo);
     }
   };
   let childNode = children;
@@ -79,7 +79,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageCapitalItem = ({ capitalItem }) => {
-  console.log(capitalItem);
+  //console.log(capitalItem);
 
   const [distinctSubCategories, setDistinctSubCategories] = useState([]);
   const [distinctCategories, setDistinctCategories] = useState([]);
@@ -93,7 +93,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
     const zonalNames = Array.from(new Set(capitalItem.map(item => item.zonals.zonalName)));
     setdistinctZonals(zonalNames);
   }, [capitalItem]);
-  //   console.log(distinctCategories);
+  //   //console.log(distinctCategories);
   const [dataSource, setDataSource] = useState(capitalItem);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -168,7 +168,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
     },
   ];
   const onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
+    //console.log('params', pagination, filters, sorter, extra);
   };
   const handleAdd = () => {
     const newData = {

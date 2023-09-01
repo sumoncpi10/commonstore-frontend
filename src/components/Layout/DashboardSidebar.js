@@ -12,7 +12,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const InfoEntrySidebar = ({ children, category, setFormId }) => {
     const { props } = children;
-    // console.log('Category from Adminside', category);
+    // //console.log('Category from Adminside', category);
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
@@ -46,7 +46,7 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
 
     const handleAdminSidebarClick = (reportKey) => {
         // Here you can define the action you want to perform when a report item is clicked.
-        console.log('Report with key', reportKey, 'is clicked!');
+        //console.log('Report with key', reportKey, 'is clicked!');
         setFormId(reportKey)
     };
     return (
@@ -118,7 +118,7 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
                         textAlign: 'center',
                     }}
                 >
-                    Developed By: Md. Daduggaman Sumon, JE(IT) & N M Shohel, JE(IT) 
+                    Developed By: Md. Daduggaman Sumon, JE(IT) & N M Shohel, JE(IT)
                     Copyright Reserved ©2023
                 </Footer>
             </Layout>

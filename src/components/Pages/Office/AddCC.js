@@ -38,7 +38,7 @@ const AddCC = ({ zonals }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   const onFinish = (values) => {
-    console.log('Received values:', values);
+    //console.log('Received values:', values);
     const pbsCode = session?.pbs_code?.pbs_code;
     const accessToken = session?.accessToken?.accessToken;
     const withvalues = { ...values, pbsCode };

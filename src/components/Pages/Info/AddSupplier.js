@@ -38,10 +38,10 @@ const AddSupplier = () => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   const onFinish = (values) => {
-    console.log('Received values:', values);
+    //console.log('Received values:', values);
     const pbsCode = session?.pbs_code?.pbs_code;
     const withvalues = { ...values, pbsCode };
-    console.log(withvalues);
+    //console.log(withvalues);
     const accessToken = session?.accessToken?.accessToken;
     fetch(`http://localhost:5000/api/v1/supplier/create-supplier`, {
       method: "POST",

@@ -44,7 +44,7 @@ const EditableCell = ({
         ...values,
       });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      //console.log('Save failed:', errInfo);
     }
   };
   let childNode = children;
@@ -79,7 +79,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageSubCategory = ({ subcategroys }) => {
-  console.log(subcategroys);
+  //console.log(subcategroys);
   const [dataSource, setDataSource] = useState(subcategroys);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
