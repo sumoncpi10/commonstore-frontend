@@ -18,7 +18,7 @@ const LoginPage = () => {
     const result = await signIn("credentials", {
       mobileNo,
       password,
-      callbackUrl: "/",
+      callbackUrl: "https://pbsstore.vercel.app/",
     });
     if (result?.error) {
       console.error("Login error:", result.error);

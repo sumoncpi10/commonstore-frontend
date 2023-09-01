@@ -75,7 +75,7 @@ const AddRevenueItem = ({ itemType, categroys, subcategroys, brands, models, sup
         const withvalues = { ...values, pbsCode, addByMobileNo };
         console.log(withvalues)
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`http://localhost:5000/api/v1/revenue-item/create-revenue-item`, {
+        fetch(`https://pbscommonstore.onrender.com/api/v1/revenue-item/create-revenue-item`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

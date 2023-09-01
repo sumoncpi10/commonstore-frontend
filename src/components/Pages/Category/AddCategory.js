@@ -42,7 +42,7 @@ const AddCategory = ({ itemType }) => {
     const onFinish = (values) => {
         //console.log('Received values:', values);
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`http://localhost:5000/api/v1/category/create-category`, {
+        fetch(`https://pbscommonstore.onrender.com/api/v1/category/create-category`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

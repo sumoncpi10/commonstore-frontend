@@ -45,7 +45,7 @@ const AddUser = () => {
         const pbsCode = session?.pbs_code?.pbs_code;
         const withvalues = { ...values, pbsCode };
         //console.log(withvalues);
-        fetch(`http://localhost:5000/api/v1/user/create-user`, {
+        fetch(`https://pbscommonstore.onrender.com/api/v1/user/create-user`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

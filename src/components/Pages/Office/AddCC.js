@@ -44,7 +44,7 @@ const AddCC = ({ zonals }) => {
     const pbsCode = session?.pbs_code?.pbs_code;
     const accessToken = session?.accessToken?.accessToken;
     const withvalues = { ...values, pbsCode };
-    fetch(`http://localhost:5000/api/v1/complain/create-complain`, {
+    fetch(`https://pbscommonstore.onrender.com/api/v1/complain/create-complain`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
