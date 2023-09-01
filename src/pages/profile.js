@@ -14,10 +14,10 @@ const ProfilePage = () => {
       <Head>
         <title>User Profile</title>
       </Head>
-      <AuthorizedRoute roles={['admin', 'user']}>
-        <h1>User Profile</h1>
-        <Avatar size={64} icon={<UserOutlined />} />
-      </AuthorizedRoute>
+      {/* <AuthorizedRoute roles={['admin']}> */}
+      <h1>User Profile</h1>
+      <Avatar size={64} icon={<UserOutlined />} />
+      {/* </AuthorizedRoute> */}
     </div>
   );
 };
