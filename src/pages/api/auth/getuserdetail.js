@@ -1,9 +1,15 @@
 
 
-async function yourDatabaseQueryToFetchUserDataDetail(mobileNo) {
+async function yourDatabaseQueryToFetchUserDataDetail(mobileNo, accessToken) {
     try {
         const options = { mobileNo }
-        const resUser = await fetch(`http://localhost:5000/api/v1/user/user/${mobileNo}`)
+        const resUser = await fetch(`http://localhost:5000/api/v1/user/user/${mobileNo}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: accessToken,
+            },
+        })
         const dataUser = await resUser.json();
         // //console.log(dataUser)
         if (resUser.ok) {

@@ -30,7 +30,7 @@ const authOptions = {
     async session(session, user) {
 
       if (session.token.name) {
-        const userData = await yourDatabaseQueryToFetchUserDataDetail(session.token.name);
+        const userData = await yourDatabaseQueryToFetchUserDataDetail(session.token.name, session.token.email);
         const mobileNo = userData.mobileNo || [];
         const role = userData.role || [];
         const pbs_code = userData.pbs_code || [];
