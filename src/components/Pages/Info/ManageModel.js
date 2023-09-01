@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { Typography } from 'antd';
+const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -156,7 +158,7 @@ const ManageModel = ({ models }) => {
   });
   return (
     <div>
-      <Button
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -164,7 +166,8 @@ const ManageModel = ({ models }) => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
+      <Title level={2}>Manage Model</Title>
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

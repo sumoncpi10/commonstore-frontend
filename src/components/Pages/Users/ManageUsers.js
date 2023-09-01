@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { Typography } from 'antd';
+const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -169,7 +171,7 @@ const ManageUsers = ({ users }) => {
   });
   return (
     <div>
-      <Button
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -177,7 +179,8 @@ const ManageUsers = ({ users }) => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
+      <Title level={2}>Manage User</Title>
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

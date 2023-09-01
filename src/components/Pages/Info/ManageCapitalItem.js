@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { Typography } from 'antd';
+const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -86,11 +88,11 @@ const ManageCapitalItem = ({ capitalItem }) => {
   const [distinctZonals, setdistinctZonals] = useState([]);
 
   useEffect(() => {
-    const subCategoryNames = Array.from(new Set(capitalItem.map(item => item.subCategory.subCategoryName)));
+    const subCategoryNames = Array.from(new Set(capitalItem.map(item => item?.subCategory?.subCategoryName)));
     setDistinctSubCategories(subCategoryNames);
-    const CategoryNames = Array.from(new Set(capitalItem.map(item => item.category.categoryName)));
+    const CategoryNames = Array.from(new Set(capitalItem.map(item => item?.category?.categoryName)));
     setDistinctCategories(CategoryNames);
-    const zonalNames = Array.from(new Set(capitalItem.map(item => item.zonals.zonalName)));
+    const zonalNames = Array.from(new Set(capitalItem.map(item => item?.zonals?.zonalName)));
     setdistinctZonals(zonalNames);
   }, [capitalItem]);
   //   //console.log(distinctCategories);
@@ -102,8 +104,8 @@ const ManageCapitalItem = ({ capitalItem }) => {
   };
   const defaultColumns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      title: 'Description',
+      dataIndex: 'description',
       // width: '20%',
       editable: true,
     },
@@ -145,7 +147,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
         text: sc,
         value: sc,
       })),
-      onFilter: (value, record) => record.subCategory.subCategoryName.indexOf(value) === 0,
+      onFilter: (value, record) => record?.subCategory?.subCategoryName?.indexOf(value) === 0,
     },
     {
       title: 'Zonal',
@@ -213,7 +215,7 @@ const ManageCapitalItem = ({ capitalItem }) => {
   });
   return (
     <div>
-      <Button
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -221,7 +223,8 @@ const ManageCapitalItem = ({ capitalItem }) => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
+      <Title level={2}>Manage Capital Item</Title>
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

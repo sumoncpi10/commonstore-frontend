@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { Typography } from 'antd';
+const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -104,10 +106,10 @@ const ManageSubCategory = ({ subcategroys }) => {
       title: 'Created At',
       dataIndex: 'createdAt',
     },
-    {
-      title: 'Updated At',
-      dataIndex: 'updatedAt',
-    },
+    // {
+    //   title: 'Updated At',
+    //   dataIndex: 'updatedAt',
+    // },
     {
       title: 'operation',
       dataIndex: 'operation',
@@ -162,7 +164,8 @@ const ManageSubCategory = ({ subcategroys }) => {
   });
   return (
     <div>
-      <Button
+      <Title level={2}>Manage Sub Category</Title>
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -170,7 +173,7 @@ const ManageSubCategory = ({ subcategroys }) => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

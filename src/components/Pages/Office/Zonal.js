@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { Typography } from 'antd';
+const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -155,7 +157,7 @@ const Zonal = ({ zonals }) => {
   });
   return (
     <div>
-      <Button
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -163,7 +165,8 @@ const Zonal = ({ zonals }) => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
+      <Title level={2}>Add Zonal</Title>
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

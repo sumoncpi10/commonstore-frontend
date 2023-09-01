@@ -3,6 +3,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { Typography } from 'antd';
+const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -157,7 +159,8 @@ const ManageDepartment = ({ departments }) => {
   });
   return (
     <div>
-      <Button
+      <Title level={2}>Manage Department</Title>
+      {/* <Button
         onClick={handleAdd}
         type="primary"
         style={{
@@ -165,7 +168,7 @@ const ManageDepartment = ({ departments }) => {
         }}
       >
         Add a row
-      </Button>
+      </Button> */}
       <Table
         components={components}
         rowClassName={() => 'editable-row'}

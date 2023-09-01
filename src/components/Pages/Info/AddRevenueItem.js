@@ -45,7 +45,7 @@ const config = {
     ],
 };
 
-const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, suppliers }) => {
+const AddRevenueItem = ({ itemType, categroys, subcategroys, brands, models, suppliers }) => {
     console.log(itemType)
     // cole.log(models)
     const [filteredCategory, setFilteredCategory] = useState([]);
@@ -75,7 +75,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
         const withvalues = { ...values, pbsCode, addByMobileNo };
         console.log(withvalues)
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`http://localhost:5000/api/v1/capital-item/create-capital-item`, {
+        fetch(`http://localhost:5000/api/v1/revenue-item/create-revenue-item`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -99,7 +99,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
     return (
         <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish}>
             {contextHolder}
-            <Title level={2}>Add Capital Item</Title>
+            <Title level={2}>Add Revenue Item</Title>
             {/* <Form.Item
                 label="Product Name"
                 name="name"
@@ -119,7 +119,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
                 hasFeedback
                 rules={[
                     {
-                        required: true,
+                        // required: true,
                         message: 'Please provide a Serial Number',
                     },
                 ]}
@@ -156,19 +156,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
             >
                 <Input placeholder="Price" />
             </Form.Item>
-            <Form.Item
-                label="Identification Number"
-                name="identificationNo"
-                hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please provide a Identification Number',
-                    },
-                ]}
-            >
-                <Input placeholder="Identification Number" />
-            </Form.Item>
+
 
 
             <Form.Item label="Warranty" name="warranty" hasFeedback rules={[
@@ -210,7 +198,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
                 },
             ]}>
                 <Select placeholder="Select a Item Type" allowClear onChange={(value) => handleCategory(value)}>
-                    {itemType.map((brand) => (brand.itemType === 'Capital' &&
+                    {itemType.map((brand) => (brand.itemType === 'Revenue' &&
                         <Option value={brand.id} key={brand.id}>
                             {brand.itemType}
                         </Option>
@@ -302,4 +290,4 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
     );
 };
 
-export default AddCapitalItem;
+export default AddRevenueItem;

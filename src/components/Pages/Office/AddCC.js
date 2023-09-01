@@ -15,6 +15,8 @@ import {
 import { notification } from "antd";
 import { useSession } from 'next-auth/react';
 const { Option } = Select;
+import { Typography } from 'antd';
+const { Title } = Typography;
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -66,6 +68,7 @@ const AddCC = ({ zonals }) => {
   return (
     <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish}>
       {contextHolder}
+      <Title level={2}>Add Complain Center</Title>
       <Form.Item label="Zonal" name="zonalCode" hasFeedback rules={[
         {
           required: true,

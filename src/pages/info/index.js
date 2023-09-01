@@ -17,6 +17,7 @@ import AddSupplier from '@/components/Pages/Info/AddSupplier';
 import AddBrand from '@/components/Pages/Info/AddBrand';
 import AddModel from '@/components/Pages/Info/AddModel';
 import AddCapitalItem from '@/components/Pages/Info/AddCapitalItem';
+import AddRevenueItem from '@/components/Pages/Info/AddRevenueItem';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -38,7 +39,9 @@ export async function getServerSideProps(context) {
       Authorization: accessToken,
     },
   }
-  const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item`, getMethod);
+  const resRevenueItem = await fetch(`${process.env.BACKEND_URL}/api/v1/revenue-item/${session?.pbs_code?.pbs_code}`, getMethod);
+  const dataRevenueItem = await resRevenueItem.json();
+  const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/${session?.pbs_code?.pbs_code}`, getMethod);
   const dataCapitalItem = await resCapitalItem.json();
   const resBrand = await fetch(`${process.env.BACKEND_URL}/api/v1/brand`, getMethod);
   const dataBrand = await resBrand.json();
@@ -55,6 +58,7 @@ export async function getServerSideProps(context) {
   // //console.log(data);
   return {
     props: {
+      revenueItem: dataRevenueItem.data || [],
       capitalItem: dataCapitalItem.data || [],
       brands: dataBrand.data || [],
       models: dataModel.data || [],
@@ -65,7 +69,7 @@ export async function getServerSideProps(context) {
     },
   };
 }
-const Categories = ({ capitalItem, brands, models, suppliers, dataItemType, categroys, subcategroys }) => {
+const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemType, categroys, subcategroys }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   // //console.log(session?.zonal_code);
@@ -101,8 +105,9 @@ const Categories = ({ capitalItem, brands, models, suppliers, dataItemType, cate
       <Header>
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
-          {formId == 2 && <ManageRevinueItem ></ManageRevinueItem>}
-          {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} dataItemType={dataItemType} categroys={categroys} subcategroys={subcategroys}></AddCapitalItem>}
+          {formId == 1 && <AddRevenueItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></AddRevenueItem>}
+          {formId == 2 && <ManageRevinueItem revenueItem={revenueItem}></ManageRevinueItem>}
+          {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></AddCapitalItem>}
           {formId == 4 && <ManageCapitalItem capitalItem={capitalItem}></ManageCapitalItem>}
           {formId == 7 && <AddBrand></AddBrand>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}

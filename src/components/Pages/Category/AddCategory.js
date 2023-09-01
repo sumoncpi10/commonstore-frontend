@@ -15,6 +15,8 @@ import {
 import { notification } from "antd";
 import { useSession } from 'next-auth/react';
 const { Option } = Select;
+import { Typography } from 'antd';
+const { Title } = Typography;
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -64,6 +66,7 @@ const AddCategory = ({ itemType }) => {
     return (
         <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish}>
             {contextHolder}
+            <Title level={2}>Add Category</Title>
             <Form.Item label="Item Type" name="itemTypeId" hasFeedback rules={[
                 {
                     required: true,
