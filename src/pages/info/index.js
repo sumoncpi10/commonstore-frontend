@@ -21,9 +21,8 @@ import AddRevenueItem from '@/components/Pages/Info/AddRevenueItem';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  // //console.log(session);
+
   if (!session || session.role.role !== "admin") {
-    // Redirect to a page with an appropriate message or display an error message
     return {
       redirect: {
         destination: "/",
@@ -69,12 +68,64 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+// export async function getStaticProps(context) {
+//   const session = await getSession(context);
+//   if (!session || session.role.role !== 'admin') {
+//     return {
+//       redirect: {
+//         destination: '/',
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   const accessToken = session?.accessToken?.accessToken;
+//   const getMethod = {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: accessToken,
+//     },
+//   };
+
+//   // Fetch data at build time
+//   const resRevenueItem = await fetch(`${process.env.BACKEND_URL}/api/v1/revenue-item/${session?.pbs_code?.pbs_code}`, getMethod);
+//   const dataRevenueItem = await resRevenueItem.json();
+//   const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/${session?.pbs_code?.pbs_code}`, getMethod);
+//   const dataCapitalItem = await resCapitalItem.json();
+//   const resBrand = await fetch(`${process.env.BACKEND_URL}/api/v1/brand`, getMethod);
+//   const dataBrand = await resBrand.json();
+//   const resModel = await fetch(`${process.env.BACKEND_URL}/api/v1/model`, getMethod);
+//   const dataModel = await resModel.json();
+//   const resSupplier = await fetch(`${process.env.BACKEND_URL}/api/v1/supplier/${session?.pbs_code?.pbs_code}`, getMethod);
+//   const dataSupplier = await resSupplier.json();
+//   const resItemType = await fetch(`${process.env.BACKEND_URL}/api/v1/item-type`, getMethod);
+//   const dataItemType = await resItemType.json();
+//   const resCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/category`, getMethod);
+//   const dataCategory = await resCategory.json();
+//   const resSubCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/sub-category`, getMethod);
+//   const dataSubCategory = await resSubCategory.json();
+
+//   return {
+//     props: {
+//       revenueItem: dataRevenueItem.data || [],
+//       capitalItem: dataCapitalItem.data || [],
+//       brands: dataBrand.data || [],
+//       models: dataModel.data || [],
+//       suppliers: dataSupplier.data || [],
+//       itemType: dataItemType.data || [],
+//       categroys: dataCategory.data || [],
+//       subcategroys: dataSubCategory.data || [],
+//     },
+//   };
+// }
 const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemType, categroys, subcategroys }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   // //console.log(session?.zonal_code);
 
-  const [formId, setFormId] = useState(2);
+  const [formId, setFormId] = useState();
   const category = [
     {
       "id": "1",
@@ -98,13 +149,12 @@ const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemT
     }
   ]
 
-  // //console.log(category);
   return (
     <div>
       {contextHolder}
       <Header>
         <InfoEntrySidebar category={category} setFormId={setFormId}>
-          {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>}
+          {!formId && <FeaturedCategories key={categroys.id} categroys={categroys}></FeaturedCategories>}
           {formId == 1 && <AddRevenueItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></AddRevenueItem>}
           {formId == 2 && <ManageRevinueItem revenueItem={revenueItem}></ManageRevinueItem>}
           {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></AddCapitalItem>}

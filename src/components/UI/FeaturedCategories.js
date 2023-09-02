@@ -11,7 +11,8 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 
-const FeaturedCategories = ({ allProducts }) => {
+const FeaturedCategories = ({ categroys }) => {
+  console.log(categroys)
   const { Meta } = Card;
 
   return (
@@ -26,7 +27,7 @@ const FeaturedCategories = ({ allProducts }) => {
         #Info Categories
       </h1>
       <Row gutter={[16, 16]}>
-        {allProducts?.map((part) => (
+        {categroys?.map((part) => (
           <Col key={part.id} xs={24} sm={12} md={8} lg={8}>
             <Card
               hoverable
@@ -40,7 +41,7 @@ const FeaturedCategories = ({ allProducts }) => {
             //   />
             // }
             >
-              <Meta title={part?.category} />
+              <Meta title={part?.categoryName} />
               <div
                 className="line"
               // style={{
@@ -77,7 +78,7 @@ const FeaturedCategories = ({ allProducts }) => {
                   ? part?.product_name.slice(0, 70) + "..."
                   : part?.product_name}
               </p> */}
-              <Link href={`/info/${part?.category}`}>
+              <Link href={`/info/${part?.categoryName}`}>
                 <p
                   style={{
                     fontSize: "15px",
