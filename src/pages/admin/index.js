@@ -83,9 +83,9 @@ const AdminPage = ({ itemType, categroys, subcategroys, designations, department
         <AdminSidebar setZonalCode={setZonalCode} setformId={setformId}>
           {/* <PBS zonals={zonals} ccs={ccs}></PBS> */}
           {formId == 1 && <AddSubCategory categroys={categroys}></AddSubCategory>}
-          {formId == 2 && <ManageSubCategory subcategroys={subcategroys}></ManageSubCategory>}
+          {formId == 2 && <ManageSubCategory categroys={categroys} subcategroys={subcategroys}></ManageSubCategory>}
           {formId == 3 && <AddCategory itemType={itemType}></AddCategory>}
-          {formId == 4 && <ManageCategory categroys={categroys}></ManageCategory>}
+          {formId == 4 && <ManageCategory categroys={categroys} itemType={itemType}></ManageCategory>}
           {formId == 5 && <AddDesignation departments={departments}></AddDesignation>}
           {formId == 6 && <ManageDesignation designations={designations}></ManageDesignation>}
           {formId == 7 && <AddDepartment></AddDepartment>}

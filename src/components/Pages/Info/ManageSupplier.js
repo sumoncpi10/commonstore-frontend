@@ -1,8 +1,10 @@
 
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { Button, Modal, Form, Input, Popconfirm, Table } from 'antd';
+import { notification } from "antd";
 const EditableContext = React.createContext(null);
 import { Typography } from 'antd';
+import { useSession } from 'next-auth/react';
 const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
@@ -81,7 +83,8 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 const ManageSupplier = ({ suppliers }) => {
-  //console.log(suppliers);
+  console.log(suppliers);
+  const { data: session } = useSession();
   const [dataSource, setDataSource] = useState(suppliers);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -102,6 +105,16 @@ const ManageSupplier = ({ suppliers }) => {
     {
       title: 'Phone',
       dataIndex: 'phone',
+    },
+    {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        dataSource.length >= 1 ? (
+          <Popconfirm title="Sure to Update?" onConfirm={() => showModal(record)}>
+            <a>Update</a>
+          </Popconfirm>
+        ) : null,
     },
     {
       title: 'operation',
@@ -155,6 +168,73 @@ const ManageSupplier = ({ suppliers }) => {
       }),
     };
   });
+  const [open, setOpen] = useState(false);
+  const [selectedSupplier, setSelectedSupplier] = useState(null);
+  const [form] = Form.useForm();
+  useEffect(() => {
+    if (selectedSupplier) {
+      form.setFieldsValue({
+        id: selectedSupplier.id,
+        name: selectedSupplier.name,
+        phone: selectedSupplier.phone,
+        address: selectedSupplier.address,
+      });
+    }
+  }, [selectedSupplier, form]);
+  const showModal = (record) => {
+    setSelectedSupplier(record);
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+    setSelectedSupplier(null);
+  };
+  const formItemLayout = {
+    labelCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 6,
+      },
+    },
+    wrapperCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 14,
+      },
+    },
+  };
+  const [api, contextHolder] = notification.useNotification();
+  const onFinish = (values) => {
+    console.log(values)
+    const pbsCode = session?.pbs_code?.pbs_code;
+    const withvalues = { ...values, pbsCode };
+    //console.log(withvalues);
+    const accessToken = session?.accessToken?.accessToken;
+    fetch(`https://pbscommonstore.onrender.com/api/v1/supplier/${values?.id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: accessToken,
+      },
+      body: JSON.stringify(withvalues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+
+        const openNotificationWithIcon = (type) => {
+          api[type]({
+            message: data?.message,
+          });
+        };
+        openNotificationWithIcon('success')
+        setOpen(false);
+      });
+  };
   return (
     <div>
       {/* <Button
@@ -174,6 +254,75 @@ const ManageSupplier = ({ suppliers }) => {
         dataSource={dataSource}
         columns={columns}
       />
+      <Modal
+        open={open}
+        // title="Update Category"
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish} form={form}>
+          {contextHolder}
+          <Title level={2}>Update Supplier</Title>
+          <Form.Item
+            label="Supplier ID"
+            name="id"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a supplier ID',
+              },
+            ]}
+          >
+            <Input placeholder="Supplier ID" disabled />
+          </Form.Item>
+          <Form.Item
+            label="Supplier Name"
+            name="name"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a supplier name',
+              },
+            ]}
+          >
+            <Input placeholder="Supplier Name" />
+          </Form.Item>
+          <Form.Item
+            label="Phone"
+            name="phone"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Phone Number',
+              },
+            ]}
+          >
+            <Input placeholder="Phone Number" />
+          </Form.Item>
+          <Form.Item
+            label="Address"
+            name="address"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Address is required',
+              },
+            ]}
+          >
+            <Input.TextArea allowClear showCount />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
+            <Button type="primary" htmlType="submit" block>
+              Update
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };

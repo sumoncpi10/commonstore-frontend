@@ -156,9 +156,9 @@ const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemT
         <InfoEntrySidebar category={category} setFormId={setFormId}>
           {!formId && <FeaturedCategories key={categroys.id} categroys={categroys}></FeaturedCategories>}
           {formId == 1 && <AddRevenueItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></AddRevenueItem>}
-          {formId == 2 && <ManageRevinueItem revenueItem={revenueItem}></ManageRevinueItem>}
-          {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></AddCapitalItem>}
-          {formId == 4 && <ManageCapitalItem capitalItem={capitalItem}></ManageCapitalItem>}
+          {formId == 2 && <ManageRevinueItem revenueItem={revenueItem} brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></ManageRevinueItem>}
+          {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys} ></AddCapitalItem>}
+          {formId == 4 && <ManageCapitalItem capitalItem={capitalItem} brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys} ></ManageCapitalItem>}
           {formId == 7 && <AddBrand></AddBrand>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
           {formId == 9 && <AddModel brands={brands}></AddModel>}

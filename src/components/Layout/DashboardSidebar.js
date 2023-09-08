@@ -26,21 +26,27 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
         };
     }
     const items = [
+        getItem('Certify', 'sub1', <UserOutlined />, [
+            getItem('Capital Item', '1'),
+            // getItem('Revinue Item', '2'),
+        ]),
+        getItem('Approve', 'sub2', <UserOutlined />, [
+            getItem('Capital Item', '2'),
+            // getItem('Revinue Item', '2'),
+        ]),
         getItem('Transection', 'sub3', <UserOutlined />, [
-            getItem('Demand Capital Item', '5'),
-            getItem('Demand Revinue Item', '6'),
+            getItem('Demand Capital Item', '3'),
+            getItem('Demand Revinue Item', '4'),
             getItem('Issue To Me', '7'),
         ]),
-        getItem('My Products', 'sub1', <UserOutlined />, [
-            getItem('Capital Item', '1'),
-            getItem('Revinue Item', '2'),
+        getItem('My Products', 'sub4', <UserOutlined />, [
+            getItem('Capital Item', '5'),
+            getItem('Revinue Item', '6'),
         ]),
-        getItem('Used Item', 'sub2', <UserOutlined />, [
-            getItem('Capital Item', '3'),
-            getItem('Revinue Item', '4'),
+        getItem('Used Item', 'sub5', <UserOutlined />, [
+            getItem('Capital Item', '7'),
+            getItem('Revinue Item', '8'),
         ]),
-
-
         // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
     ];
 

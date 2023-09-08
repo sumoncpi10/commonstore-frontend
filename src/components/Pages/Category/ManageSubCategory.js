@@ -1,7 +1,8 @@
 
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { Button, Modal, Select, Form, Input, Popconfirm, Table } from 'antd';
 const EditableContext = React.createContext(null);
+import { notification } from "antd";
 import { Typography } from 'antd';
 const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
@@ -80,8 +81,8 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const ManageSubCategory = ({ subcategroys }) => {
-  //console.log(subcategroys);
+const ManageSubCategory = ({ subcategroys, categroys }) => {
+  console.log(subcategroys);
   const [dataSource, setDataSource] = useState(subcategroys);
   const [count, setCount] = useState(2);
   const handleDelete = (key) => {
@@ -110,6 +111,16 @@ const ManageSubCategory = ({ subcategroys }) => {
     //   title: 'Updated At',
     //   dataIndex: 'updatedAt',
     // },
+    {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        dataSource.length >= 1 ? (
+          <Popconfirm title="Sure to Update?" onConfirm={() => showModal(record)}>
+            <a>Update</a>
+          </Popconfirm>
+        ) : null,
+    },
     {
       title: 'operation',
       dataIndex: 'operation',
@@ -162,6 +173,46 @@ const ManageSubCategory = ({ subcategroys }) => {
       }),
     };
   });
+  const [open, setOpen] = useState(false);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const formInitialValues = selectedSubCategory
+    ? {
+      id: selectedSubCategory.id,
+      categoryId: selectedSubCategory.categoryId,
+      categoryName: selectedSubCategory.category.categoryName,
+      subCategoryName: selectedSubCategory.subCategoryName,
+    }
+    : {};
+  const showModal = (record) => {
+    setSelectedSubCategory(record);
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
+  const formItemLayout = {
+    labelCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 6,
+      },
+    },
+    wrapperCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 14,
+      },
+    },
+  };
+  const [api, contextHolder] = notification.useNotification();
+  const onFinish = (values) => {
+    console.log(values)
+  };
   return (
     <div>
       <Title level={2}>Manage Sub Category</Title>
@@ -181,6 +232,64 @@ const ManageSubCategory = ({ subcategroys }) => {
         dataSource={dataSource}
         columns={columns}
       />
+      <Modal
+        open={open}
+        // title="Update Category"
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish} initialValues={formInitialValues}>
+          {contextHolder}
+          <Title level={2}>Update Sub Category</Title>
+          <Form.Item
+            label="Sub Category ID"
+            name="id"
+            hasFeedback
+
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Sub Category ID',
+              },
+            ]}
+          >
+            <Input placeholder="Sub Category ID" disabled />
+          </Form.Item>
+          <Form.Item label="Category" name="categoryId" hasFeedback rules={[
+            {
+              required: true,
+              message: 'Please provide a Item Type name',
+            },
+          ]}>
+            <Select placeholder="Select a Item Type" allowClear>
+              {categroys.map((brand) => (
+                <Option value={brand.id} key={brand.id}>
+                  {brand.categoryName}
+                </Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Sub Category Name"
+            name="subCategoryName"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Sub Category name',
+              },
+            ]}
+          >
+            <Input placeholder="Sub Category Name" />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
+            <Button type="primary" htmlType="submit" block>
+              Update
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };

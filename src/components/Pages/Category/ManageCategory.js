@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { Button, Form, Input, Modal, Popconfirm, Select, Table } from 'antd';
 const EditableContext = React.createContext(null);
 import { Typography } from 'antd';
+import { notification } from "antd";
 const { Title } = Typography;
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
@@ -79,10 +80,10 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const ManageCategory = ({ categroys }) => {
-  //console.log(categroys);
+const ManageCategory = ({ categroys, itemType }) => {
+  console.log(categroys);
   const [dataSource, setDataSource] = useState(categroys);
-  const [count, setCount] = useState(2);
+
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.id !== key);
     setDataSource(newData);
@@ -111,22 +112,23 @@ const ManageCategory = ({ categroys }) => {
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
+          <Popconfirm title="Sure to Update?" onConfirm={() => showModal(record)}>
+            <a>Update</a>
+          </Popconfirm>
+        ) : null,
+    },
+    {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        dataSource.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?.id)}>
             <a>Delete</a>
           </Popconfirm>
         ) : null,
     },
   ];
-  const handleAdd = () => {
-    const newData = {
-      key: count,
-      name: `Edward King ${count}`,
-      age: '32',
-      address: `London, Park Lane no. ${count}`,
-    };
-    setDataSource([...dataSource, newData]);
-    setCount(count + 1);
-  };
+
   const handleSave = (row) => {
     const newData = [...dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -158,18 +160,49 @@ const ManageCategory = ({ categroys }) => {
       }),
     };
   });
+  const [open, setOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const formInitialValues = selectedCategory
+    ? {
+      id: selectedCategory.id,
+      itemTypeId: selectedCategory.itemType.id,
+      categoryName: selectedCategory.categoryName,
+    }
+    : {};
+  const showModal = (record) => {
+    setSelectedCategory(record);
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
+  const formItemLayout = {
+    labelCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 6,
+      },
+    },
+    wrapperCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 14,
+      },
+    },
+  };
+  const [api, contextHolder] = notification.useNotification();
+  const onFinish = (values) => {
+    console.log(values)
+  };
   return (
     <div>
       <Title level={2}>Manage Category</Title>
-      {/* <Button
-        onClick={handleAdd}
-        type="primary"
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        Add a row
-      </Button> */}
+
       <Table
         components={components}
         rowClassName={() => 'editable-row'}
@@ -177,6 +210,63 @@ const ManageCategory = ({ categroys }) => {
         dataSource={dataSource}
         columns={columns}
       />
+      <Modal
+        open={open}
+        // title="Update Category"
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish} initialValues={formInitialValues}>
+          {contextHolder}
+          <Title level={2}>Update Category</Title>
+          <Form.Item
+            label="Category ID"
+            name="id"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Category ID',
+              },
+            ]}
+          >
+            <Input placeholder="Category ID" />
+          </Form.Item>
+          <Form.Item label="Item Type" name="itemTypeId" hasFeedback rules={[
+            {
+              required: true,
+              message: 'Please provide a Item Type name',
+            },
+          ]}>
+            <Select placeholder="Select a Item Type" allowClear>
+              {itemType.map((brand) => (
+                <Option value={brand.id} key={brand.id}>
+                  {brand.itemType}
+                </Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Category Name"
+            name="categoryName"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Category name',
+              },
+            ]}
+          >
+            <Input placeholder="Category Name" />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
+            <Button type="primary" htmlType="submit" block>
+              Update
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };

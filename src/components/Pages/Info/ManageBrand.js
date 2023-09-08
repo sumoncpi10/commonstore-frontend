@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { Button, Modal, Select, Form, Input, Popconfirm, Table } from 'antd';
+import { notification } from "antd";
 const EditableContext = React.createContext(null);
 import { Typography } from 'antd';
 const { Title } = Typography;
@@ -107,6 +108,16 @@ const ManageBrand = ({ brands }) => {
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
+          <Popconfirm title="Sure to Update?" onConfirm={() => showModal(record)}>
+            <a>Update</a>
+          </Popconfirm>
+        ) : null,
+    },
+    {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        dataSource.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?.id)}>
             <a>Delete</a>
           </Popconfirm>
@@ -154,17 +165,50 @@ const ManageBrand = ({ brands }) => {
       }),
     };
   });
+  const [open, setOpen] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [form] = Form.useForm();
+  useEffect(() => {
+    if (selectedBrand) {
+      form.setFieldsValue({
+        id: selectedBrand.id,
+        brandName: selectedBrand.brandName,
+      });
+    }
+  }, [selectedBrand, form]);
+  const showModal = (record) => {
+    setSelectedBrand(record);
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+    setSelectedBrand(null);
+  };
+  const formItemLayout = {
+    labelCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 6,
+      },
+    },
+    wrapperCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 14,
+      },
+    },
+  };
+  const [api, contextHolder] = notification.useNotification();
+  const onFinish = (values) => {
+    console.log(values)
+  };
   return (
     <div>
-      {/* <Button
-        onClick={handleAdd}
-        type="primary"
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        Add a row
-      </Button> */}
       <Title level={2}>Manage Brand</Title>
       <Table
         components={components}
@@ -173,6 +217,50 @@ const ManageBrand = ({ brands }) => {
         dataSource={dataSource}
         columns={columns}
       />
+      <Modal
+        open={open}
+        // title="Update Category"
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish} form={form}>
+          {contextHolder}
+          <Title level={2}>Update Brand</Title>
+          <Form.Item
+            label="Brand ID"
+            name="id"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Brand ID',
+              },
+            ]}
+          >
+            <Input placeholder="Brand ID" disabled />
+          </Form.Item>
+
+          <Form.Item
+            label="Brand Name"
+            name="brandName"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please provide a Brand name',
+              },
+            ]}
+          >
+            <Input placeholder="Brand Name" />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
+            <Button type="primary" htmlType="submit" block>
+              Update
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };
