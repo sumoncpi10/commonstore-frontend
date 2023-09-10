@@ -45,7 +45,7 @@ const AddSupplier = () => {
     const withvalues = { ...values, pbsCode };
     //console.log(withvalues);
     const accessToken = session?.accessToken?.accessToken;
-    fetch(`https://pbscommonstore.onrender.com/api/v1/supplier/create-supplier`, {
+    fetch(`http://localhost:5000/api/v1/supplier/create-supplier`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

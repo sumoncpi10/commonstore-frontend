@@ -75,7 +75,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
         const withvalues = { ...values, pbsCode, addByMobileNo };
         console.log(withvalues)
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`https://pbscommonstore.onrender.com/api/v1/capital-item/create-capital-item`, {
+        fetch(`http://localhost:5000/api/v1/capital-item/create-capital-item`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -156,7 +156,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
             >
                 <Input placeholder="Price" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
                 label="Identification Number"
                 name="identificationNo"
                 hasFeedback
@@ -168,7 +168,7 @@ const AddCapitalItem = ({ itemType, categroys, subcategroys, brands, models, sup
                 ]}
             >
                 <Input placeholder="Identification Number" />
-            </Form.Item>
+            </Form.Item> */}
 
 
             <Form.Item label="Warranty" name="warranty" hasFeedback rules={[

@@ -92,19 +92,19 @@ const config = {
         },
     ],
 };
-const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcategroys, brands, models, suppliers }) => {
-    console.log(notCertifyCapitalItem);
+const ReceivedCapitalItem = ({ notReceiveCapitalItem, capitalItem, itemType, categroys, subcategroys, brands, models, suppliers }) => {
+    console.log(notReceiveCapitalItem);
     const { data: session } = useSession();
     const [filteredCategory, setFilteredCategory] = useState([]);
     const [filteredSubCategory, setFilteredSubCategory] = useState([]);
     const [filteredModel, setModel] = useState([]);
     console.log(filteredCategory, filteredSubCategory)
     const handleCategory = (key) => {
-        const newData = categroys.filter((item) => item.itemTypeId == key);
+        const newData = categroys?.filter((item) => item.itemTypeId == key);
         setFilteredCategory(newData);
     };
     const handleSubCategory = (key) => {
-        const newData = subcategroys.filter((item) => item.categoryId == key);
+        const newData = subcategroys?.filter((item) => item.categoryId == key);
         setFilteredSubCategory(newData);
     };
 
@@ -117,15 +117,15 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
     const [distinctZonals, setdistinctZonals] = useState([]);
 
     useEffect(() => {
-        const subCategoryNames = Array.from(new Set(notCertifyCapitalItem.map(item => item?.subCategory?.subCategoryName)));
+        const subCategoryNames = Array.from(new Set(notReceiveCapitalItem.map(item => item?.subCategory?.subCategoryName)));
         setDistinctSubCategories(subCategoryNames);
-        const CategoryNames = Array.from(new Set(notCertifyCapitalItem.map(item => item?.category?.categoryName)));
+        const CategoryNames = Array.from(new Set(notReceiveCapitalItem.map(item => item?.category?.categoryName)));
         setDistinctCategories(CategoryNames);
-        const zonalNames = Array.from(new Set(notCertifyCapitalItem.map(item => item?.zonals?.zonalName)));
+        const zonalNames = Array.from(new Set(notReceiveCapitalItem.map(item => item?.zonals?.zonalName)));
         setdistinctZonals(zonalNames);
-    }, [notCertifyCapitalItem]);
+    }, [capitalItem]);
     //console.log(distinctCategories);
-    const [dataSource, setDataSource] = useState(notCertifyCapitalItem);
+    const [dataSource, setDataSource] = useState(notReceiveCapitalItem);
     const [count, setCount] = useState(2);
     const handleDelete = (key) => {
         const newData = dataSource.filter((item) => item.id !== key);
@@ -192,8 +192,8 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
             dataIndex: 'operation',
             render: (_, record) =>
                 dataSource.length >= 1 ? (
-                    <Popconfirm title="Sure to Certify?" onConfirm={() => onFinish(record)}>
-                        <a>Certify</a>
+                    <Popconfirm title="Have You Recevied The Product?" onConfirm={() => onFinish(record)}>
+                        <a>Receive</a>
                     </Popconfirm>
                 ) : null,
         },
@@ -306,12 +306,12 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
     const [api, contextHolder] = notification.useNotification();
     const onFinish = (values) => {
         console.log(values)
-        // const pbsCode = session?.pbs_code?.pbs_code;
-        const certifiedByMobileNo = session?.mobileNo?.mobileNo;
-        const withvalues = { certifiedByMobileNo };
+        const pbsCode = session?.pbs_code?.pbs_code;
+        const receivedByMobileNo = session?.mobileNo?.mobileNo;
+        const withvalues = { ...values, pbsCode, receivedByMobileNo };
         console.log(withvalues);
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`http://localhost:5000/api/v1/capital-item/certify-capital-item/${values?.id}`, {
+        fetch(`http://localhost:5000/api/v1/capital-item/receive-capital-item/${values?.id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -397,4 +397,4 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
         </div>
     );
 };
-export default CertifyCapitalItem;
+export default ReceivedCapitalItem;

@@ -215,7 +215,7 @@ const ManageSupplier = ({ suppliers }) => {
     const withvalues = { ...values, pbsCode };
     //console.log(withvalues);
     const accessToken = session?.accessToken?.accessToken;
-    fetch(`https://pbscommonstore.onrender.com/api/v1/supplier/${values?.id}`, {
+    fetch(`http://localhost:5000/api/v1/supplier/${values?.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

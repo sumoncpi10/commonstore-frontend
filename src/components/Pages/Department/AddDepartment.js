@@ -42,7 +42,7 @@ const AddDepartment = () => {
     const onFinish = (values) => {
         //console.log('Received values:', values);
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`https://pbscommonstore.onrender.com/api/v1/department/create-department`, {
+        fetch(`http://localhost:5000/api/v1/department/create-department`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

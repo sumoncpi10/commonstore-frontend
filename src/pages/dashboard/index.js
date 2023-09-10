@@ -8,6 +8,8 @@ import React, { useState } from 'react';
 import { message, notification } from "antd";
 import { getSession, useSession } from 'next-auth/react';
 import CertifyCapitalItem from '@/components/Dashboard/CertifyCapitalItem';
+import IssueCapitalItem from '@/components/Dashboard/IssueCapitalItem';
+import ReceivedCapitalItem from '@/components/Dashboard/ReceivedCapitalItem';
 export async function getServerSideProps(context) {
     const session = await getSession(context);
 
@@ -31,16 +33,24 @@ export async function getServerSideProps(context) {
     const dataRevenueItem = await resRevenueItem.json();
     const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/${session?.pbs_code?.pbs_code}`, getMethod);
     const dataCapitalItem = await resCapitalItem.json();
+    const resNotCertifyCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-certify/${session?.pbs_code?.pbs_code}`, getMethod);
+    const dataNotCertifyCapitalItem = await resNotCertifyCapitalItem.json();
+    const resNotReceivedCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-receive/${session?.pbs_code?.pbs_code}`, getMethod);
+    const dataNotReceivedCapitalItem = await resNotReceivedCapitalItem.json();
+
     // //console.log(data);
     return {
         props: {
             revenueItem: dataRevenueItem.data || [],
             capitalItem: dataCapitalItem.data || [],
+            notCertifyCapitalItem: dataNotCertifyCapitalItem.data || [],
+            notReceiveCapitalItem: dataNotReceivedCapitalItem.data || [],
+
 
         },
     };
 }
-const Categories = ({ revenueItem, capitalItem }) => {
+const Categories = ({ revenueItem, capitalItem, notCertifyCapitalItem, notReceiveCapitalItem }) => {
     //console.log(electricity)
     const [api, contextHolder] = notification.useNotification();
     const { data: session } = useSession();
@@ -53,7 +63,9 @@ const Categories = ({ revenueItem, capitalItem }) => {
             <Header>
                 <DashboardSidebar setFormId={setFormId}>
                     {/* {!formId && <FeaturedCategories key={category.category} allProducts={category}></FeaturedCategories>} */}
-                    {formId == 1 && <CertifyCapitalItem capitalItem={capitalItem}></CertifyCapitalItem>}
+
+                    {formId == 1 && <CertifyCapitalItem notCertifyCapitalItem={notCertifyCapitalItem}></CertifyCapitalItem>}
+                    {formId == 5 && <ReceivedCapitalItem notReceiveCapitalItem={notReceiveCapitalItem}></ReceivedCapitalItem>}
                     {/* {formId == 12 && <ElectricityReport electricity={electricity}></ElectricityReport>}
                     {formId == 13 && <ElectricityReport electricity={electricity1}></ElectricityReport>}
                     {formId == 21 && <ComplainAddForm ></ComplainAddForm>}

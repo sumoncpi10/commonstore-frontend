@@ -43,12 +43,14 @@ const AddUser = () => {
     const onFinish = (values) => {
         //console.log('Received values:', values);
         const pbsCode = session?.pbs_code?.pbs_code;
+        const accessToken = session?.accessToken?.accessToken;
         const withvalues = { ...values, pbsCode };
         //console.log(withvalues);
-        fetch(`https://pbscommonstore.onrender.com/api/v1/user/create-user`, {
+        fetch(`http://localhost:5000/api/v1/user/create-user`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
+                Authorization: accessToken,
             },
             body: JSON.stringify(withvalues),
         })

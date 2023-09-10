@@ -314,7 +314,7 @@ const ManageCapitalItem = ({ revenueItem, itemType, categroys, subcategroys, bra
         const withvalues = { ...values, pbsCode, addByMobileNo, purchasedate };
         console.log(withvalues);
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`https://pbscommonstore.onrender.com/api/v1/revenue-item/${values?.id}`, {
+        fetch(`http://localhost:5000/api/v1/revenue-item/${values?.id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

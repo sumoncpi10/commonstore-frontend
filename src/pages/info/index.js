@@ -18,6 +18,7 @@ import AddBrand from '@/components/Pages/Info/AddBrand';
 import AddModel from '@/components/Pages/Info/AddModel';
 import AddCapitalItem from '@/components/Pages/Info/AddCapitalItem';
 import AddRevenueItem from '@/components/Pages/Info/AddRevenueItem';
+import IssueCapitalItem from '@/components/Dashboard/IssueCapitalItem';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -54,6 +55,12 @@ export async function getServerSideProps(context) {
   const dataCategory = await resCategory.json();
   const resSubCategory = await fetch(`${process.env.BACKEND_URL}/api/v1/sub-category`, getMethod);
   const dataSubCategory = await resSubCategory.json();
+  const resNotAssignCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-assign/${session?.pbs_code?.pbs_code}`, getMethod);
+  const dataNotAssignCapitalItem = await resNotAssignCapitalItem.json();
+  const resUsers = await fetch(`${process.env.BACKEND_URL}/api/v1/user/${session?.pbs_code?.pbs_code}`, getMethod);
+  const dataUsers = await resUsers.json();
+  const resZonal = await fetch(`${process.env.BACKEND_URL}/api/v1/zonal/${session?.pbs_code?.pbs_code}`, getMethod);
+  const dataZonal = await resZonal.json();
   // //console.log(data);
   return {
     props: {
@@ -65,6 +72,9 @@ export async function getServerSideProps(context) {
       itemType: dataItemType.data || [],
       categroys: dataCategory.data || [],
       subcategroys: dataSubCategory.data || [],
+      notAssignCapitalItem: dataNotAssignCapitalItem.data || [],
+      users: dataUsers.data || [],
+      zonals: dataZonal.data || [],
     },
   };
 }
@@ -120,7 +130,7 @@ export async function getServerSideProps(context) {
 //     },
 //   };
 // }
-const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemType, categroys, subcategroys }) => {
+const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemType, categroys, subcategroys, notAssignCapitalItem, users, zonals }) => {
   const [api, contextHolder] = notification.useNotification();
   const { data: session } = useSession();
   // //console.log(session?.zonal_code);
@@ -159,6 +169,7 @@ const Categories = ({ revenueItem, capitalItem, brands, models, suppliers, itemT
           {formId == 2 && <ManageRevinueItem revenueItem={revenueItem} brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys}></ManageRevinueItem>}
           {formId == 3 && <AddCapitalItem brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys} ></AddCapitalItem>}
           {formId == 4 && <ManageCapitalItem capitalItem={capitalItem} brands={brands} models={models} suppliers={suppliers} itemType={itemType} categroys={categroys} subcategroys={subcategroys} ></ManageCapitalItem>}
+          {formId == 5 && <IssueCapitalItem users={users} zonals={zonals} notAssignCapitalItem={notAssignCapitalItem}></IssueCapitalItem>}
           {formId == 7 && <AddBrand></AddBrand>}
           {formId == 8 && <ManageBrand brands={brands}></ManageBrand>}
           {formId == 9 && <AddModel brands={brands}></AddModel>}

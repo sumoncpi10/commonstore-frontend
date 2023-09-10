@@ -42,7 +42,7 @@ const AddDesignation = ({ departments }) => {
     const onFinish = (values) => {
         //console.log('Received values:', values);
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`https://pbscommonstore.onrender.com/api/v1/designation/create-designation`, {
+        fetch(`http://localhost:5000/api/v1/designation/create-designation`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

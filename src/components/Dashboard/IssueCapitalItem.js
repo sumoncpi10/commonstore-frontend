@@ -92,20 +92,26 @@ const config = {
         },
     ],
 };
-const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcategroys, brands, models, suppliers }) => {
-    console.log(notCertifyCapitalItem);
+const IssueCapitalItem = ({ itemType, categroys, subcategroys, brands, models, suppliers, notAssignCapitalItem, users, zonals }) => {
+    console.log(zonals);
+    console.log(users);
     const { data: session } = useSession();
     const [filteredCategory, setFilteredCategory] = useState([]);
     const [filteredSubCategory, setFilteredSubCategory] = useState([]);
+    const [filteredUsers, setFilteredUsers] = useState([]);
     const [filteredModel, setModel] = useState([]);
     console.log(filteredCategory, filteredSubCategory)
     const handleCategory = (key) => {
-        const newData = categroys.filter((item) => item.itemTypeId == key);
+        const newData = categroys?.filter((item) => item.itemTypeId == key);
         setFilteredCategory(newData);
     };
     const handleSubCategory = (key) => {
-        const newData = subcategroys.filter((item) => item.categoryId == key);
+        const newData = subcategroys?.filter((item) => item.categoryId == key);
         setFilteredSubCategory(newData);
+    };
+    const handleUsers = (key) => {
+        const newData = users?.filter((item) => item.zonalCode == key);
+        setFilteredUsers(newData);
     };
 
     const handleModel = (key) => {
@@ -117,15 +123,15 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
     const [distinctZonals, setdistinctZonals] = useState([]);
 
     useEffect(() => {
-        const subCategoryNames = Array.from(new Set(notCertifyCapitalItem.map(item => item?.subCategory?.subCategoryName)));
+        const subCategoryNames = Array.from(new Set(notAssignCapitalItem?.map(item => item?.subCategory?.subCategoryName)));
         setDistinctSubCategories(subCategoryNames);
-        const CategoryNames = Array.from(new Set(notCertifyCapitalItem.map(item => item?.category?.categoryName)));
+        const CategoryNames = Array.from(new Set(notAssignCapitalItem?.map(item => item?.category?.categoryName)));
         setDistinctCategories(CategoryNames);
-        const zonalNames = Array.from(new Set(notCertifyCapitalItem.map(item => item?.zonals?.zonalName)));
+        const zonalNames = Array.from(new Set(notAssignCapitalItem?.map(item => item?.zonals?.zonalName)));
         setdistinctZonals(zonalNames);
-    }, [notCertifyCapitalItem]);
+    }, [notAssignCapitalItem]);
     //console.log(distinctCategories);
-    const [dataSource, setDataSource] = useState(notCertifyCapitalItem);
+    const [dataSource, setDataSource] = useState(notAssignCapitalItem);
     const [count, setCount] = useState(2);
     const handleDelete = (key) => {
         const newData = dataSource.filter((item) => item.id !== key);
@@ -192,8 +198,8 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
             dataIndex: 'operation',
             render: (_, record) =>
                 dataSource.length >= 1 ? (
-                    <Popconfirm title="Sure to Certify?" onConfirm={() => onFinish(record)}>
-                        <a>Certify</a>
+                    <Popconfirm title="Sure to Issue?" onConfirm={() => showModal(record)}>
+                        <a>Issue</a>
                     </Popconfirm>
                 ) : null,
         },
@@ -260,19 +266,6 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
             // const specificDate = moment(selectedCapitalItem.purchasedate, 'YYYY-MM-DD');
             form.setFieldsValue({
                 id: selectedCapitalItem.id,
-                serialNo: selectedCapitalItem.serialNo,
-                description: selectedCapitalItem.description,
-                purchasedate: moment(selectedCapitalItem.purchasedate, 'YYYY-MM-DD'),
-                price: selectedCapitalItem.price,
-                identificationNo: selectedCapitalItem.identificationNo,
-                warranty: selectedCapitalItem.warranty,
-                status: selectedCapitalItem.status,
-                itemTypeId: selectedCapitalItem.itemTypeId,
-                categoryId: selectedCapitalItem.categoryId,
-                subCategoryid: selectedCapitalItem.subCategoryid,
-                brandId: selectedCapitalItem.brandId,
-                modelId: selectedCapitalItem.modelId,
-                supplierId: selectedCapitalItem.supplierId,
             });
         }
     }, [selectedCapitalItem, form]);
@@ -306,18 +299,15 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
     const [api, contextHolder] = notification.useNotification();
     const onFinish = (values) => {
         console.log(values)
-        // const pbsCode = session?.pbs_code?.pbs_code;
-        const certifiedByMobileNo = session?.mobileNo?.mobileNo;
-        const withvalues = { certifiedByMobileNo };
-        console.log(withvalues);
+
         const accessToken = session?.accessToken?.accessToken;
-        fetch(`http://localhost:5000/api/v1/capital-item/certify-capital-item/${values?.id}`, {
+        fetch(`http://localhost:5000/api/v1/capital-item/assign-capital-item/${values?.id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
                 Authorization: accessToken,
             },
-            body: JSON.stringify(withvalues),
+            body: JSON.stringify(values),
         })
             .then((res) => res.json())
             .then((data) => {
@@ -343,7 +333,7 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
       >
         Add a row
       </Button> */}
-            <Title level={2}>Certify Capital Item</Title>
+            <Title level={2}>Issue Capital Item</Title>
             <Table
                 components={components}
                 rowClassName={() => 'editable-row'}
@@ -352,7 +342,7 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
                 columns={columns}
                 onChange={onChange}
             />
-            {/* <Modal
+            <Modal
                 open={open}
                 // title="Update Category"
                 onCancel={handleCancel}
@@ -361,7 +351,7 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
 
                 <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish} form={form}>
                     {contextHolder}
-                    <Title level={2}>Certify Capital Item</Title>
+                    <Title level={2}>Issue Capital Item</Title>
 
                     <Form.Item
                         label="Product ID"
@@ -378,23 +368,42 @@ const CertifyCapitalItem = ({ notCertifyCapitalItem, itemType, categroys, subcat
                     </Form.Item>
 
 
-                    <Form.Item label="Category" name="categoryId" hasFeedback rules={[
+                    <Form.Item label="Zonal" name="zonalCode" hasFeedback rules={[
                         {
                             required: true,
-                            message: 'Please provide a Category name',
+                            message: 'Please provide a Zonal',
                         },
                     ]}>
-                        <Select placeholder="Select a Category" allowClear onChange={(value) => handleSubCategory(value)}>
-                            {filteredCategory.map((category) => (
-                                <Option value={category.id} key={category.id}>
-                                    {category.categoryName}
+                        <Select placeholder="Select a Zonal" allowClear onChange={(value) => handleUsers(value)}>
+                            {zonals?.map((category) => (
+                                <Option value={category.zonalCode} key={category.id}>
+                                    {category.zonalName}
                                 </Option>
                             ))}
                         </Select>
                     </Form.Item>
+                    <Form.Item label="Employee" name="assignTo" hasFeedback rules={[
+                        {
+                            required: true,
+                            message: 'Please provide a Employee',
+                        },
+                    ]}>
+                        <Select placeholder="Select a Employee" allowClear >
+                            {filteredUsers?.map((category) => (
+                                <Option value={category.mobileNo} key={category.mobileNo}>
+                                    {category.mobileNo}
+                                </Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                    <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
+                        <Button type="primary" htmlType="submit" block>
+                            Submit
+                        </Button>
+                    </Form.Item>
                 </Form>
-            </Modal> */}
+            </Modal>
         </div>
     );
 };
-export default CertifyCapitalItem;
+export default IssueCapitalItem;

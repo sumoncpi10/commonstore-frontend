@@ -44,7 +44,7 @@ const AddZonal = ({ brands }) => {
     const pbsCode = session?.pbs_code?.pbs_code;
     const accessToken = session?.accessToken?.accessToken;
     const withvalues = { ...values, pbsCode };
-    fetch(`https://pbscommonstore.onrender.com/api/v1/zonal/create-zonal`, {
+    fetch(`http://localhost:5000/api/v1/zonal/create-zonal`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
