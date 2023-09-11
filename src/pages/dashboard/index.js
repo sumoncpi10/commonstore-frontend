@@ -14,7 +14,7 @@ import ReceivedCapitalItem from '@/components/Dashboard/ReceivedCapitalItem';
 export async function getServerSideProps(context) {
     const session = await getSession(context);
 
-    if (!session || session.role.role !== "admin") {
+    if (!session || session?.role?.role !== "admin"||session?.role?.role !== "user") {
         return {
             redirect: {
                 destination: "/",
@@ -34,13 +34,15 @@ export async function getServerSideProps(context) {
     const dataRevenueItem = await resRevenueItem.json();
     const resCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/${session?.pbs_code?.pbs_code}`, getMethod);
     const dataCapitalItem = await resCapitalItem.json();
-    const resNotCertifyCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-certify/${session?.pbs_code?.pbs_code}`, getMethod);
-    const dataNotCertifyCapitalItem = await resNotCertifyCapitalItem.json();
-    const resNotApproveCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-approve/${session?.pbs_code?.pbs_code}`, getMethod);
-    const dataNotApproveCapitalItem = await resNotApproveCapitalItem.json();
     const resNotReceivedCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-receive/${session?.pbs_code?.pbs_code}`, getMethod);
     const dataNotReceivedCapitalItem = await resNotReceivedCapitalItem.json();
-
+    let dataNotCertifyCapitalItem="",dataNotApproveCapitalItem="";
+    if(session?.role?.role !== "admin"){
+        const resNotCertifyCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-certify/${session?.pbs_code?.pbs_code}`, getMethod);
+        dataNotCertifyCapitalItem = await resNotCertifyCapitalItem.json();
+        const resNotApproveCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-approve/${session?.pbs_code?.pbs_code}`, getMethod);
+        dataNotApproveCapitalItem = await resNotApproveCapitalItem.json();
+    }
     // //console.log(data);
     return {
         props: {
