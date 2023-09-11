@@ -28,11 +28,12 @@ const ResponsiveNav = ({ children }) => {
   const onClose = () => {
     setVisible(false);
   };
-  const menu = <>     <Menu.Item key="1" icon={<HomeOutlined />}>
+  const menu = <>     
+  {/* <Menu.Item key="1" icon={<HomeOutlined />}>
     <Link style={{ textDecoration: 'none' }} href="/">
       Home
     </Link>
-  </Menu.Item>
+  </Menu.Item> */}
     <Menu.Item key="2" icon={<FileProtectOutlined />}>
       <Link style={{ textDecoration: 'none' }} href="/info">
         Product Entry

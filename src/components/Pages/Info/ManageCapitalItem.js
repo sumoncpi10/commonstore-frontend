@@ -3,6 +3,10 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Modal, Form, Input, Popconfirm, Table, DatePicker, Select } from 'antd';
 import { notification } from "antd";
 import moment from 'moment';
+import {
+  DeleteFilled,
+  EditFilled
+} from '@ant-design/icons';
 const EditableContext = React.createContext(null);
 import { Typography } from 'antd';
 import { useSession } from 'next-auth/react';
@@ -197,7 +201,7 @@ const ManageCapitalItem = ({ capitalItem, itemType, categroys, subcategroys, bra
       render: (_, record) =>
         dataSource.length >= 1 ? (
           <Popconfirm title="Sure to Update?" onConfirm={() => showModal(record)}>
-            <a>Update</a>
+            {record?.certifiedByMobileNo===null &&<a><EditFilled /></a>}
           </Popconfirm>
         ) : null,
     },
@@ -206,8 +210,8 @@ const ManageCapitalItem = ({ capitalItem, itemType, categroys, subcategroys, bra
       dataIndex: 'operation',
       render: (_, record) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?.id)}>
-            <a>Delete</a>
+           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record?.id)}>
+           {record?.certifiedByMobileNo===null && <a>< DeleteFilled/></a>}
           </Popconfirm>
         ) : null,
     },
