@@ -57,7 +57,7 @@ export async function getServerSideProps(context) {
     };
 }
 const Categories = ({ revenueItem, capitalItem, notCertifyCapitalItem,notApproveCapitalItem, notReceiveCapitalItem }) => {
-    //console.log(electricity)
+    console.log(dataRevenueItem,capitalItem,notReceiveCapitalItem)
     const [api, contextHolder] = notification.useNotification();
     const { data: session } = useSession();
     const [formId, setFormId] = useState("");
