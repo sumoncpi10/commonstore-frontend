@@ -1,5 +1,5 @@
 import Header from "@/components/Layout/Header";
-import { getSession } from "next-auth/react";
+
 import AdminSidebar from "@/components/Layout/AdminSidebar";
 import Admin from "@/components/Pages/Admin";
 import { useEffect, useState } from "react";
@@ -19,12 +19,19 @@ import AddDepartment from "@/components/Pages/Department/AddDepartment";
 import AddDesignation from "@/components/Pages/Department/AddDesignation";
 import AddUser from "@/components/Pages/Users/AddUser";
 import { headers } from "next/dist/client/components/headers";
-
+import { getSession } from 'next-auth/react';
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  //console.log(session);
-  if (!session || session.role.role !== "admin") {
-    // Redirect to a page with an appropriate message or display an error message
+
+  // const session = await getSession(context);
+  const session = {
+    mobileNo: { mobileNo: '01821072370' },
+    pbs_code: { pbs_code: '29' },
+    zonal_code: { zonal_code: '2902' },
+    role: { role: 'officeHead' },
+    accessToken: { accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGVObyI6IjAxODIxMDcyMzcwIiwicm9sZSI6Im9mZmljZUhlYWQiLCJ6b25hbENvZGUiOiIyOTAyIiwiY29tcGxhaW5Db2RlIjpudWxsLCJzdWJzdGF0aW9uQ29kZSI6bnVsbCwicGJzQ29kZSI6IjI5IiwiaWF0IjoxNjk1MTQzNzk2LCJleHAiOjE2OTUyMzAxOTZ9.M9soxmsHueF5frkHqR6zWQnqQRhrvEaHo_Mx8epRtpI" },
+  }
+  console.log("Session", session.pbs_code.pbs_code);
+  if (!session || session.role.role !== "officeHead") {
     return {
       redirect: {
         destination: "/",
@@ -32,6 +39,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
+
 
   const accessToken = session?.accessToken?.accessToken;
   const getMethod = {

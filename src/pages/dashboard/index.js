@@ -12,9 +12,15 @@ import ApproveCapitalItem from '@/components/Dashboard/ApproveCapitalItem';
 import IssueCapitalItem from '@/components/Dashboard/IssueCapitalItem';
 import ReceivedCapitalItem from '@/components/Dashboard/ReceivedCapitalItem';
 export async function getServerSideProps(context) {
-    const session = await getSession(context);
-
-    if (!session || session?.role?.role !== "admin"||session?.role?.role !== "user") {
+    // const session = await getSession(context);
+    const session = {
+        mobileNo: { mobileNo: '01866115239' },
+        pbs_code: { pbs_code: '29' },
+        zonal_code: { zonal_code: '2902' },
+        role: { role: 'officeHead' },
+        accessToken: { accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGVObyI6IjAxODY2MTE1MjM5Iiwicm9sZSI6ImFkbWluIiwiem9uYWxDb2RlIjoiMjkwMiIsImNvbXBsYWluQ29kZSI6bnVsbCwic3Vic3RhdGlvbkNvZGUiOm51bGwsInBic0NvZGUiOiIyOSIsImlhdCI6MTY5NTE0MTQ3MCwiZXhwIjoxNjk1MjI3ODcwfQ.qb_KKoweoaxZ2djByNp4gSVL4UBe7KWuDlg02NOUoSg" },
+    }
+    if (!session || session?.role?.role !== "officeHead") {
         return {
             redirect: {
                 destination: "/",
@@ -36,10 +42,12 @@ export async function getServerSideProps(context) {
     const dataCapitalItem = await resCapitalItem.json();
     const resNotReceivedCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-receive/${session?.pbs_code?.pbs_code}`, getMethod);
     const dataNotReceivedCapitalItem = await resNotReceivedCapitalItem.json();
-    let dataNotCertifyCapitalItem="",dataNotApproveCapitalItem="";
-    if(session?.role?.role !== "admin"){
+    let dataNotCertifyCapitalItem = "", dataNotApproveCapitalItem = "";
+    if (session?.role?.role == "storeHead") {
         const resNotCertifyCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-certify/${session?.pbs_code?.pbs_code}`, getMethod);
         dataNotCertifyCapitalItem = await resNotCertifyCapitalItem.json();
+    }
+    if (session?.role?.role == "officeHead") {
         const resNotApproveCapitalItem = await fetch(`${process.env.BACKEND_URL}/api/v1/capital-item/not-approve/${session?.pbs_code?.pbs_code}`, getMethod);
         dataNotApproveCapitalItem = await resNotApproveCapitalItem.json();
     }
@@ -56,8 +64,8 @@ export async function getServerSideProps(context) {
         },
     };
 }
-const Categories = ({ revenueItem, capitalItem, notCertifyCapitalItem,notApproveCapitalItem, notReceiveCapitalItem }) => {
-    console.log(dataRevenueItem,capitalItem,notReceiveCapitalItem)
+const Categories = ({ revenueItem, capitalItem, notCertifyCapitalItem, notApproveCapitalItem, notReceiveCapitalItem }) => {
+    // console.log(dataRevenueItem, capitalItem, notReceiveCapitalItem)
     const [api, contextHolder] = notification.useNotification();
     const { data: session } = useSession();
     const [formId, setFormId] = useState("");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Menu, Switch, Button, Drawer, Row, Col } from "antd";
 import {
   HomeOutlined,
@@ -14,6 +14,7 @@ import Image from 'next/image';
 const ResponsiveNav = ({ children }) => {
 
   const { data: session } = useSession();
+
   console.log(session);
   const [visible, setVisible] = useState(false);
   const [theme, setTheme] = useState('light');
@@ -28,46 +29,19 @@ const ResponsiveNav = ({ children }) => {
   const onClose = () => {
     setVisible(false);
   };
-  const menu = <>     
-  {/* <Menu.Item key="1" icon={<HomeOutlined />}>
-    <Link style={{ textDecoration: 'none' }} href="/">
-      Home
-    </Link>
-  </Menu.Item> */}
-    <Menu.Item key="2" icon={<FileProtectOutlined />}>
-      <Link style={{ textDecoration: 'none' }} href="/info">
-        Product Entry
-      </Link>
-    </Menu.Item>
+  const menu = <>
+    {
+      session?.role?.role == 'admin' || session?.role?.role == 'incharge' ?
+        <Menu.Item key="2" icon={<FileProtectOutlined />}>
+          <Link style={{ textDecoration: 'none' }} href="/info">
+            Product Entry
+          </Link>
+        </Menu.Item> : ""}
     <Menu.Item key="3" icon={<FileProtectOutlined />}>
       <Link style={{ textDecoration: 'none' }} href="/dashboard">
         My Products
       </Link>
     </Menu.Item>
-    {/* <Menu.SubMenu icon={<FileProtectOutlined />} title="Categories" key="3" style={{ color: "cyan", textDecoration: 'none' }}>
-      <Menu.Item key="3:7"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/CPU-Processor">
-        CPU-Processor
-      </Link></Menu.Item>
-      <Menu.Item key="3:1"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/Motherboard">
-        Motherboard
-      </Link></Menu.Item>
-      <Menu.Item key="3:2"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/RAM">
-        RAM
-      </Link></Menu.Item>
-      <Menu.Item key="3:3"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/Power Supply Unit">
-        Power Supply Unit
-      </Link></Menu.Item>
-      <Menu.Item key="3:4"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/Storage Device">
-        Storage Device
-      </Link></Menu.Item>
-      <Menu.Item key="3:5"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/Monitor">
-        Monitor
-      </Link></Menu.Item>
-      <Menu.Item key="3:6"><Link style={{ color: "green", textDecoration: 'none' }} href="/products/Others">
-        Others
-      </Link></Menu.Item>
-
-    </Menu.SubMenu> */}
     {
       session?.role?.role == 'admin' ?
         <Menu.Item key="6" icon={<UsergroupAddOutlined />}>
@@ -86,7 +60,7 @@ const ResponsiveNav = ({ children }) => {
               className="logo"
               style={{ color: "white", paddingLeft: "50px" }}
             >
-              PBS Activities
+              PBS Common Store
             </div>
           </Col>
           <Col xs={0} sm={0} md={10}>
@@ -141,8 +115,6 @@ const ResponsiveNav = ({ children }) => {
             <br />
             <br />
             {menu}
-
-
             {
               !session?.user ? <Menu.Item key="6">
                 <Button type="primary" >

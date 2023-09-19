@@ -17,8 +17,6 @@ const authOptions = {
         const userdata = await yourDatabaseQueryToFetchUserData(mobileNo, password);
 
         if (userdata) {
-
-
           return Promise.resolve({ id: 1, name: userdata.mobileNo, email: userdata.accessToken });
         } else {
           return Promise.resolve(null);

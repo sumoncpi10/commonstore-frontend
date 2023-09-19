@@ -68,7 +68,8 @@ const AddUser = () => {
             });
     };
     const roles = [
-        { id: 4, role: 'employee', value: 'employee' },
+        { id: 4, role: 'employee', value: 'user' },
+        // { id: 4, role: 'employee', value: 'employee' },
         { id: 3, role: 'Zonal Admin', value: 'zonaladmin' },
         { id: 2, role: 'Admin', value: 'admin' },
         { id: 1, role: 'Super Admin', value: 'superadmin' },
@@ -77,6 +78,19 @@ const AddUser = () => {
         <Form {...formItemLayout} style={{ maxWidth: 600 }} onFinish={onFinish}>
             {contextHolder}
             <Title level={2}>Add User</Title>
+            <Form.Item
+                label="Name"
+                name="name"
+                hasFeedback
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please provide a Name',
+                    },
+                ]}
+            >
+                <Input placeholder="User Full Name" />
+            </Form.Item>
             <Form.Item label="Role" name="role" hasFeedback rules={[
                 {
                     required: true,

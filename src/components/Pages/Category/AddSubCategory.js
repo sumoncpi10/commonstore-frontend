@@ -94,6 +94,19 @@ const AddSubCategory = ({ categroys }) => {
             >
                 <Input placeholder="Sub Category Name" />
             </Form.Item>
+            <Form.Item
+                label="Item Code"
+                name="itemCode"
+                hasFeedback
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please provide a Item Code',
+                    },
+                ]}
+            >
+                <Input placeholder="Item Code" />
+            </Form.Item>
 
             <Form.Item wrapperCol={{ xs: { span: 24, offset: 0 }, sm: { span: 14, offset: 6 } }}>
                 <Button type="primary" htmlType="submit" block>

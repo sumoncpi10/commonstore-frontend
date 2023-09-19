@@ -10,7 +10,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
-const InfoEntrySidebar = ({ children, category, setFormId }) => {
+const DashboardSidebar = ({ children, category, setFormId }) => {
     const { props } = children;
     // //console.log('Category from Adminside', category);
     const [collapsed, setCollapsed] = useState(false);
@@ -131,4 +131,4 @@ const InfoEntrySidebar = ({ children, category, setFormId }) => {
         </Layout>
     );
 };
-export default InfoEntrySidebar;
+export default DashboardSidebar;
